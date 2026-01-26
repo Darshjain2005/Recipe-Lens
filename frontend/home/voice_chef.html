@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Lens - Voice Chef</title>
+    <link rel="stylesheet" href="style_voice.css">
+</head>
+<body>
+
+    <div class="voice-page-wrapper">
+        <header class="header">
+            <a href="home.html" class="logo-btn">
+                <img src="RL logo.png" alt="Home Logo">
+            </a>
+        </header>
+
+        <div class="mic-section">
+            <button class="mic-btn">
+                <span class="mic-icon">🎤</span>
+            </button>
+        </div>
+
+        <div class="input-display">
+            <p id="voice-text" class="placeholder-text">
+                Speak your ingredients...
+            </p>
+        </div>
+
+        <p class="feedback-msg" id="feedback-msg">Alright, what are we working with in the kitchen?</p>
+
+        <div class="dishes-container" id="recipes">
+            <p class="placeholder-text-dark">Suggested recipes will appear here...</p>
+        </div>
+
+        <div class="steps-display" id="steps" style="margin-top: 20px; color: white; font-weight: bold;">
+        </div>
+    </div>
+
+    <script src="voice.js"></script>
+</body>
+</html>

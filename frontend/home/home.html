@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RecipeLens</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="home.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- TOP SECTION -->
+    <section class="top-container">
+        <div class="top-bar">
+            <nav class="navbar">
+                <a href="#how">How it works</a>
+                <a href="#about">About us</a>
+                <a href="#workflow">Workflow</a>
+            </nav>
+        </div>
+
+        <img src="images/logo.png" alt="Recipe Lens Logo" class="logo">
+    </section>
+
+    <!-- BOTTOM SECTION -->
+    <section class="bottom-container">
+
+        <div class="slogan">
+            <span class="see-it">See it.</span>
+            <span class="name-it">Name it.</span>
+            <span class="cook-it">Cook it.</span>
+        </div>
+
+        <div class="button-wrapper">
+
+            <!-- Vision Chef -->
+            <div class="btn-group">
+                <a href="#" class="main-btn" onclick="startVisionChef()">
+                    <span class="btn-icon circle-icon"></span>
+                    Vision Chef
+                </a>
+                <span class="btn-label">What Can I Cook?</span>
+            </div>
+
+            <!-- Voice Chef -->
+            <div class="btn-group">
+                <a href="#" class="main-btn" onclick="startVoiceChef()">
+                    <span class="btn-icon micro-icon">🎤</span>
+                    Voice Chef
+                </a>
+                <span class="btn-label">Listen to Ingredients</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT -->
+    <script>
+    function startVoiceChef() {
+        // Since you have a separate HTML for voice, just go there!
+        window.location.href = "voice_chef.html"; 
+    }
+
+    function startVisionChef() {
+        // You can do the same for Vision once that page is ready
+        alert("Vision Chef coming next 🚀");
+    }
+    </script>
+
+</body>
+</html>
