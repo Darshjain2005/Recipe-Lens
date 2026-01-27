@@ -15,7 +15,7 @@ body, html {
     height: 100vh;
     width: 100%;
     /* Path to your new background */
-    background: url('Voice Chef.png') no-repeat center center;
+    background: url('images/Voice\ Chef.png') no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -128,4 +128,60 @@ body, html {
     0% { transform: scale(1); }
     50% { transform: scale(1.15); }
     100% { transform: scale(1); }
+}
+
+/* Add this at the end of style_voice.css */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow-y: auto; /* Allow scrolling if text is long */
+    }
+
+    .voice-page-wrapper {
+        padding: 15px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    /* Make the white input box smaller and more flexible */
+    .input-display {
+        width: 95%;
+        height: 150px; /* Reduced height for mobile */
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .placeholder-text {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    /* Ensure the blue container fills the screen */
+    .dishes-container {
+        width: 100%;
+        border-radius: 30px 30px 0 0;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .placeholder-text-dark {
+        font-size: 1.4rem; /* Smaller heading for mobile */
+    }
+
+    /* Ensure recipe cards stack nicely */
+    .recipe-card {
+        width: 100%; /* Full width cards on mobile */
+        display: block !important;
+        text-align: center;
+    }
+
+    /* Target the #steps text specifically */
+    #steps {
+        font-size: 1.1rem !important;
+        line-height: 1.4;
+    }
+
+    .feedback-msg {
+        font-size: 0.9rem;
+        text-align: center;
+    }
 }

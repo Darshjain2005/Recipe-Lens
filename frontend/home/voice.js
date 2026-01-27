@@ -1,6 +1,9 @@
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "en-US";
-recognition.continuous = false; // We manually restart it to keep things precise
+recognition.continuous = false; 
+
+// THE FIX: Point this specifically to your Flask Port
+const BACKEND_URL = "http://127.0.0.1:5000";
 
 let stage = "ingredients"; 
 let currentIngredients = [];
@@ -9,8 +12,7 @@ let recipeIndex = 0;
 let currentStepIdx = 0;
 
 const voiceText = document.getElementById("voice-text");
-const recipeList = document.getElementById("recipes");
-const stepsDisplay = document.getElementById("steps");
+const recipeList = document.getElementById("recipes"); 
 const feedbackMsg = document.getElementById("feedback-msg");
 
 document.querySelector(".mic-btn").onclick = () => recognition.start();
@@ -24,7 +26,8 @@ recognition.onresult = async (e) => {
         const knownIngs = ["potato", "tomato", "onion", "garlic", "chicken", "paneer", "rice"];
         currentIngredients = knownIngs.filter(i => text.includes(i));
 
-        const res = await fetch("http://127.0.0.1:5000/suggest-recipes", {
+        // FETCH 1: Suggest Recipes
+        const res = await fetch(`${BACKEND_URL}/suggest-recipes`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ ingredients: currentIngredients })
@@ -32,7 +35,12 @@ recognition.onresult = async (e) => {
 
         const data = await res.json();
         renderRecipes(data);
-        speak("I found some recipes. Which one would you like? Say first, second, or third.");
+        
+        const feedback = "I found some recipes. Say first, second, or third.";
+        const stepsDisplay = document.getElementById("steps");
+        if (stepsDisplay) stepsDisplay.innerText = feedback;
+        
+        speak(feedback);
         stage = "choose";
     }
 
@@ -40,8 +48,10 @@ recognition.onresult = async (e) => {
         if (text.includes("first")) recipeIndex = 0;
         else if (text.includes("second")) recipeIndex = 1;
         else if (text.includes("third")) recipeIndex = 2;
+        else return;
 
-        const res = await fetch("http://127.0.0.1:5000/start-cooking", {
+        // FETCH 2: Start Cooking
+        const res = await fetch(`${BACKEND_URL}/start-cooking`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ recipe_index: recipeIndex, servings })
@@ -50,10 +60,13 @@ recognition.onresult = async (e) => {
         const data = await res.json();
         currentStepIdx = 0;
         feedbackMsg.innerText = `Cooking: ${data.name}`;
-        recipeList.innerHTML = ""; // Clear the list to show steps
         
-        speak(`Starting ${data.name}. Step one: ${data.steps[0]}`);
-        stepsDisplay.innerText = `Step 1: ${data.steps[0]}`;
+        recipeList.innerHTML = '<div id="steps" style="color: white; font-weight: bold; font-size: 1.5rem; text-align: center; padding: 20px;"></div>';
+        
+        const firstStep = `Step 1: ${data.steps[0]}`;
+        document.getElementById("steps").innerText = firstStep; 
+        
+        speak(`Starting ${data.name}. ${firstStep}`);
         stage = "cook";
     }
 
@@ -63,35 +76,34 @@ recognition.onresult = async (e) => {
         } else if (text.includes("previous")) {
             currentStepIdx = Math.max(0, currentStepIdx - 1);
         } else if (text.includes("stop")) {
-            speak("Cooking stopped.");
-            stage = "ingredients";
-            location.reload(); // Reset the page
+            location.reload();
             return;
         } 
 
-        const res = await fetch("http://127.0.0.1:5000/next-step", {
+        // FETCH 3: Next Step
+        const res = await fetch(`${BACKEND_URL}/next-step`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({ recipe_index: recipeIndex, step: currentStepIdx })
         });
 
         const data = await res.json();
+        const stepsDisplay = document.getElementById("steps");
+
         if (data.done) {
-            speak("That was the last step. Enjoy your meal!");
-            stepsDisplay.innerText = "Enjoy your meal!";
+            if (stepsDisplay) stepsDisplay.innerText = "Enjoy your meal!";
+            speak("That was the last step. Enjoy!");
             stage = "ingredients";
         } else {
+            const stepText = `Step ${currentStepIdx + 1}: ${data.step}`;
+            if (stepsDisplay) stepsDisplay.innerText = stepText; 
             speak(data.step);
-            stepsDisplay.innerText = `Step ${currentStepIdx + 1}: ${data.step}`;
         }
     }
 };
 
-// Auto-restart recognition if we are in the middle of cooking
 recognition.onend = () => {
-    if (stage === "cook" || stage === "choose") {
-        recognition.start();
-    }
+    if (stage === "cook" || stage === "choose") recognition.start();
 };
 
 function extractServings(text) {
@@ -100,19 +112,17 @@ function extractServings(text) {
 }
 
 function renderRecipes(recipes) {
-    if (recipes.length === 0) {
-        recipeList.innerHTML = "<p>No recipes found for those ingredients.</p>";
-        return;
-    }
-    recipeList.innerHTML = recipes.map((r, i) => `
-        <div class="recipe-card" style="border: 1px solid #fff; margin: 5px; padding: 10px;">
+    let html = recipes.map((r, i) => `
+        <div class="recipe-card" style="border: 1px solid #fff; margin: 10px; padding: 15px; border-radius: 10px; display: inline-block; background: rgba(255,255,255,0.1);">
             <p><strong>Option ${i+1}:</strong> ${r.name}</p>
         </div>
     `).join("");
+    html += '<div id="steps" style="color: white; font-weight: bold; font-size: 1.5rem; text-align: center; padding: 20px;"></div>';
+    recipeList.innerHTML = html;
 }
 
 function speak(text) {
-    window.speechSynthesis.cancel(); // Stop any current speaking
+    window.speechSynthesis.cancel(); 
     const u = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(u);
 }

@@ -142,3 +142,56 @@ body, html {
     background-color: #e8f6ff;
     color: #0077b6;
 }
+
+/* Add this at the end of home.css */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow-y: auto; /* Allow scrolling on small screens */
+    }
+
+    /* Adjust heights so content doesn't get cut off */
+    .top-container {
+        height: 50vh;
+    }
+
+    .bottom-container {
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    /* Shrink the logo to fit mobile width */
+    .logo {
+        max-width: 80%;
+    }
+
+    /* Hide the decorative top bar or make it full width */
+    .top-bar {
+        width: 90%;
+        top: 10px;
+    }
+
+    .navbar {
+        gap: 15px;
+    }
+
+    .navbar a {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    /* STACK THE BUTTONS VERTICALLY */
+    .button-wrapper {
+        flex-direction: column;
+        gap: 30px; /* Space between buttons when stacked */
+    }
+
+    .main-btn {
+        width: 250px; /* Slightly narrower for mobile */
+        font-size: 1.2rem;
+    }
+
+    .slogan {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
