@@ -1,0 +1,2035 @@
+[
+  {
+    "name": "Aloo Tomato Sabzi",
+    "ingredients": {
+      "potato": "300g",
+      "tomato": "200g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "cumin seeds": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tablespoons of oil in a pan over medium heat for 1 minute.",
+      "Add 1 teaspoon of cumin seeds and let them sizzle for 30 seconds.",
+      "Add 100g chopped onions and sauté until golden brown (about 5 minutes).",
+      "Add 300g diced potatoes and stir for 2 minutes.",
+      "Add 200g chopped tomatoes, 1 teaspoon salt, and 1/2 teaspoon turmeric.",
+      "Mix well and cook covered on low heat for 15 minutes, stirring occasionally.",
+      "Check if potatoes are soft. If not, cook for another 5 minutes.",
+      "Turn off heat and serve hot."
+    ]
+  },
+  {
+    "name": "Mixed Vegetable Curry",
+    "ingredients": {
+      "carrot": "100g",
+      "beans": "100g",
+      "capsicum": "100g",
+      "peas": "50g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tablespoons of oil in a pan over medium heat.",
+      "Add 100g chopped onions and sauté until golden brown (5 minutes).",
+      "Add 150g chopped tomatoes and cook for 3 minutes.",
+      "Add 100g carrots, 100g beans, 100g capsicum, 50g peas, and 1 teaspoon salt.",
+      "Stir well and cook covered on medium heat for 12 minutes, stirring occasionally.",
+      "Add 1 teaspoon garam masala and mix.",
+      "Cook for another 2 minutes and serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Butter Masala",
+    "ingredients": {
+      "paneer": "250g",
+      "tomato": "200g",
+      "onion": "100g",
+      "cream": "50ml",
+      "butter": "2 tbsp",
+      "oil": "1 tbsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "ginger garlic paste": "1 tsp"
+    },
+    "steps": [
+      "Heat 1 tablespoon oil and 2 tablespoons butter in a pan.",
+      "Add 100g chopped onions and sauté until golden (5 minutes).",
+      "Add 1 teaspoon ginger garlic paste and cook for 1 minute.",
+      "Add 200g chopped tomatoes and cook until soft (5 minutes).",
+      "Blend mixture to make smooth gravy.",
+      "Return to pan, add 250g paneer cubes, 50ml cream, 1 tsp salt, 1 tsp garam masala.",
+      "Cook on low heat for 5 minutes and serve hot."
+    ]
+  },
+  {
+    "name": "Chana Masala",
+    "ingredients": {
+      "chickpeas": "250g (soaked overnight)",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tablespoons oil in a pan.",
+      "Add 1 teaspoon cumin seeds and let them splutter.",
+      "Add 100g chopped onions and sauté until golden (5 minutes).",
+      "Add 1 teaspoon ginger garlic paste and cook for 1 minute.",
+      "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, and cook for 5 minutes.",
+      "Add 250g soaked chickpeas with water to cover.",
+      "Cook on medium heat for 15 minutes, then add 1 tsp garam masala.",
+      "Simmer for 2 minutes and serve hot."
+    ]
+  },
+  {
+    "name": "Palak Paneer",
+    "ingredients": {
+      "spinach": "250g",
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "garlic": "2 cloves",
+      "salt": "1 tsp",
+      "cream": "50ml",
+      "cumin seeds": "1 tsp"
+    },
+    "steps": [
+      "Blanch 250g spinach in boiling water for 2 minutes, then blend to puree.",
+      "Heat 2 tablespoons oil in a pan, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions and sauté till golden.",
+      "Add 100g chopped tomatoes and 2 cloves crushed garlic, cook 3 minutes.",
+      "Add spinach puree, 200g paneer cubes, 1 tsp salt.",
+      "Cook on low heat for 5 minutes.",
+      "Add 50ml cream, mix well and serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Gobi",
+    "ingredients": {
+      "potato": "200g",
+      "cauliflower": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tablespoons oil in a pan, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté until golden brown (5 minutes).",
+      "Add 200g diced potatoes and 200g cauliflower florets, stir 2 minutes.",
+      "Add 100g chopped tomatoes, 1 tsp turmeric, 1 tsp salt, cook 10 minutes covered.",
+      "Add 1 tsp garam masala, mix and cook 2 more minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Bhindi Masala",
+    "ingredients": {
+      "okra": "250g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Wash and chop 250g okra, pat dry.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté until golden (5 minutes).",
+      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
+      "Add okra, mix well, cook covered 10 minutes on medium heat.",
+      "Add 1 tsp garam masala, mix and serve hot."
+    ]
+  },
+  {
+    "name": "Matar Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "peas": "100g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil in a pan, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
+      "Add 200g paneer cubes and 100g peas, stir well.",
+      "Cook on low heat for 10 minutes, add 1 tsp garam masala, mix and serve hot."
+    ]
+  },
+  {
+    "name": "Baingan Bharta",
+    "ingredients": {
+      "eggplant": "300g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "garlic": "2 cloves",
+      "salt": "1 tsp",
+      "cumin seeds": "1 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Roast 300g eggplant over flame until skin chars and pulp softens.",
+      "Peel skin, mash pulp and set aside.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions and 2 crushed garlic cloves, sauté 5 minutes.",
+      "Add 100g chopped tomatoes, 1 tsp red chili powder, 1 tsp salt, cook 3 minutes.",
+      "Add mashed eggplant, mix well, cook 5 more minutes and serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Bhurji",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "green chili": "1",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "cumin seeds": "1 tsp"
+    },
+    "steps": [
+      "Crumble 200g paneer and keep aside.",
+      "Heat 2 tbsp oil in a pan, add 1 tsp cumin seeds, let them sizzle.",
+      "Add 100g chopped onions and sauté till golden (5 minutes).",
+      "Add 100g chopped tomatoes, 1 chopped green chili, 1/2 tsp turmeric, and 1 tsp salt, cook 3 minutes.",
+      "Add crumbled paneer, mix well, cook for 5 minutes.",
+      "Serve hot with roti or rice."
+    ]
+  },
+  {
+    "name": "Sev Tamatar Sabzi",
+    "ingredients": {
+      "tomato": "250g",
+      "sev": "50g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "coriander powder": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil in a pan, add 1 tsp cumin seeds.",
+      "Add 250g chopped tomatoes, 1 tsp salt, 1/2 tsp turmeric, and 1 tsp coriander powder, cook 5-6 minutes until soft.",
+      "Add 50g sev, mix gently, cook for 2 more minutes.",
+      "Serve hot with roti or as side dish."
+    ]
+  },
+  {
+    "name": "Jeera Aloo",
+    "ingredients": {
+      "potato": "300g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "coriander leaves": "2 tbsp"
+    },
+    "steps": [
+      "Boil 300g potatoes, peel, and dice them.",
+      "Heat 2 tbsp oil in a pan, add 1 tsp cumin seeds.",
+      "Add diced potatoes, 1/2 tsp turmeric, and 1 tsp salt.",
+      "Sauté on medium heat for 8-10 minutes until slightly crispy.",
+      "Garnish with 2 tbsp chopped coriander leaves and serve."
+    ]
+  },
+  {
+    "name": "Lauki Sabzi",
+    "ingredients": {
+      "bottle gourd": "250g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "salt": "1 tsp"
+    },
+    "steps": [
+      "Peel and chop 250g bottle gourd into cubes.",
+      "Heat 2 tbsp oil in a pan, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 3-4 minutes.",
+      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 3 minutes.",
+      "Add bottle gourd, stir well, cover and cook for 10-12 minutes.",
+      "Serve hot with roti or rice."
+    ]
+  },
+  {
+    "name": "Tinda Masala",
+    "ingredients": {
+      "tinda": "250g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Peel and chop 250g tinda into small pieces.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes until golden.",
+      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 3-4 minutes.",
+      "Add tinda pieces, cover and cook for 12 minutes on low heat.",
+      "Add 1 tsp garam masala, mix, cook 2 more minutes, and serve hot."
+    ]
+  },
+  {
+    "name": "Karela Sabzi",
+    "ingredients": {
+      "bitter gourd": "250g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Wash and slice 250g bitter gourd thinly, remove seeds.",
+      "Heat 2 tbsp oil in a pan.",
+      "Add sliced bitter gourd, 100g chopped onions, 1/2 tsp turmeric, 1 tsp red chili powder, and 1 tsp salt.",
+      "Cook on medium heat for 12-15 minutes, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Methi",
+    "ingredients": {
+      "potato": "300g",
+      "fenugreek leaves": "50g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Boil 300g potatoes, peel and dice.",
+      "Wash 50g fenugreek leaves.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add potatoes, turmeric, salt, red chili powder, sauté 5 minutes.",
+      "Add fenugreek leaves, cook 5 more minutes, mix well and serve hot."
+    ]
+  },
+  {
+    "name": "Chole (Chickpea Curry)",
+    "ingredients": {
+      "chickpeas": "250g soaked overnight",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil in a pan, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add 250g soaked chickpeas, water to cover, cook 15 minutes.",
+      "Add 1 tsp garam masala, simmer 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Rajma Masala",
+    "ingredients": {
+      "kidney beans": "250g soaked overnight",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "turmeric": "1/2 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
+      "Add 250g soaked kidney beans, water to cover, cook 20 minutes.",
+      "Add 1 tsp garam masala, simmer 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Dal Tadka",
+    "ingredients": {
+      "toor dal": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "garlic": "2 cloves",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Boil 200g toor dal in water until soft.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds and 2 crushed garlic cloves.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Pour dal into pan, mix well, simmer 5 minutes and serve hot."
+    ]
+  },
+  {
+    "name": "Bhindi Do Pyaza",
+    "ingredients": {
+      "okra": "250g",
+      "onion": "200g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "salt": "1 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Wash and chop 250g okra, pat dry.",
+      "Slice 200g onions.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add onions, sauté until golden brown (5 minutes).",
+      "Add okra, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cook covered for 12 minutes, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Palak",
+    "ingredients": {
+      "potato": "250g",
+      "spinach": "200g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Boil 250g potatoes, peel and dice them.",
+      "Wash 200g spinach and chop.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add potatoes, 1/2 tsp turmeric, 1 tsp salt, sauté 5 minutes.",
+      "Add spinach, cover and cook 10 minutes on medium heat.",
+      "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Methi Aloo",
+    "ingredients": {
+      "potato": "250g",
+      "fenugreek leaves": "50g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Boil 250g potatoes, peel and dice.",
+      "Wash 50g fenugreek leaves.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add potatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, sauté 5 minutes.",
+      "Add fenugreek leaves, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Gajar Matar Sabzi",
+    "ingredients": {
+      "carrot": "150g",
+      "peas": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Peel and chop 150g carrots.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add carrots and 100g peas, sauté 2 minutes.",
+      "Add 1/2 tsp turmeric, 1 tsp salt, cover and cook 10 minutes.",
+      "Add 1 tsp garam masala, mix and serve hot."
+    ]
+  },
+  {
+    "name": "Tamarind Rice",
+    "ingredients": {
+      "cooked rice": "250g",
+      "tamarind paste": "2 tbsp",
+      "oil": "2 tbsp",
+      "curry leaves": "5-6",
+      "mustard seeds": "1 tsp",
+      "salt": "1 tsp",
+      "green chili": "1",
+      "turmeric": "1/4 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp mustard seeds and 5-6 curry leaves.",
+      "Add 1 chopped green chili and cook 30 seconds.",
+      "Add 2 tbsp tamarind paste, 1/4 tsp turmeric, 1 tsp salt, stir 1 minute.",
+      "Add 250g cooked rice, mix well and heat 2-3 minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Baingan Sabzi",
+    "ingredients": {
+      "potato": "200g",
+      "eggplant": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add 200g diced potatoes and 200g diced eggplant, cook 2 minutes.",
+      "Add 100g tomatoes, 1/2 tsp turmeric, 1 tsp salt, cover and cook 12 minutes.",
+      "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Pulao",
+    "ingredients": {
+      "basmati rice": "200g",
+      "carrot": "50g",
+      "peas": "50g",
+      "capsicum": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 50g chopped onions, sauté 3 minutes.",
+      "Add chopped carrot, peas, capsicum, sauté 2 minutes.",
+      "Add 200g washed basmati rice, 1/2 tsp turmeric, 1 tsp salt, stir 1 minute.",
+      "Add 400ml water, cover and cook 15 minutes until rice is done.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Kadai Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "capsicum": "100g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add 200g paneer cubes and 100g capsicum, cook 7 minutes.",
+      "Add 1 tsp garam masala, mix and serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Upma",
+    "ingredients": {
+      "semolina (rava)": "200g",
+      "carrot": "50g",
+      "peas": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "mustard seeds": "1 tsp",
+      "curry leaves": "5-6",
+      "salt": "1 tsp",
+      "water": "500ml"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp mustard seeds and 5-6 curry leaves.",
+      "Add 50g chopped onions, sauté 2 minutes.",
+      "Add 50g carrot and 50g peas, cook 2 minutes.",
+      "Add 200g semolina, roast 2 minutes.",
+      "Slowly add 500ml water with 1 tsp salt, stir continuously to avoid lumps.",
+      "Cook 5-6 minutes on low heat, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Khichdi",
+    "ingredients": {
+      "rice": "100g",
+      "moong dal": "50g",
+      "carrot": "50g",
+      "peas": "50g",
+      "oil": "1 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "water": "500ml"
+    },
+    "steps": [
+      "Wash 100g rice and 50g moong dal, set aside.",
+      "Heat 1 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 50g chopped carrot and 50g peas, sauté 2 minutes.",
+      "Add rice and dal, 1/2 tsp turmeric, 1 tsp salt, stir 1 minute.",
+      "Add 500ml water, cover and cook 15 minutes on medium heat.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Cabbage Sabzi",
+    "ingredients": {
+      "cabbage": "200g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "salt": "1 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Shred 200g cabbage and set aside.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté until golden (5 minutes).",
+      "Add cabbage, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cover and cook 10 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Cauliflower Curry",
+    "ingredients": {
+      "cauliflower": "250g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Chop 250g cauliflower into florets.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
+      "Add cauliflower, cover, cook 12 minutes on medium heat.",
+      "Add 1 tsp garam masala, mix well and serve hot."
+    ]
+  },
+  {
+    "name": "Tomato Dal",
+    "ingredients": {
+      "toor dal": "200g",
+      "tomato": "150g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1/2 tsp"
+    },
+    "steps": [
+      "Boil 200g toor dal until soft.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 50g chopped onions, sauté 3 minutes.",
+      "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add cooked dal, stir well, simmer 5 minutes.",
+      "Add 1/2 tsp garam masala, mix, serve hot."
+    ]
+  },
+  {
+    "name": "Baingan Aloo",
+    "ingredients": {
+      "eggplant": "200g",
+      "potato": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g eggplant and 200g potatoes.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add eggplant and potatoes, 1/2 tsp turmeric, 1 tsp salt, stir 2 minutes.",
+      "Add 100g chopped tomatoes, cover and cook 12 minutes.",
+      "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Kadhi Pakora",
+    "ingredients": {
+      "besan (gram flour)": "100g",
+      "yogurt": "200ml",
+      "water": "400ml",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1/2 tsp"
+    },
+    "steps": [
+      "Mix 100g besan with 200ml yogurt and water to make smooth batter.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Pour the batter into the pan, add 1/2 tsp turmeric, 1 tsp salt.",
+      "Cook on low heat for 10 minutes, stirring occasionally.",
+      "Add 1/2 tsp garam masala, mix, simmer 5 minutes and serve hot."
+    ]
+  },
+  {
+    "name": "Tawa Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "capsicum": "100g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g paneer and 100g capsicum.",
+      "Heat 2 tbsp oil on a tawa or pan.",
+      "Add 100g chopped onions, sauté 3 minutes.",
+      "Add paneer and capsicum, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cook 5-6 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Biryani",
+    "ingredients": {
+      "basmati rice": "200g",
+      "carrot": "50g",
+      "peas": "50g",
+      "capsicum": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "water": "400ml"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 50g chopped onions, sauté 3 minutes.",
+      "Add chopped carrot, peas, capsicum, sauté 2 minutes.",
+      "Add 200g washed basmati rice, 400ml water, 1 tsp salt, stir.",
+      "Cover and cook 15 minutes until rice is done.",
+      "Add 1 tsp garam masala, mix gently, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Kurma",
+    "ingredients": {
+      "carrot": "50g",
+      "beans": "50g",
+      "peas": "50g",
+      "capsicum": "50g",
+      "onion": "50g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 50g onions, sauté 3 minutes.",
+      "Add carrot, beans, peas, capsicum, sauté 2 minutes.",
+      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
+      "Add 50ml cream, mix, cook 3 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Tikka Masala",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Cube 200g paneer and set aside.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add paneer cubes, 1 tsp salt, 1 tsp garam masala, 50ml cream, mix.",
+      "Cook 5 minutes on low heat, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Korma",
+    "ingredients": {
+      "carrot": "50g",
+      "beans": "50g",
+      "peas": "50g",
+      "capsicum": "50g",
+      "onion": "50g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 50g onions, sauté 3 minutes.",
+      "Add carrot, beans, peas, capsicum, sauté 2 minutes.",
+      "Add 100g chopped tomatoes, 1 tsp salt, cook 5 minutes.",
+      "Add 50ml cream, 1 tsp garam masala, mix, cook 3 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Matar Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "peas": "100g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Cube 200g paneer and set aside.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add 100g peas, mix, cook 5 minutes.",
+      "Add paneer cubes, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 3 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Palak Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "spinach": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Cube 200g paneer and set aside.",
+      "Wash and chop 200g spinach.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 100g chopped tomatoes, cook 5 minutes.",
+      "Add spinach, cook 5 minutes until wilted.",
+      "Add paneer, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 3 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Veg Manchurian",
+    "ingredients": {
+      "cabbage": "50g",
+      "carrot": "50g",
+      "capsicum": "50g",
+      "onion": "50g",
+      "cornflour": "2 tbsp",
+      "oil": "2 tbsp",
+      "soy sauce": "1 tbsp",
+      "salt": "1 tsp",
+      "chili sauce": "1 tbsp"
+    },
+    "steps": [
+      "Grate 50g cabbage, 50g carrot, and chop 50g capsicum.",
+      "Mix vegetables with 2 tbsp cornflour, shape into balls.",
+      "Heat oil, fry balls until golden, set aside.",
+      "Heat 1 tbsp oil, sauté 50g chopped onions 2 minutes.",
+      "Add 1 tbsp soy sauce, 1 tbsp chili sauce, 1 tsp salt, cook 1 minute.",
+      "Add fried balls, toss well, cook 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Gobi",
+    "ingredients": {
+      "potato": "200g",
+      "cauliflower": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes and 200g cauliflower.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add potatoes and cauliflower, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add 100g chopped tomatoes, cover and cook 10 minutes.",
+      "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Navratan Korma",
+    "ingredients": {
+      "carrot": "50g",
+      "beans": "50g",
+      "peas": "50g",
+      "capsicum": "50g",
+      "paneer": "50g",
+      "onion": "50g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Chop all vegetables and paneer into small cubes.",
+      "Heat 2 tbsp oil, add 50g chopped onions, sauté 3 minutes.",
+      "Add 100g chopped tomatoes, cook 5 minutes.",
+      "Add all vegetables and paneer, 1 tsp salt, cover and cook 10 minutes.",
+      "Add 50ml cream, 1 tsp garam masala, mix well, cook 3 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Veg Pakora",
+    "ingredients": {
+      "potato": "50g",
+      "cauliflower": "50g",
+      "onion": "50g",
+      "besan (gram flour)": "100g",
+      "water": "50ml",
+      "salt": "1 tsp",
+      "oil": "for deep frying"
+    },
+    "steps": [
+      "Chop 50g potato, 50g cauliflower, 50g onion.",
+      "Mix 100g besan with 50ml water and 1 tsp salt to make batter.",
+      "Dip vegetables in batter and deep fry until golden brown.",
+      "Drain excess oil, serve hot with chutney."
+    ]
+  },
+  {
+    "name": "Paneer Butter Masala",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "150g",
+      "butter": "2 tbsp",
+      "cream": "50ml",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Cube 200g paneer.",
+      "Heat 2 tbsp butter, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add paneer cubes, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Chana Masala",
+    "ingredients": {
+      "chickpeas": "250g soaked overnight",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add 250g soaked chickpeas, cook 15 minutes.",
+      "Add 1 tsp garam masala, mix, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Jalfrezi",
+    "ingredients": {
+      "carrot": "50g",
+      "capsicum": "50g",
+      "beans": "50g",
+      "peas": "50g",
+      "onion": "50g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Chop all vegetables into small pieces.",
+      "Heat 2 tbsp oil, add 50g chopped onions, sauté 3 minutes.",
+      "Add all vegetables, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cook covered for 10 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Mutter",
+    "ingredients": {
+      "potato": "200g",
+      "peas": "100g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes and chop 100g onions.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add onions, sauté 5 minutes.",
+      "Add potatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add 100g peas and 100g chopped tomatoes, cook 10 minutes until potatoes are soft.",
+      "Add 1 tsp garam masala, mix, serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Tamatar Sabzi",
+    "ingredients": {
+      "potato": "200g",
+      "tomato": "150g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1/2 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes and chop 100g onions.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add onions, sauté 5 minutes until golden.",
+      "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cook 10 minutes on medium heat until potatoes are soft.",
+      "Add 1/2 tsp garam masala, mix, serve hot."
+    ]
+  },
+  {
+    "name": "Methi Malai Matar",
+    "ingredients": {
+      "fenugreek leaves": "100g",
+      "peas": "100g",
+      "cream": "50ml",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Wash and chop 100g fenugreek leaves.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add peas and fenugreek leaves, cook 7 minutes.",
+      "Add 50ml cream, 1 tsp salt, 1 tsp garam masala, mix and cook 2 minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Bhurji",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "capsicum": "50g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Crumble 200g paneer.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 100g chopped tomatoes, 50g capsicum, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cook 7 minutes on medium heat, stirring occasionally.",
+      "Add paneer, mix well, cook 2 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Lauki Sabzi",
+    "ingredients": {
+      "bottle gourd (lauki)": "250g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Peel and dice 250g bottle gourd.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add diced bottle gourd and 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cover and cook 12 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Veg Cutlet",
+    "ingredients": {
+      "potato": "150g",
+      "carrot": "50g",
+      "beans": "50g",
+      "bread crumbs": "50g",
+      "oil": "for shallow frying",
+      "salt": "1 tsp",
+      "garam masala": "1/2 tsp"
+    },
+    "steps": [
+      "Boil 150g potatoes and mash.",
+      "Boil 50g carrot and 50g beans, chop finely, mix with potatoes.",
+      "Add 50g bread crumbs, 1 tsp salt, 1/2 tsp garam masala, mix well and form cutlets.",
+      "Heat oil in a pan, shallow fry cutlets until golden brown on both sides.",
+      "Serve hot with chutney."
+    ]
+  },
+  {
+    "name": "Veg Hakka Noodles",
+    "ingredients": {
+      "noodles": "200g",
+      "carrot": "50g",
+      "capsicum": "50g",
+      "cabbage": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "soy sauce": "1 tbsp",
+      "salt": "1 tsp",
+      "chili sauce": "1 tbsp"
+    },
+    "steps": [
+      "Boil 200g noodles, drain and set aside.",
+      "Heat 2 tbsp oil, add 50g chopped onions, sauté 2 minutes.",
+      "Add 50g chopped carrot, capsicum, cabbage, sauté 3 minutes.",
+      "Add noodles, 1 tbsp soy sauce, 1 tsp salt, 1 tbsp chili sauce, toss well.",
+      "Cook 2 minutes on high flame, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Spring Roll",
+    "ingredients": {
+      "cabbage": "50g",
+      "carrot": "50g",
+      "capsicum": "50g",
+      "spring roll wrapper": "5 sheets",
+      "oil": "for deep frying",
+      "salt": "1 tsp",
+      "soy sauce": "1 tsp"
+    },
+    "steps": [
+      "Shred 50g cabbage, 50g carrot, chop 50g capsicum.",
+      "Mix vegetables with 1 tsp salt and 1 tsp soy sauce.",
+      "Place filling in spring roll wrappers and roll tightly.",
+      "Deep fry in hot oil until golden brown.",
+      "Serve hot with chili sauce."
+    ]
+  },
+  {
+    "name": "Aloo Capsicum Sabzi",
+    "ingredients": {
+      "potato": "200g",
+      "capsicum": "100g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes and 100g capsicum.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add potatoes and capsicum, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cover and cook 12 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Do Pyaza",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "150g",
+      "capsicum": "50g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "tomato": "100g"
+    },
+    "steps": [
+      "Cube 200g paneer.",
+      "Heat 2 tbsp oil, add 150g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 100g chopped tomatoes and 50g capsicum, cook 5 minutes.",
+      "Add paneer, 1 tsp salt, 1 tsp garam masala, mix well, cook 3 minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Fried Rice",
+    "ingredients": {
+      "cooked rice": "200g",
+      "carrot": "50g",
+      "capsicum": "50g",
+      "peas": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "soy sauce": "1 tbsp",
+      "salt": "1 tsp",
+      "chili sauce": "1 tbsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 50g chopped onions, sauté 2 minutes.",
+      "Add chopped carrot, capsicum, peas, sauté 3 minutes.",
+      "Add 200g cooked rice, 1 tbsp soy sauce, 1 tsp salt, 1 tbsp chili sauce.",
+      "Toss well, cook 2 minutes on high flame, serve hot."
+    ]
+  },
+  {
+    "name": "Dum Aloo",
+    "ingredients": {
+      "potato": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Boil 200g potatoes and peel them.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add potatoes, cover, cook 10 minutes on low heat.",
+      "Add 1 tsp garam masala, mix, serve hot."
+    ]
+  },
+  {
+    "name": "Methi Aloo",
+    "ingredients": {
+      "potato": "200g",
+      "fenugreek leaves": "100g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes.",
+      "Wash and chop 100g fenugreek leaves.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add potatoes, turmeric, salt, red chili powder, cook 10 minutes.",
+      "Add fenugreek leaves, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Pulao",
+    "ingredients": {
+      "basmati rice": "200g",
+      "carrot": "50g",
+      "peas": "50g",
+      "beans": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "water": "400ml"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 50g chopped onions, sauté 3 minutes.",
+      "Add chopped vegetables: carrot, peas, beans, sauté 2 minutes.",
+      "Add 200g washed basmati rice, 400ml water, 1 tsp salt.",
+      "Cover and cook 15 minutes until rice is done.",
+      "Fluff rice and serve hot."
+    ]
+  },
+  {
+    "name": "Tinda Masala",
+    "ingredients": {
+      "tinda (apple gourd)": "250g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Peel and chop 250g tinda.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add tinda and 100g chopped tomatoes, turmeric, salt, red chili powder.",
+      "Cover and cook 12 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Karela Sabzi",
+    "ingredients": {
+      "bitter gourd": "200g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Slice 200g bitter gourd thinly and remove seeds.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add bitter gourd, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cook covered 12 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Bhindi Masala",
+    "ingredients": {
+      "okra": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Wash and chop 200g okra.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add okra and 100g chopped tomatoes, turmeric, salt, red chili powder.",
+      "Cook 10 minutes on medium heat, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Kofta Curry",
+    "ingredients": {
+      "paneer": "100g",
+      "potato": "100g",
+      "carrot": "50g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Grate 100g paneer and 100g potato, chop 50g carrot.",
+      "Mix vegetables and form small balls (koftas).",
+      "Heat oil, deep fry koftas until golden, set aside.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 150g chopped tomatoes, 1 tsp ginger garlic paste, 1 tsp salt, cook 5 minutes.",
+      "Add fried koftas, 50ml cream, 1 tsp garam masala, simmer 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Rajma Masala",
+    "ingredients": {
+      "kidney beans": "250g soaked overnight",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add 250g soaked kidney beans, cook 15 minutes until soft.",
+      "Add 1 tsp garam masala, mix, serve hot."
+    ]
+  },
+  {
+    "name": "Chili Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "capsicum": "100g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "soy sauce": "1 tbsp",
+      "chili sauce": "1 tbsp",
+      "salt": "1 tsp"
+    },
+    "steps": [
+      "Cube 200g paneer and chop 100g capsicum, 100g onion.",
+      "Heat 2 tbsp oil, sauté onions 2 minutes.",
+      "Add capsicum, sauté 2 minutes.",
+      "Add paneer cubes, 1 tbsp soy sauce, 1 tbsp chili sauce, 1 tsp salt.",
+      "Cook 3–4 minutes, toss well, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Upma",
+    "ingredients": {
+      "semolina": "200g",
+      "carrot": "50g",
+      "peas": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "mustard seeds": "1 tsp",
+      "salt": "1 tsp",
+      "water": "400ml"
+    },
+    "steps": [
+      "Heat 2 tbsp oil, add 1 tsp mustard seeds.",
+      "Add 50g chopped onions, sauté 3 minutes.",
+      "Add 50g chopped carrot and peas, sauté 2 minutes.",
+      "Add 200g semolina, roast 2 minutes.",
+      "Add 400ml water, 1 tsp salt, cook 5 minutes, stirring continuously.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Gajar Matar Sabzi",
+    "ingredients": {
+      "carrot": "150g",
+      "peas": "100g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Peel and chop 150g carrots.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add carrots and 100g peas, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Cover and cook 10 minutes on medium heat.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Tikka Masala",
+    "ingredients": {
+      "paneer": "200g",
+      "capsicum": "100g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Cube 200g paneer.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add paneer cubes, 100g chopped capsicum, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Stuffed Capsicum",
+    "ingredients": {
+      "capsicum": "200g",
+      "paneer": "100g",
+      "onion": "50g",
+      "tomato": "50g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "garam masala": "1/2 tsp"
+    },
+    "steps": [
+      "Wash and hollow 200g capsicum.",
+      "Crumble 100g paneer, chop 50g onion, 50g tomato, mix with 1 tsp salt and 1/2 tsp garam masala.",
+      "Stuff mixture into capsicum.",
+      "Heat 2 tbsp oil, cook stuffed capsicum 10 minutes on medium heat, turning occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Dhokla",
+    "ingredients": {
+      "gram flour": "200g",
+      "yogurt": "100ml",
+      "water": "50ml",
+      "carrot": "50g",
+      "capsicum": "50g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "baking soda": "1/2 tsp"
+    },
+    "steps": [
+      "Mix 200g gram flour with 100ml yogurt, 50ml water, 1 tsp salt, 1/2 tsp baking soda to make batter.",
+      "Grate 50g carrot and 50g capsicum, fold into batter.",
+      "Grease a steaming dish, pour batter, steam 15 minutes.",
+      "Cool, cut into pieces, drizzle 2 tbsp oil, serve hot."
+    ]
+  },
+  {
+    "name": "Baingan Bharta",
+    "ingredients": {
+      "eggplant": "250g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Roast 250g eggplant until soft, peel and mash.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 100g chopped tomatoes, cook 5 minutes.",
+      "Add mashed eggplant, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Baingan Sabzi",
+    "ingredients": {
+      "potato": "200g",
+      "eggplant": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes and 200g eggplant.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add potatoes, eggplant, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Add 100g chopped tomatoes, cover and cook 12 minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Sambar",
+    "ingredients": {
+      "toor dal": "100g",
+      "tamarind paste": "1 tbsp",
+      "carrot": "50g",
+      "drumstick": "50g",
+      "tomato": "50g",
+      "onion": "50g",
+      "oil": "2 tbsp",
+      "mustard seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp"
+    },
+    "steps": [
+      "Cook 100g toor dal until soft.",
+      "Heat 2 tbsp oil, add 1 tsp mustard seeds.",
+      "Add 50g chopped onions, sauté 3 minutes.",
+      "Add 50g carrot, 50g drumstick, 50g chopped tomatoes, turmeric, salt, cook 5 minutes.",
+      "Add cooked dal and 1 tbsp tamarind paste, simmer 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Idli",
+    "ingredients": {
+      "idli batter": "200g",
+      "carrot": "50g",
+      "peas": "50g",
+      "oil": "2 tsp",
+      "salt": "1/2 tsp"
+    },
+    "steps": [
+      "Chop 50g carrot and mix with 50g peas.",
+      "Fold vegetables into 200g idli batter, add 1/2 tsp salt.",
+      "Grease idli molds, pour batter, steam 10–12 minutes.",
+      "Cool slightly, remove idlis, serve hot with chutney."
+    ]
+  },
+  {
+    "name": "Vegetable Kofta Curry (Paneer Kofta)",
+    "ingredients": {
+      "paneer": "100g",
+      "potato": "100g",
+      "carrot": "50g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Grate 100g paneer and 100g potato, chop 50g carrot.",
+      "Mix and form small koftas, deep fry until golden.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 150g chopped tomatoes, 1 tsp ginger garlic paste, 1 tsp salt, cook 5 minutes.",
+      "Add fried koftas, 50ml cream, 1 tsp garam masala, simmer 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Pasanda",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "150g",
+      "capsicum": "50g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Cube 200g paneer and stuff with small amount of grated paneer if desired.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, 50g capsicum, cook 5 minutes.",
+      "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Palak Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "spinach": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "cream": "50ml"
+    },
+    "steps": [
+      "Blanch 200g spinach, puree it.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 100g chopped tomatoes, cook 5 minutes.",
+      "Add 200g paneer cubes and spinach puree, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Chole Masala",
+    "ingredients": {
+      "chickpeas": "250g soaked overnight",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "cumin seeds": "1 tsp",
+      "garam masala": "1 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Boil 250g soaked chickpeas until soft.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
+      "Add chickpeas, 1 tsp garam masala, simmer 10 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Gobi",
+    "ingredients": {
+      "potato": "200g",
+      "cauliflower": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes and break 200g cauliflower into small florets.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add potatoes, cauliflower, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
+      "Add 100g chopped tomatoes, cover and cook 12 minutes, stirring occasionally.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Kurma",
+    "ingredients": {
+      "carrot": "50g",
+      "beans": "50g",
+      "peas": "50g",
+      "capsicum": "50g",
+      "onion": "100g",
+      "tomato": "100g",
+      "coconut milk": "100ml",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Chop all vegetables: carrot, beans, peas, capsicum.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 100g chopped tomatoes, cook 5 minutes.",
+      "Add all vegetables, 100ml coconut milk, 1 tsp salt, 1 tsp garam masala, simmer 10 minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Butter Masala",
+    "ingredients": {
+      "paneer": "200g",
+      "tomato": "150g",
+      "onion": "100g",
+      "cream": "50ml",
+      "butter": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Cube 200g paneer.",
+      "Heat 2 tbsp butter, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Mixed Vegetable Curry",
+    "ingredients": {
+      "potato": "100g",
+      "carrot": "50g",
+      "beans": "50g",
+      "peas": "50g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Dice all vegetables: potato, carrot, beans.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add vegetables and 100g chopped tomatoes, turmeric, salt, red chili powder.",
+      "Cook 12 minutes on medium heat, stirring occasionally.",
+      "Add 1 tsp garam masala, mix well, serve hot."
+    ]
+  },
+  {
+    "name": "Tawa Paneer",
+    "ingredients": {
+      "paneer": "200g",
+      "capsicum": "100g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "red chili powder": "1 tsp",
+      "garam masala": "1/2 tsp"
+    },
+    "steps": [
+      "Cube 200g paneer, chop 100g capsicum and 100g onion.",
+      "Heat 2 tbsp oil on a tawa or pan.",
+      "Add onions and capsicum, sauté 3 minutes.",
+      "Add paneer cubes, 1 tsp salt, 1 tsp red chili powder, 1/2 tsp garam masala.",
+      "Cook 5 minutes, stirring occasionally, serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Bhurji (Spiced Scrambled Paneer)",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "capsicum": "50g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Crumble 200g paneer.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 100g chopped tomatoes and 50g chopped capsicum, cook 5 minutes.",
+      "Add paneer, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 2–3 minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Methi Masala",
+    "ingredients": {
+      "potato": "200g",
+      "fenugreek leaves": "100g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes, wash and chop 100g fenugreek leaves.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add potatoes, turmeric, salt, red chili powder, cook 10 minutes.",
+      "Add fenugreek leaves, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Veg Jalfrezi",
+    "ingredients": {
+      "capsicum": "100g",
+      "carrot": "50g",
+      "beans": "50g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp",
+      "soy sauce": "1 tbsp"
+    },
+    "steps": [
+      "Chop all vegetables: capsicum, carrot, beans, onion, tomato.",
+      "Heat 2 tbsp oil, sauté onions 2 minutes.",
+      "Add other vegetables, cook 5 minutes.",
+      "Add 1 tsp salt, 1 tsp garam masala, 1 tbsp soy sauce, stir well.",
+      "Cook 3 more minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Lababdar",
+    "ingredients": {
+      "paneer": "200g",
+      "tomato": "150g",
+      "onion": "100g",
+      "cream": "50ml",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Cube 200g paneer.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Handi",
+    "ingredients": {
+      "potato": "100g",
+      "cauliflower": "100g",
+      "carrot": "50g",
+      "peas": "50g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Dice all vegetables: potato, cauliflower, carrot.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 100g chopped tomatoes, sauté 5 minutes.",
+      "Add vegetables, 50g peas, 1 tsp salt, 1 tsp garam masala, cover and cook 12 minutes.",
+      "Serve hot."
+    ]
+  },
+  {
+    "name": "Aloo Palak",
+    "ingredients": {
+      "potato": "200g",
+      "spinach": "200g",
+      "onion": "100g",
+      "oil": "2 tbsp",
+      "cumin seeds": "1 tsp",
+      "salt": "1 tsp",
+      "turmeric": "1/2 tsp",
+      "red chili powder": "1 tsp"
+    },
+    "steps": [
+      "Dice 200g potatoes, wash 200g spinach.",
+      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
+      "Add 100g chopped onions, sauté 5 minutes.",
+      "Add potatoes, turmeric, salt, red chili powder, cook 10 minutes.",
+      "Add spinach, cook 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Manchurian",
+    "ingredients": {
+      "cabbage": "100g",
+      "carrot": "50g",
+      "beans": "50g",
+      "onion": "100g",
+      "cornflour": "50g",
+      "oil": "for frying",
+      "soy sauce": "1 tbsp",
+      "chili sauce": "1 tbsp",
+      "salt": "1 tsp"
+    },
+    "steps": [
+      "Grate 100g cabbage, 50g carrot, 50g beans, chop 100g onion.",
+      "Mix vegetables with 50g cornflour and form balls.",
+      "Deep fry balls until golden brown.",
+      "In a pan, add soy sauce, chili sauce, salt, sauté 2 minutes.",
+      "Add fried balls, toss well, cook 2 more minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Shahi Korma",
+    "ingredients": {
+      "paneer": "200g",
+      "onion": "100g",
+      "tomato": "150g",
+      "cream": "50ml",
+      "cashew paste": "50g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Cube 200g paneer.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add paneer, 50ml cream, 50g cashew paste, 1 tsp salt, 1 tsp garam masala, simmer 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Mushroom Masala",
+    "ingredients": {
+      "mushroom": "200g",
+      "onion": "100g",
+      "tomato": "100g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Slice 200g mushrooms.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté till golden.",
+      "Add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 100g chopped tomatoes, cook 5 minutes.",
+      "Add mushrooms, 1 tsp salt, 1 tsp garam masala, cook 7–8 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Paneer Makhani",
+    "ingredients": {
+      "paneer": "200g",
+      "tomato": "150g",
+      "cream": "50ml",
+      "butter": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Cube 200g paneer.",
+      "Heat 2 tbsp butter, add 1 tsp ginger garlic paste, cook 1 minute.",
+      "Add 150g chopped tomatoes, cook 5 minutes.",
+      "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, simmer 5 minutes, serve hot."
+    ]
+  },
+  {
+    "name": "Vegetable Kofta Curry (Final Recipe)",
+    "ingredients": {
+      "paneer": "100g",
+      "potato": "100g",
+      "carrot": "50g",
+      "peas": "50g",
+      "onion": "100g",
+      "tomato": "150g",
+      "oil": "2 tbsp",
+      "ginger garlic paste": "1 tsp",
+      "cream": "50ml",
+      "salt": "1 tsp",
+      "garam masala": "1 tsp"
+    },
+    "steps": [
+      "Grate 100g paneer and 100g potato, chop 50g carrot and 50g peas.",
+      "Mix and form small koftas, deep fry until golden.",
+      "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
+      "Add 150g chopped tomatoes, 1 tsp ginger garlic paste, 1 tsp salt, cook 5 minutes.",
+      "Add fried koftas, 50ml cream, 1 tsp garam masala, simmer 5 minutes, serve hot."
+    ]
+  }
+]
