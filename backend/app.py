@@ -14,7 +14,6 @@ def suggest_recipes():
 @app.route("/start-cooking", methods=["POST"])
 def start_cooking():
     data = request.json
-    # Standardizing inputs from the frontend
     return jsonify(get_recipe(data["recipe_index"], data["servings"]))
 
 @app.route("/next-step", methods=["POST"])
@@ -23,4 +22,4 @@ def next_step():
     return jsonify(get_step(data["recipe_index"], data["step"]))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
