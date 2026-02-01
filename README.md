@@ -21,7 +21,6 @@
 * **Backend:** Python 3, Flask, Flask-CORS
 * **Database:** SQLite3
 * **Vision:** Integrated ML Model for Object Detection (Vision Stage)
-* **Tools:** Five Server, VS Code Port Forwarding
 
 ---
 
