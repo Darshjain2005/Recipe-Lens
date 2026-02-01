@@ -3,31 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>RecipeLens</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="home.css">
-
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- TOP SECTION -->
     <section class="top-container">
         <div class="top-bar">
             <nav class="navbar">
-                <a href="#how">How it works</a>
-                <a href="#about">About us</a>
-                <a href="#workflow">Workflow</a>
+                <a href="aboutus.html">About us</a>
+                <a href="workflow.html">Workflow</a>
+                <a href="Login.html" id="auth-link" style="color: #79d7ed; font-weight: bold;">Login</a>
             </nav>
         </div>
-
         <img src="images/logo.png" alt="Recipe Lens Logo" class="logo">
     </section>
 
-    <!-- BOTTOM SECTION -->
     <section class="bottom-container">
-
         <div class="slogan">
             <span class="see-it">See it.</span>
             <span class="name-it">Name it.</span>
@@ -35,40 +27,66 @@
         </div>
 
         <div class="button-wrapper">
-
-            <!-- Vision Chef -->
             <div class="btn-group">
                 <a href="#" class="main-btn" onclick="startVisionChef()">
-                    <span class="btn-icon circle-icon"></span>
-                    Vision Chef
+                    <span class="btn-icon circle-icon"></span> Vision Chef
                 </a>
                 <span class="btn-label">What Can I Cook?</span>
             </div>
 
-            <!-- Voice Chef -->
             <div class="btn-group">
                 <a href="#" class="main-btn" onclick="startVoiceChef()">
-                    <span class="btn-icon micro-icon">🎤</span>
-                    Voice Chef
+                    <span class="btn-icon micro-icon">🎤</span> Voice Chef
                 </a>
                 <span class="btn-label">Listen to Ingredients</span>
             </div>
-
         </div>
     </section>
 
-    <!-- JAVASCRIPT -->
     <script>
+    // 1. Helper function to check login status
+    function checkAuth() {
+        return localStorage.getItem("isLoggedIn") === "true";
+    }
+
+    // 2. Logic for Voice Chef Button
     function startVoiceChef() {
-        // Since you have a separate HTML for voice, just go there!
-        window.location.href = "voice_chef.html"; 
+        if (checkAuth()) {
+            window.location.href = "voice_chef.html"; 
+        } else {
+            alert("Please sign in to use the Voice Chef! 👨‍🍳");
+            window.location.href = "Login.html"; 
+        }
     }
 
+    // 3. Logic for Vision Chef Button
     function startVisionChef() {
-        // You can do the same for Vision once that page is ready
-        alert("Vision Chef coming next 🚀");
+        if (checkAuth()) {
+            // Replace with your vision page URL when ready
+            alert("Vision Chef coming next 🚀");
+        } else {
+            alert("Please sign in to use the Vision Chef! 📸");
+            window.location.href = "/home/Login.html"; 
+        }
     }
-    </script>
 
+    // 4. Update the Navbar dynamically on load
+    document.addEventListener("DOMContentLoaded", () => {
+        const authLink = document.getElementById("auth-link");
+        
+        if (checkAuth()) {
+            // Change Login to Logout if session exists
+            authLink.innerText = "Logout";
+            authLink.href = "#";
+            authLink.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("userEmail");
+                alert("Logged out successfully.");
+                location.reload(); // Refresh to update UI
+            };
+        }
+    });
+    </script>
 </body>
-</html>
+</html> 
