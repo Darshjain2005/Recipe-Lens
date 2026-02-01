@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow | Recipe Lens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        /* --- THEME CSS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        
+        body, html { 
+            height: 100%; 
+            width: 100%; 
+            background: linear-gradient(to bottom, #00d4ff 0%, #bff4ff 100%); 
+            background-attachment: fixed; 
+            color: #1e2a38; 
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-container { 
+            width: 100%; 
+            display: flex; 
+            justify-content: center; 
+            padding-top: 20px; 
+            padding-bottom: 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        
+        .top-bar { 
+            width: 90%; 
+            max-width: 500px; 
+            height: 50px; 
+            background: rgba(255, 255, 255, 0.95); 
+            border-radius: 30px; 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        .navbar { display: flex; gap: 20px; }
+        .navbar a { text-decoration: none; font-weight: 700; font-size: 0.95rem; color: #1e2a38; padding: 6px 14px; border-radius: 20px; transition: all 0.25s ease; }
+        .navbar a:hover, .navbar a.active { background-color: #e8f6ff; color: #0077b6; }
+
+        /* --- MAIN CONTAINER --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; padding-bottom: 80px; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 50px; color: #1e2a38; text-shadow: 0 2px 5px rgba(255,255,255,0.3); }
+
+        /* --- STEP ROW LAYOUT (ZIG-ZAG) --- */
+        .step-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+
+        /* Reverse direction for even numbers */
+        .step-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* --- IMAGE BOX STYLING --- */
+        .step-image-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .step-image-box img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 4px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .step-image-box img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- TEXT BOX STYLING --- */
+        .step-content-box {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.85); /* Glass look */
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* The Number Bubble */
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 50px;
+            height: 50px;
+            background: #20ace7; /* Teal */
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(32, 172, 231, 0.4);
+        }
+
+        /* Fix number position for reversed rows */
+        .step-row:nth-child(even) .step-number {
+            left: auto;
+            right: -20px;
+        }
+
+        .step-content-box h3 {
+            font-size: 1.6rem;
+            color: #1e2a38;
+            margin-bottom: 10px;
+        }
+
+        .step-content-box p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media screen and (max-width: 768px) {
+            .step-row, .step-row:nth-child(even) {
+                flex-direction: column; /* Stack vertically on mobile */
+            }
+            
+            .step-number {
+                left: 20px; /* Reset position */
+                right: auto;
+            }
+            
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-container">
+        <div class="top-bar">
+            <nav class="navbar">
+                <a href="home.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="workflow.html" class="active">Workflow</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <h1 class="section-title">How Recipe Lens Works</h1>
+
+        <div class="step-row">
+            <div class="step-image-box">
+                <img src="images/1.image scan.png" alt="Scanning Vegetables">
+            </div>
+            <div class="step-content-box">
+                <div class="step-number">1</div>
+                <h3>Smart Visual Scan</h3>
+                <p>Simply point your camera at the ingredients on your table. Our AI instantly recognizes vegetables like tomatoes, onions, and capsicums in real-time.</p>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-image-box">
+                <img src="images/2.voice command.png" alt="Voice Command">
+            </div>
+            <div class="step-content-box">
+                <div class="step-number">2</div>
+                <h3>Hands-Free Voice Input</h3>
+                <p>Busy hands? Just speak! List your ingredients out loud, and the system listens. Say "DONE" to start the recipe search automatically.</p>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-image-box">
+                <img src="images/3.Recipe Selection.png" alt="Recipe Selection" onerror="this.src='https://via.placeholder.com/500x300?text=Step+3+Image+Coming+Soon'">
+            </div>
+            <div class="step-content-box">
+                <div class="step-number">3</div>
+                <h3>Recipe Selection</h3>
+                <p>The app suggests 3 perfect Indian dishes based on what you have. Simply say "Option 1" or "Option 2" to confirm your choice without touching the screen.</p>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-image-box">
+                <img src="images/4.Interactive Chef Mode.png" alt="Cooking Mode" onerror="this.src='https://via.placeholder.com/500x300?text=Step+4+Image+Coming+Soon'">
+            </div>
+            <div class="step-content-box">
+                <div class="step-number">4</div>
+                <h3>Interactive Chef Mode</h3>
+                <p>Start cooking with audio guidance! The app reads steps one by one. Say "Next" to move forward or "Repeat" if you missed something.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

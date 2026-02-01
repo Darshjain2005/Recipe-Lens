@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Lens - Sign In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .main-container {
+            height: 100vh;
+            width: 100%;
+            background: url('images/Home wallpaper.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .top-logo {
+            position: absolute;
+            top: 20px;
+            width: 200px;
+        }
+
+        .chef-top-left {
+            position: absolute;
+            top: 50px;
+            left: 500px;
+            width: 250px;
+        }
+
+        .chef-bottom-right {
+            position: absolute;
+            bottom: 20px;
+            right: 400px;
+            width: 350px;
+        }
+
+        .login-card {
+            width: 380px;
+            background: rgba(0, 100, 130, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sign-in-label {
+            background: rgba(0, 0, 0, 0.2);
+            color: #79d7ed;
+            padding: 8px 30px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .input-group {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #79d7ed;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: center;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        .input-group input:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .login-btn {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .login-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .footer-text {
+            margin-top: 40px;
+            color: white;
+            font-style: italic;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        #error-msg {
+            color: #ff9999;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            text-align: center;
+            min-height: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <img src="images/RL logo.png" class="top-logo" alt="Logo">
+        <img src="images/Login Img 2.png" class="chef-top-left" alt="Chef Illustration">
+        <img src="images/Login Img 1.png" class="chef-bottom-right" alt="Chef Illustration">
+
+        <div class="login-card">
+            <div class="sign-in-label">Sign In</div>
+
+            <div class="input-group">
+                <label>Gmail ID</label>
+                <input type="email" id="email" placeholder="email@gmail.com">
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Min 8 chars + special">
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Repeat password">
+            </div>
+
+            <button class="login-btn" onclick="handleLogin()">Enter The Kitchen</button>
+            <p id="error-msg"></p>
+
+            <p class="footer-text">If you smell what the Chef is Cooking !</p>
+        </div>
+    </div>
+
+    <script>
+        async function handleLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPass = document.getElementById('confirm-password').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            errorMsg.innerText = "";
+
+            // 1. Password Rules Validation
+            const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+            
+            if (password.length < 8) {
+                errorMsg.innerText = "Password must be at least 8 characters.";
+                return;
+            }
+            if (!specialCharRegex.test(password)) {
+                errorMsg.innerText = "Password needs a special character (e.g., @, #, $).";
+                return;
+            }
+            if (password !== confirmPass) {
+                errorMsg.innerText = "Passwords do not match.";
+                return;
+            }
+
+            // 2. Call Flask Backend
+            try {
+                const response = await fetch('http://127.0.0.1:5000/auth', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Success! Store the login state
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("userEmail", email);
+                    alert("Welcome to the Kitchen!");
+                    window.location.href = "home.html"; 
+                } else {
+                    errorMsg.innerText = data.error;
+                }
+            } catch (err) {
+                errorMsg.innerText = "Connection failed. Is the backend running?";
+            }
+        }
+    </script>
+</body>
+</html>
