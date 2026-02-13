@@ -14,7 +14,7 @@ body, html {
 .voice-page-wrapper {
     height: 100vh;
     width: 100%;
-    /* Path to your new background */
+    /* Path to your background */
     background: url('images/Voice\ Chef.png') no-repeat center center;
     background-size: cover;
     display: flex;
@@ -29,7 +29,7 @@ body, html {
 }
 
 .logo-btn img {
-    width: 80px; /* Matching the small top-center logo in screenshot */
+    width: 80px; 
     transition: transform 0.3s ease;
 }
 
@@ -90,18 +90,19 @@ body, html {
 .dishes-container {
     width: 90%;
     max-width: 1100px;
-    flex-grow: 1; /* Takes up remaining space */
-    background: rgba(0, 85, 110, 0.6); /* Dark teal with transparency */
-    backdrop-filter: blur(15px); /* The Frosted Glass effect */
+    flex-grow: 1; 
+    background: rgba(0, 85, 110, 0.6); 
+    backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
-    border-radius: 50px 50px 0 0; /* Rounded top corners like mockup */
+    border-radius: 50px 50px 0 0; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Changed to column to list ingredients/steps properly */
+    justify-content: flex-start; /* Start from top so text doesn't float in middle */
     align-items: center;
     padding: 40px;
-    flex-wrap: wrap;
     gap: 20px;
+    overflow-y: auto; /* Added so you can scroll through the recipe */
 }
 
 /* Text styles inside boxes */
@@ -130,10 +131,10 @@ body, html {
     100% { transform: scale(1); }
 }
 
-/* Add this at the end of style_voice.css */
+/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
     body, html {
-        overflow-y: auto; /* Allow scrolling if text is long */
+        overflow-y: auto; 
     }
 
     .voice-page-wrapper {
@@ -142,10 +143,9 @@ body, html {
         min-height: 100vh;
     }
 
-    /* Make the white input box smaller and more flexible */
     .input-display {
         width: 95%;
-        height: 150px; /* Reduced height for mobile */
+        height: 150px; 
         padding: 20px;
         border-radius: 20px;
     }
@@ -155,7 +155,6 @@ body, html {
         text-align: center;
     }
 
-    /* Ensure the blue container fills the screen */
     .dishes-container {
         width: 100%;
         border-radius: 30px 30px 0 0;
@@ -164,17 +163,9 @@ body, html {
     }
 
     .placeholder-text-dark {
-        font-size: 1.4rem; /* Smaller heading for mobile */
+        font-size: 1.4rem; 
     }
 
-    /* Ensure recipe cards stack nicely */
-    .recipe-card {
-        width: 100%; /* Full width cards on mobile */
-        display: block !important;
-        text-align: center;
-    }
-
-    /* Target the #steps text specifically */
     #steps {
         font-size: 1.1rem !important;
         line-height: 1.4;
