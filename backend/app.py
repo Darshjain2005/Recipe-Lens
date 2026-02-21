@@ -1,33 +1,70 @@
-from flask import Flask, request, jsonify
+"""
+Recipe Lens — Unified Backend
+Combines:
+  • Voice Chef  : ingredient matching, recipe steps, user auth  (app.py)
+  • Vision Chef : multi-model food detection via image upload    (vision.py)
+"""
+
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import sqlite3
 import os
-# Importing the standardized functions from utils.py
+import uuid
+import time
+import base64
+
+# Vision Chef — FoodDetector (used by Vision routes)
+from detector import FoodDetector
+
+# Voice Chef — utility functions
 from utils import find_matching_recipes, get_recipe, get_step
 
+# ─────────────────────────────────────────────
+# App setup
+# ─────────────────────────────────────────────
 app = Flask(__name__)
-# CORS is essential for your frontend to communicate with this local server
-CORS(app)
+CORS(app)  # Required for frontend ↔ backend communication
 
+# ── Upload / file config (Vision Chef) ──
+app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024  # 32 MB
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp', 'bmp'}
+
+# ── Database (Voice Chef) ──
 DB_PATH = os.path.join(os.path.dirname(__file__), 'recipes.db')
 
+# ── Initialise detector once at startup ──
+detector = FoodDetector()
+
+
+# ─────────────────────────────────────────────
+# Helpers
+# ─────────────────────────────────────────────
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 def get_db_connection():
-    """Helper to create a database connection."""
+    """Return a SQLite connection with row-dict access."""
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
-# --- 1. AUTHENTICATION ROUTES ---
+
+# ─────────────────────────────────────────────
+# 1. AUTHENTICATION ROUTES  (Voice Chef)
+# ─────────────────────────────────────────────
 
 @app.route("/register", methods=["POST"])
 def register():
     data = request.json
     email = data.get("email")
     password = data.get("password")
-    
+
     if not email or not password:
         return jsonify({"error": "Email and password are required"}), 400
-    
+
     conn = get_db_connection()
     try:
         conn.execute('INSERT INTO users (email, password) VALUES (?, ?)', (email, password))
@@ -38,65 +75,163 @@ def register():
     finally:
         conn.close()
 
+
 @app.route("/login", methods=["POST"])
 def login():
     data = request.json
     email = data.get("email")
     password = data.get("password")
-    
+
     conn = get_db_connection()
-    user = conn.execute('SELECT * FROM users WHERE email = ? AND password = ?', 
-                        (email, password)).fetchone()
+    user = conn.execute(
+        'SELECT * FROM users WHERE email = ? AND password = ?',
+        (email, password)
+    ).fetchone()
     conn.close()
-    
+
     if user:
         return jsonify({"message": "Login successful"}), 200
     return jsonify({"error": "Invalid email or password"}), 401
 
-# --- 2. RECIPE & COOKING ROUTES ---
+
+# ─────────────────────────────────────────────
+# 2. RECIPE & COOKING ROUTES  (Voice Chef)
+# ─────────────────────────────────────────────
 
 @app.route("/suggest-recipes", methods=["POST"])
 def suggest_recipes():
-    """Matches spoken ingredients to recipes in the DB."""
+    """Match spoken ingredients to recipes in the DB."""
     data = request.json
     ingredients = data.get("ingredients", [])
-    # find_matching_recipes now returns 'index' to match JS expectations
     return jsonify(find_matching_recipes(ingredients))
+
 
 @app.route("/start-cooking", methods=["POST"])
 def start_cooking():
     """
-    Returns scaled ingredients and all steps.
+    Return scaled ingredients and all steps.
     Used by startCookingFlow() in voice.js to display ingredients first.
     """
     data = request.json
     recipe_idx = data.get("recipe_index")
     servings = data.get("servings")
-    
+
     if recipe_idx is None or servings is None:
         return jsonify({"error": "Missing recipe index or servings"}), 400
-        
+
     return jsonify(get_recipe(recipe_idx, servings))
+
 
 @app.route("/next-step", methods=["POST"])
 def next_step():
-    """Fetches a specific step for voice navigation."""
+    """Fetch a specific step for voice navigation."""
     data = request.json
     recipe_idx = data.get("recipe_index")
     step_num = data.get("step")
-    
+
     if recipe_idx is None or step_num is None:
         return jsonify({"error": "Missing data"}), 400
-        
+
     return jsonify(get_step(recipe_idx, step_num))
 
-# --- 3. SERVER START ---
+
+# ─────────────────────────────────────────────
+# 3. VISION DETECTION ROUTES  (Vision Chef)
+# ─────────────────────────────────────────────
+
+@app.route("/detect", methods=["POST"])
+def detect():
+    """Accept a multipart image upload and run the detector."""
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image uploaded'}), 400
+
+    file = request.files['image']
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
+
+    if not allowed_file(file.filename):
+        return jsonify({'error': 'Invalid file type. Use PNG, JPG, JPEG, WEBP or BMP'}), 400
+
+    # Save uploaded file
+    ext = file.filename.rsplit('.', 1)[1].lower()
+    filename = f"{uuid.uuid4().hex}.{ext}"
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(filepath)
+
+    try:
+        start = time.time()
+        results = detector.analyze(filepath)
+        elapsed = round(time.time() - start, 2)
+        results['processing_time'] = elapsed
+        results['image_url'] = f'/uploads/{filename}'
+        return jsonify(results)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route("/detect_base64", methods=["POST"])
+def detect_base64():
+    """Accept a base64-encoded webcam snapshot and run the detector."""
+    data = request.get_json()
+    if not data or 'image' not in data:
+        return jsonify({'error': 'No image data'}), 400
+
+    img_data = data['image']
+    # Strip the data-URL prefix if present (e.g. "data:image/jpeg;base64,...")
+    if ',' in img_data:
+        img_data = img_data.split(',')[1]
+
+    filename = f"{uuid.uuid4().hex}.jpg"
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+    with open(filepath, 'wb') as f:
+        f.write(base64.b64decode(img_data))
+
+    try:
+        start = time.time()
+        results = detector.analyze(filepath)
+        elapsed = round(time.time() - start, 2)
+        results['processing_time'] = elapsed
+        results['image_url'] = f'/uploads/{filename}'
+        return jsonify(results)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ─────────────────────────────────────────────
+# 4. STATIC FILE ROUTES  (Vision Chef)
+# ─────────────────────────────────────────────
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    """Serve original uploaded images back to the frontend."""
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+
+@app.route('/annotated/<filename>')
+def annotated_file(filename):
+    """Serve annotated result images back to the frontend."""
+    return send_from_directory('results', filename)
+
+
+# ─────────────────────────────────────────────
+# 5. SERVER START
+# ─────────────────────────────────────────────
 
 if __name__ == "__main__":
-    # Check if DB exists to prevent runtime errors
+    # Create required directories for Vision Chef
+    os.makedirs('uploads', exist_ok=True)
+    os.makedirs('results', exist_ok=True)
+
+    # Warn early if the Voice Chef database is missing
     if not os.path.exists(DB_PATH):
-        print(f"CRITICAL ERROR: {DB_PATH} not found. Ensure your database is in the same folder.")
-    else:
-        print("--- Recipe Lens Backend Running ---")
-        print("Listening on http://127.0.0.1:5000")
-        app.run(debug=True, port=5000)
+        print(f"⚠️  WARNING: {DB_PATH} not found.")
+        print("   Voice Chef recipe routes will not work until recipes.db is present.")
+    
+    print("\n🍽️  Recipe Lens — Unified Backend")
+    print("   Voice Chef  : /suggest-recipes · /start-cooking · /next-step")
+    print("   Vision Chef : /detect · /detect_base64")
+    print("   Auth        : /register · /login")
+    print("   Open http://localhost:5000 in your browser\n")
+
+    app.run(debug=False, host='0.0.0.0', port=5000)

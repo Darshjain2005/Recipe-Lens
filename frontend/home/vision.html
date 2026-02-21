@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Lens - Vision Chef</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style_vision.css">
+</head>
+<body>
+
+  <div class="vision-page-wrapper">
+
+    <!-- HEADER / LOGO -->
+    <header class="header">
+      <a href="home.html" class="logo-btn">
+        <img src="images/RL logo.png" alt="Home Logo">
+      </a>
+    </header>
+
+    <!-- UPLOAD SECTION (top white box, mirrors mic + input-display) -->
+    <div class="upload-section">
+      <div class="upload-row">
+        <!-- Upload trigger button -->
+        <label class="upload-btn" for="fileInput" title="Upload Image">
+          <span class="upload-icon">🖼️</span>
+        </label>
+        <input type="file" id="fileInput" accept="image/*" style="display:none" />
+
+        <!-- Webcam trigger button -->
+        <button class="upload-btn" id="webcamBtn" title="Live Camera">
+          <span class="upload-icon">📷</span>
+        </button>
+      </div>
+
+      <!-- Image preview box (mirrors input-display white box) -->
+      <div class="input-display" id="previewContainer">
+        <img id="previewImg" src="" alt="preview" />
+        <div class="preview-info">
+          <p id="previewName" class="preview-filename">image.jpg</p>
+          <p id="previewSize" class="preview-size">—</p>
+        </div>
+        <div class="preview-actions">
+          <button class="action-btn btn-analyze" id="analyzeBtn">🔍 Detect</button>
+          <button class="action-btn btn-clear" id="clearBtn">✕ Clear</button>
+        </div>
+      </div>
+
+      <!-- Placeholder when no image selected -->
+      <div class="input-display input-placeholder" id="inputPlaceholder">
+        <p class="placeholder-text">Upload an image or use webcam to detect ingredients…</p>
+      </div>
+    </div>
+
+    <!-- Feedback message (mirrors .feedback-msg) -->
+    <p class="feedback-msg" id="feedbackMsg">What's in your kitchen today?</p>
+
+    <!-- ERROR BOX -->
+    <div class="error-box" id="errorBox"></div>
+
+    <!-- LOADER -->
+    <div id="loader" class="loader-wrapper" style="display:none;">
+      <div class="spinner"></div>
+      <p class="load-title">Analysing your ingredients…</p>
+      <p class="loader-step">🔍 Running YOLOv8 detection…</p>
+      <p class="loader-step">🧠 Running EfficientNet…</p>
+      <p class="loader-step">🎨 Colour & shape analysis…</p>
+    </div>
+
+    <!-- RESULTS CONTAINER (mirrors dishes-container) -->
+    <div class="dishes-container" id="resultsContainer">
+      <p class="placeholder-text-dark" id="placeholderText">Detected ingredients &amp; suggested recipes will appear here…</p>
+
+      <!-- RESULTS (hidden until analysis runs) -->
+      <div id="results" style="display:none; width:100%;">
+
+        <!-- Results header -->
+        <div class="results-header">
+          <h2>Detection Results</h2>
+          <div class="results-badges">
+            <span class="badge" id="itemCountBadge">0 found</span>
+            <span class="badge" id="timeBadge">⏱ —</span>
+            <button class="action-btn btn-new" id="newAnalysisBtn">↺ New</button>
+          </div>
+        </div>
+
+        <!-- Model stats strip -->
+        <div class="model-stats">
+          <div class="stat-item"><div class="stat-val" id="statYolo">—</div><div class="stat-label">YOLOv8</div></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><div class="stat-val" id="statEffnet">—</div><div class="stat-label">EfficientNet</div></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><div class="stat-val" id="statMobile">—</div><div class="stat-label">MobileNet</div></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><div class="stat-val" id="statResnet">—</div><div class="stat-label">ResNet</div></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><div class="stat-val" id="statColor">—</div><div class="stat-label">Color+Texture</div></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><div class="stat-val" id="statTotal">—</div><div class="stat-label">Total</div></div>
+        </div>
+
+        <!-- Annotated image -->
+        <div class="annotated-section">
+          <h3>🖼️ Annotated Image</h3>
+          <img id="annotatedImg" src="" alt="annotated" />
+        </div>
+
+        <!-- Ingredient cards -->
+        <div class="result-grid" id="ingredientGrid"></div>
+
+        <!-- Suggested dishes -->
+        <div class="dishes-section">
+          <h3>🍛 Suggested Dishes <span class="dishes-hint">— click any dish to explore</span></h3>
+          <div class="dishes-grid" id="dishesGrid"></div>
+        </div>
+
+        <!-- Nutrition -->
+        <div class="nutrition-panel">
+          <h3>💊 Nutrition Highlights</h3>
+          <div id="nutritionList"></div>
+        </div>
+
+      </div><!-- /#results -->
+    </div><!-- /.dishes-container -->
+
+  </div><!-- /.vision-page-wrapper -->
+
+
+  <!-- ═══════ DISH INFO DRAWER ═══════ -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer" id="dishDrawer">
+    <div class="drawer-handle"></div>
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title" id="drawerTitle">—</div>
+        <div class="drawer-subtitle" id="drawerSubtitle">—</div>
+      </div>
+      <button class="drawer-close" id="drawerClose">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="info-chips" id="drawerChips"></div>
+      <div class="about-text" id="drawerAbout"></div>
+      <div class="ing-section">
+        <h4>🧅 Ingredients Needed</h4>
+        <div class="ing-pills" id="drawerIngredients"></div>
+      </div>
+      <ul class="tips-list" id="drawerTips"></ul>
+    </div>
+    <div class="drawer-cta">
+      <button class="btn btn-saffron" id="startCookingBtn">👨‍🍳 Start Cooking — Step by Step</button>
+      <button class="btn btn-muted btn-sm" id="drawerClose2">Maybe later</button>
+    </div>
+  </div>
+
+  <!-- ═══════ RECIPE MODAL ═══════ -->
+  <div class="modal-overlay" id="recipeModal">
+    <div class="recipe-modal">
+      <div class="recipe-topbar">
+        <div>
+          <div class="recipe-topbar-title" id="recipeModalTitle">—</div>
+          <div class="recipe-topbar-sub" id="recipeModalSub">—</div>
+        </div>
+        <button class="modal-close" id="recipeClose">✕</button>
+      </div>
+      <div class="recipe-progress-wrap">
+        <div class="recipe-progress-bar" id="recipeProgress" style="width:0%"></div>
+      </div>
+      <div class="step-counter-strip">
+        <div class="step-dots" id="stepDots"></div>
+        <div class="step-label" id="stepLabel">Step 1 of 1</div>
+      </div>
+      <div class="recipe-body" id="recipeBody"></div>
+      <div class="recipe-nav">
+        <button class="btn btn-outline btn-sm" id="prevBtn">← Previous</button>
+        <div class="nav-center">
+          <button class="btn btn-muted btn-sm" id="repeatBtn">🔁 Repeat</button>
+          <button class="btn btn-muted btn-sm" id="jumpBtn">⤵ Jump to Step</button>
+        </div>
+        <button class="btn btn-saffron btn-sm" id="nextBtn">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ JUMP MODAL ═══════ -->
+  <div class="modal-overlay" id="jumpModal" style="z-index:700">
+    <div class="jump-modal-box">
+      <h3 class="jump-title">Jump to Step</h3>
+      <div id="jumpStepList" class="jump-step-list"></div>
+      <button class="btn btn-muted btn-sm" style="margin-top:1rem" id="jumpClose">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ═══════ WEBCAM MODAL ═══════ -->
+  <div class="modal-overlay" id="webcamModal">
+    <div class="webcam-modal-box">
+      <h2>📷 Live Camera Capture</h2>
+      <video id="webcamVideo" autoplay playsinline></video>
+      <div class="modal-actions">
+        <button class="btn btn-turmeric" id="captureBtn">📸 Capture Photo</button>
+        <button class="btn btn-outline" id="closeWebcamBtn">Close</button>
+      </div>
+    </div>
+  </div>
+  <canvas id="snapCanvas" style="display:none"></canvas>
+
+  <script src="vision.js"></script>
+</body>
+</html>
