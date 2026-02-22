@@ -439,12 +439,14 @@ class YOLOv8Detector:
     def load(self):
         try:
             from ultralytics import YOLO
+            import os
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             # Primary: small model (more accurate than nano)
-            self.model = YOLO("models/yolov8s.pt")
+            self.model = YOLO(os.path.join(base_dir, "models/yolov8s.pt"))
             print("  ✅ YOLOv8s loaded")
             # Secondary: Open Images V7 - 600 classes (covers rare vegetables)
             try:
-                self.model_oiv = YOLO("models/yolov8n-oiv7.pt")
+                self.model_oiv = YOLO(os.path.join(base_dir, "models/yolov8n-oiv7.pt"))
                 print("  ✅ YOLOv8n-OIV7 (600 classes) loaded")
             except Exception as e2:
                 print(f"  ⚠️  OIV7 model skip: {e2}")

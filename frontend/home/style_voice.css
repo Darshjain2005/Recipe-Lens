@@ -1,4 +1,4 @@
-/* General Reset */
+/* ── General Reset ── */
 * {
     margin: 0;
     padding: 0;
@@ -6,30 +6,33 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
+body,
+html {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
+/* ── PAGE WRAPPER ── */
 .voice-page-wrapper {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
-    /* Path to your background */
-    background: url('images/Voice\ Chef.png') no-repeat center center;
+    background: url('images/Voice Chef.png') no-repeat center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding: 20px 16px;
+    overflow-y: auto;
 }
 
-/* Logo Button Styles */
+/* ── LOGO ── */
 .header {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .logo-btn img {
-    width: 80px; 
+    width: 70px;
+    height: auto;
     transition: transform 0.3s ease;
 }
 
@@ -37,9 +40,9 @@ body, html {
     transform: scale(1.1);
 }
 
-/* Mic Button with Shadow & Hover */
+/* ── MIC BUTTON ── */
 .mic-section {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .mic-btn {
@@ -52,11 +55,13 @@ body, html {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.mic-btn:hover {
+.mic-btn:hover,
+.mic-btn:active {
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
@@ -65,60 +70,64 @@ body, html {
     font-size: 1.5rem;
 }
 
-/* Top White Box Section */
+/* ── INPUT BOX ── */
 .input-display {
-    width: 80%;
-    max-width: 900px;
-    height: 220px;
+    width: min(90%, 900px);
+    min-height: 120px;
     background: white;
-    border-radius: 30px;
+    border-radius: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px 24px;
+    text-align: center;
 }
 
 .feedback-msg {
     color: #000;
     font-weight: bold;
-    font-size: 1.1rem;
-    margin-bottom: 25px;
+    font-size: clamp(0.85rem, 3vw, 1.1rem);
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0 10px;
 }
 
-/* Bottom Glass-morphism Section */
+/* ── DISHES CONTAINER ── */
 .dishes-container {
-    width: 90%;
-    max-width: 1100px;
-    flex-grow: 1; 
-    background: rgba(0, 85, 110, 0.6); 
-    backdrop-filter: blur(15px); 
+    width: min(95%, 1100px);
+    flex-grow: 1;
+    background: rgba(0, 85, 110, 0.6);
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border-radius: 50px 50px 0 0; 
+    border-radius: 40px 40px 0 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    flex-direction: column; /* Changed to column to list ingredients/steps properly */
-    justify-content: flex-start; /* Start from top so text doesn't float in middle */
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    padding: 40px;
-    gap: 20px;
-    overflow-y: auto; /* Added so you can scroll through the recipe */
+    padding: 32px 24px;
+    gap: 16px;
+    overflow-y: auto;
 }
 
-/* Text styles inside boxes */
+/* ── TEXT STYLES ── */
 .placeholder-text {
     color: #333;
     font-weight: 800;
-    font-size: 1.3rem;
-}
-
-.placeholder-text-dark {
-    color: #000;
-    font-weight: 800;
-    font-size: 2rem;
+    font-size: clamp(1rem, 3.5vw, 1.3rem);
     text-align: center;
 }
 
+.placeholder-text-dark {
+    color: #fff;
+    font-weight: 800;
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    text-align: center;
+}
+
+/* ── MIC ANIMATION ── */
 .mic-btn.listening {
     background: #ff4d4d;
     box-shadow: 0 0 30px rgba(255, 77, 77, 0.9);
@@ -126,53 +135,45 @@ body, html {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-    body, html {
-        overflow-y: auto; 
+    0% {
+        transform: scale(1);
     }
 
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ── MOBILE ── */
+@media screen and (max-width: 600px) {
     .voice-page-wrapper {
-        padding: 15px;
-        height: auto;
-        min-height: 100vh;
+        padding: 16px 12px;
+    }
+
+    .logo-btn img {
+        width: 60px;
     }
 
     .input-display {
-        width: 95%;
-        height: 150px; 
-        padding: 20px;
-        border-radius: 20px;
-    }
-
-    .placeholder-text {
-        font-size: 1.1rem;
-        text-align: center;
+        width: 100%;
+        min-height: 100px;
+        padding: 16px;
+        border-radius: 18px;
     }
 
     .dishes-container {
         width: 100%;
-        border-radius: 30px 30px 0 0;
-        padding: 20px;
-        margin-top: 20px;
-    }
-
-    .placeholder-text-dark {
-        font-size: 1.4rem; 
+        border-radius: 28px 28px 0 0;
+        padding: 20px 16px;
     }
 
     #steps {
-        font-size: 1.1rem !important;
-        line-height: 1.4;
-    }
-
-    .feedback-msg {
-        font-size: 0.9rem;
-        text-align: center;
+        font-size: 1rem !important;
+        line-height: 1.5;
+        text-align: left;
     }
 }

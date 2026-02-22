@@ -5,7 +5,7 @@ Combines:
   • Vision Chef : multi-model food detection via image upload    (vision.py)
 """
 
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, redirect
 from flask_cors import CORS
 import sqlite3
 import os
@@ -23,7 +23,7 @@ from utils import find_matching_recipes, get_recipe, get_step
 # App setup
 # ─────────────────────────────────────────────
 app = Flask(__name__)
-CORS(app)  # Required for frontend ↔ backend communication
+CORS(app)  # Allow all for local dev to avoid port issues
 
 # ── Upload / file config (Vision Chef) ──
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -34,6 +34,9 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp', 'bmp'}
 # ── Database (Voice Chef) ──
 DB_PATH = os.path.join(os.path.dirname(__file__), 'recipes.db')
 
+# ── Frontend directory (two levels up from backend/) ──
+FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend', 'home'))
+
 # ── Initialise detector once at startup ──
 detector = FoodDetector()
 
@@ -43,6 +46,31 @@ detector = FoodDetector()
 # ─────────────────────────────────────────────
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+# ─────────────────────────────────────────────
+# Frontend static file serving
+# ─────────────────────────────────────────────
+@app.route("/")
+def index():
+    """Redirect root to Vision Chef page."""
+    return redirect("/vision.html")
+
+@app.route("/<path:filename>", methods=["GET"])
+def serve_frontend(filename):
+    """Serve any frontend asset (HTML, CSS, JS, images) from frontend/home/."""
+    filepath = os.path.join(FRONTEND_DIR, filename)
+    if os.path.isfile(filepath):
+        return send_from_directory(FRONTEND_DIR, filename)
+    # File not found — let Flask return its normal 404
+    from flask import abort
+    abort(404)
+
+
+@app.route("/health", methods=["GET"])
+def health_check():
+    """Simple endpoint for frontend to check if backend is reachable."""
+    return jsonify({"status": "ok", "message": "Backend is running"}), 200
 
 
 def get_db_connection():
@@ -159,13 +187,27 @@ def detect():
     file.save(filepath)
 
     try:
+        print(f"\n📸 Vision Request: {filename}")
         start = time.time()
         results = detector.analyze(filepath)
         elapsed = round(time.time() - start, 2)
+        
+        # Ensure results is a valid dict and has expected keys
+        if not isinstance(results, dict):
+            print(f"  ⚠️ Error: detector.analyze returned non-dict: {type(results)}")
+            results = {"success": False, "error": "Internal detector error"}
+        
         results['processing_time'] = elapsed
         results['image_url'] = f'/uploads/{filename}'
+        
+        n_found = results.get('total_found', 0)
+        print(f"  ✅ Detection complete in {elapsed}s. Found {n_found} ingredients.")
+        
         return jsonify(results)
     except Exception as e:
+        print(f"  ❌ Backend Error in /detect: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
@@ -188,13 +230,26 @@ def detect_base64():
         f.write(base64.b64decode(img_data))
 
     try:
+        print(f"\n📸 Vision Request (Base64): {filename}")
         start = time.time()
         results = detector.analyze(filepath)
         elapsed = round(time.time() - start, 2)
+        
+        if not isinstance(results, dict):
+            print(f"  ⚠️ Error: detector.analyze returned non-dict: {type(results)}")
+            results = {"success": False, "error": "Internal detector error"}
+
         results['processing_time'] = elapsed
         results['image_url'] = f'/uploads/{filename}'
+        
+        n_found = results.get('total_found', 0)
+        print(f"  ✅ Detection complete in {elapsed}s. Found {n_found} ingredients.")
+        
         return jsonify(results)
     except Exception as e:
+        print(f"  ❌ Backend Error in /detect_base64: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 

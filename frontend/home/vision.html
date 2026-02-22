@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recipe Lens - Vision Chef</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style_vision.css">
 </head>
+
 <body>
 
   <div class="vision-page-wrapper">
@@ -28,7 +32,7 @@
         <input type="file" id="fileInput" accept="image/*" style="display:none" />
 
         <!-- Webcam trigger button -->
-        <button class="upload-btn" id="webcamBtn" title="Live Camera">
+        <button type="button" class="upload-btn" id="webcamBtn" title="Live Camera">
           <span class="upload-icon">📷</span>
         </button>
       </div>
@@ -41,8 +45,8 @@
           <p id="previewSize" class="preview-size">—</p>
         </div>
         <div class="preview-actions">
-          <button class="action-btn btn-analyze" id="analyzeBtn">🔍 Detect</button>
-          <button class="action-btn btn-clear" id="clearBtn">✕ Clear</button>
+          <button type="button" class="action-btn btn-analyze" id="analyzeBtn">🔍 Detect</button>
+          <button type="button" class="action-btn btn-clear" id="clearBtn">✕ Clear</button>
         </div>
       </div>
 
@@ -69,7 +73,8 @@
 
     <!-- RESULTS CONTAINER (mirrors dishes-container) -->
     <div class="dishes-container" id="resultsContainer">
-      <p class="placeholder-text-dark" id="placeholderText">Detected ingredients &amp; suggested recipes will appear here…</p>
+      <p class="placeholder-text-dark" id="placeholderText">Detected ingredients &amp; suggested recipes will appear
+        here…</p>
 
       <!-- RESULTS (hidden until analysis runs) -->
       <div id="results" style="display:none; width:100%;">
@@ -80,23 +85,41 @@
           <div class="results-badges">
             <span class="badge" id="itemCountBadge">0 found</span>
             <span class="badge" id="timeBadge">⏱ —</span>
-            <button class="action-btn btn-new" id="newAnalysisBtn">↺ New</button>
+            <button type="button" class="action-btn btn-new" id="newAnalysisBtn">↺ New</button>
           </div>
         </div>
 
         <!-- Model stats strip -->
         <div class="model-stats">
-          <div class="stat-item"><div class="stat-val" id="statYolo">—</div><div class="stat-label">YOLOv8</div></div>
+          <div class="stat-item">
+            <div class="stat-val" id="statYolo">—</div>
+            <div class="stat-label">YOLOv8</div>
+          </div>
           <div class="stat-div"></div>
-          <div class="stat-item"><div class="stat-val" id="statEffnet">—</div><div class="stat-label">EfficientNet</div></div>
+          <div class="stat-item">
+            <div class="stat-val" id="statEffnet">—</div>
+            <div class="stat-label">EfficientNet</div>
+          </div>
           <div class="stat-div"></div>
-          <div class="stat-item"><div class="stat-val" id="statMobile">—</div><div class="stat-label">MobileNet</div></div>
+          <div class="stat-item">
+            <div class="stat-val" id="statMobile">—</div>
+            <div class="stat-label">MobileNet</div>
+          </div>
           <div class="stat-div"></div>
-          <div class="stat-item"><div class="stat-val" id="statResnet">—</div><div class="stat-label">ResNet</div></div>
+          <div class="stat-item">
+            <div class="stat-val" id="statResnet">—</div>
+            <div class="stat-label">ResNet</div>
+          </div>
           <div class="stat-div"></div>
-          <div class="stat-item"><div class="stat-val" id="statColor">—</div><div class="stat-label">Color+Texture</div></div>
+          <div class="stat-item">
+            <div class="stat-val" id="statColor">—</div>
+            <div class="stat-label">Color+Texture</div>
+          </div>
           <div class="stat-div"></div>
-          <div class="stat-item"><div class="stat-val" id="statTotal">—</div><div class="stat-label">Total</div></div>
+          <div class="stat-item">
+            <div class="stat-val" id="statTotal">—</div>
+            <div class="stat-label">Total</div>
+          </div>
         </div>
 
         <!-- Annotated image -->
@@ -196,8 +219,8 @@
       <h2>📷 Live Camera Capture</h2>
       <video id="webcamVideo" autoplay playsinline></video>
       <div class="modal-actions">
-        <button class="btn btn-turmeric" id="captureBtn">📸 Capture Photo</button>
-        <button class="btn btn-outline" id="closeWebcamBtn">Close</button>
+        <button type="button" class="btn btn-turmeric" id="captureBtn">📸 Capture Photo</button>
+        <button type="button" class="btn btn-outline" id="closeWebcamBtn">Close</button>
       </div>
     </div>
   </div>
@@ -205,4 +228,5 @@
 
   <script src="vision.js"></script>
 </body>
+
 </html>

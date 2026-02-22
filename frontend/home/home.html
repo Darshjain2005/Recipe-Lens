@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RecipeLens</title>
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
     <section class="top-container">
@@ -44,48 +47,49 @@
     </section>
 
     <script>
-    // 1. Helper function to check login status
-    function checkAuth() {
-        return localStorage.getItem("isLoggedIn") === "true";
-    }
-
-    // 2. Logic for Voice Chef Button
-    function startVoiceChef() {
-        if (checkAuth()) {
-            window.location.href = "voice_chef.html"; 
-        } else {
-            alert("Please sign in to use the Voice Chef! 👨‍🍳");
-            window.location.href = "Login.html"; 
+        // 1. Helper function to check login status
+        function checkAuth() {
+            return localStorage.getItem("isLoggedIn") === "true";
         }
-    }
 
-    // 3. Logic for Vision Chef Button
-    function startVisionChef() {
-        if (checkAuth()) {
-            window.location.href = "vision.html";
-        } else {
-            alert("Please sign in to use the Vision Chef! 📸");
-            window.location.href = "/home/Login.html"; 
+        // 2. Logic for Voice Chef Button
+        function startVoiceChef() {
+            if (checkAuth()) {
+                window.location.href = "voice_chef.html";
+            } else {
+                alert("Please sign in to use the Voice Chef! 👨‍🍳");
+                window.location.href = "Login.html";
+            }
         }
-    }
 
-    // 4. Update the Navbar dynamically on load
-    document.addEventListener("DOMContentLoaded", () => {
-        const authLink = document.getElementById("auth-link");
-        
-        if (checkAuth()) {
-            // Change Login to Logout if session exists
-            authLink.innerText = "Logout";
-            authLink.href = "#";
-            authLink.onclick = (e) => {
-                e.preventDefault();
-                localStorage.removeItem("isLoggedIn");
-                localStorage.removeItem("userEmail");
-                alert("Logged out successfully.");
-                location.reload(); // Refresh to update UI
-            };
+        // 3. Logic for Vision Chef Button
+        function startVisionChef() {
+            if (checkAuth()) {
+                window.location.href = "vision.html";
+            } else {
+                alert("Please sign in to use the Vision Chef! 📸");
+                window.location.href = "Login.html";
+            }
         }
-    });
+
+        // 4. Update the Navbar dynamically on load
+        document.addEventListener("DOMContentLoaded", () => {
+            const authLink = document.getElementById("auth-link");
+
+            if (checkAuth()) {
+                // Change Login to Logout if session exists
+                authLink.innerText = "Logout";
+                authLink.href = "#";
+                authLink.onclick = (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("isLoggedIn");
+                    localStorage.removeItem("userEmail");
+                    alert("Logged out successfully.");
+                    location.reload(); // Refresh to update UI
+                };
+            }
+        });
     </script>
 </body>
-</html> 
+
+</html>

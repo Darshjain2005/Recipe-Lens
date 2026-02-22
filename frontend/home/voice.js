@@ -3,7 +3,7 @@ recognition.lang = "en-US";
 recognition.continuous = true; 
 recognition.interimResults = false;
 
-const BACKEND_URL = "http://127.0.0.1:5000";
+const BACKEND_URL = window.location.origin;
 
 let stage = "ingredients"; 
 let searchResults = []; 
@@ -201,7 +201,16 @@ function extractServings(text) {
     // Only match the first instance of a standalone number to fix the "1 1" -> 11 bug
     const m = text.match(/\b(\d+)\b/);
     if (m) {
-        return parseInt(m[1]);
+        let num = parseInt(m[1]);
+        if (num > 10 && num % 11 === 0) {
+            // Revert "22", "33" to "2", "3" (when user repeated digit)
+            return parseInt(String(num)[0]);
+        }
+        if (num > 15) {
+            // General cap for unrealistic serving sizes
+            return parseInt(String(num)[0]);
+        }
+        return num;
     }
     return null;
 }

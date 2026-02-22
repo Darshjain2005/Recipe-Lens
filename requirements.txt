@@ -3,3 +3,5 @@ flask-cors
 # For future Vision/ML processing
 Pillow
 numpy
+ultralytics
+opencv-python-headless

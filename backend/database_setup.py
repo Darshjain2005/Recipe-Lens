@@ -65,19 +65,27 @@ def setup_database():
                 recipe_id = cursor.lastrowid
 
                 # Insert Ingredients
-                for ing in r['ingredients']:
-                    # Support both simple string lists and complex objects
-                    if isinstance(ing, dict):
-                        item = ing.get('item', '').lower()
-                        qty = ing.get('quantity', 'as needed')
-                    else:
-                        item = str(ing).lower()
-                        qty = 'as needed'
-                    
-                    cursor.execute(
-                        'INSERT INTO ingredients (recipe_id, item, quantity) VALUES (?, ?, ?)',
-                        (recipe_id, item, qty)
-                    )
+                if isinstance(r.get('ingredients'), dict):
+                    # If it's a mapping of "ingredient_name" : "quantity_string"
+                    for item_key, qty_value in r['ingredients'].items():
+                        item = item_key.lower()
+                        qty = str(qty_value)
+                        cursor.execute(
+                            'INSERT INTO ingredients (recipe_id, item, quantity) VALUES (?, ?, ?)',
+                            (recipe_id, item, qty)
+                        )
+                else: # Assume it's a list (of strings or dicts)
+                    for ing in r.get('ingredients', []):
+                        if isinstance(ing, dict):
+                            item = ing.get('item', '').lower()
+                            qty = ing.get('quantity', 'as needed')
+                        else:
+                            item = str(ing).lower()
+                            qty = 'as needed'
+                        cursor.execute(
+                            'INSERT INTO ingredients (recipe_id, item, quantity) VALUES (?, ?, ?)',
+                            (recipe_id, item, qty)
+                        )
         
         print(f"Successfully imported {len(recipes)} recipes!")
     else:
