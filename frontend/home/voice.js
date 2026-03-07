@@ -1,5 +1,5 @@
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recognition.lang = "en-US";
+recognition.lang = "en-IN"; // changed from en-US to better understand Indian accents
 recognition.continuous = true; 
 recognition.interimResults = false;
 
@@ -218,6 +218,16 @@ function extractServings(text) {
 function speak(text) {
     window.speechSynthesis.cancel(); 
     const u = new SpeechSynthesisUtterance(text);
+    
+    let voices = window.speechSynthesis.getVoices();
+    let preferredVoice = voices.find(v => v.name.includes("Google") && v.lang.includes("en-IN")) || 
+                         voices.find(v => v.name.includes("Google") && v.lang.includes("en-US")) ||
+                         voices.find(v => v.name.includes("Google") && v.lang.includes("en-GB")) ||
+                         voices.find(v => v.lang.startsWith("en"));
+    if (preferredVoice) {
+        u.voice = preferredVoice;
+    }
+    
     u.rate = 0.95;
 
     // We pause recognition while the AI is talking to prevent it from hearing itself
