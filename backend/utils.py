@@ -56,26 +56,44 @@ def scale_step_text(text, servings):
 
 def find_matching_recipes(user_ingredients):
     """
-    Finds top 3 recipes that match the user's spoken ingredients.
+    Finds top 8 recipes that match the user's spoken/detected ingredients.
+    Uses partial LIKE matching so 'head cabbage' matches 'cabbage' in the DB,
+    and 'bell pepper' matches 'capsicum', etc.
     """
     if not user_ingredients:
         return []
 
     conn = get_db_connection()
     user_ingredients = [i.lower() for i in user_ingredients]
-    placeholders = ', '.join(['?'] * len(user_ingredients))
-    
+
+    # Build a WHERE clause of LIKE conditions for each ingredient word
+    # We also split multi-word ingredients and match on any word
+    # e.g. 'head cabbage' -> checks for 'head cabbage', 'head', 'cabbage'
+    conditions = []
+    params = []
+    for ing in user_ingredients:
+        # Full ingredient name
+        conditions.append("LOWER(i.item) LIKE ?")
+        params.append(f"%{ing}%")
+        # Also match individual words (for 'head cabbage' -> 'cabbage')
+        for word in ing.split():
+            if len(word) > 3:  # skip tiny words like 'a', 'of'
+                conditions.append("LOWER(i.item) LIKE ?")
+                params.append(f"%{word}%")
+
+    where_clause = " OR ".join(conditions)
+
     query = f'''
-        SELECT r.id, r.name
+        SELECT r.id, r.name, COUNT(i.item) as match_count
         FROM recipes r
         JOIN ingredients i ON r.id = i.recipe_id
-        WHERE LOWER(i.item) IN ({placeholders})
+        WHERE {where_clause}
         GROUP BY r.id
-        ORDER BY COUNT(i.item) DESC
-        LIMIT 3
+        ORDER BY match_count DESC
+        LIMIT 8
     '''
-    
-    results = conn.execute(query, user_ingredients).fetchall()
+
+    results = conn.execute(query, params).fetchall()
     conn.close()
 
     return [{"index": row['id'], "name": row['name']} for row in results]

@@ -1,9 +1,28 @@
+/* ── CSS VARIABLES ── */
+:root {
+    --saffron: #E8841A;
+    --saffron-d: #C06A10;
+    --turmeric: #F5C842;
+    --cardamom: #2C5F3F;
+    --cardamom-l: #3D7A54;
+    --coriander: #7DC47A;
+    --cream: #FDF6EC;
+    --cream-d: #F0E4CE;
+    --brown: #6B3E1E;
+    --text: #1C1208;
+    --muted: #7A6248;
+    --white: #FFFFFF;
+    --red: #C0392B;
+    --shadow: 0 8px 40px rgba(104, 62, 30, .13);
+    --r: 18px;
+}
+
 /* ── General Reset ── */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body,
@@ -110,6 +129,195 @@ html {
     padding: 32px 24px;
     gap: 16px;
     overflow-y: auto;
+}
+
+/* ── DISHES SECTION ── */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .9rem;
+    width: 100%;
+}
+
+.dish-card {
+    background: linear-gradient(145deg, var(--cream), var(--cream-d));
+    border: 1.5px solid var(--cream-d);
+    border-radius: 14px;
+    padding: 1.1rem .9rem;
+    cursor: pointer;
+    transition: all .25s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--brown);
+}
+
+.dish-card:hover {
+    border-color: var(--saffron);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(232, 132, 26, .18);
+}
+
+.dish-name {
+    font-size: 1.1rem;
+    color: var(--brown);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.dish-hint {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: .2rem;
+}
+
+/* ── SHARED BUTTONS ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: .7rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: .92rem;
+    font-weight: 500;
+    transition: all .22s;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.btn-saffron {
+    background: var(--saffron);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(232, 132, 26, .35);
+}
+
+.btn-saffron:not(:disabled):hover {
+    background: var(--saffron-d);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--cardamom);
+    border: 2px solid var(--cardamom);
+}
+
+.btn-outline:hover {
+    background: var(--cardamom);
+    color: #fff;
+}
+
+.btn-muted {
+    background: var(--cream-d);
+    color: var(--muted);
+}
+
+.btn-muted:hover {
+    background: #e0d0b8;
+}
+
+.btn-turmeric {
+    background: var(--turmeric);
+    color: var(--brown);
+    font-weight: 600;
+}
+
+.btn-turmeric:hover {
+    background: #e0b730;
+    transform: translateY(-1px);
+}
+
+.btn-green {
+    background: var(--cardamom);
+    color: #fff;
+}
+
+.btn-green:not(:disabled):hover {
+    background: #1a3d28;
+}
+
+.btn-sm {
+    padding: .45rem 1rem;
+    font-size: .8rem;
+}
+
+/* ── INGREDIENT CARDS ── */
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 1.4rem;
+    width: 100%;
+}
+
+.ingredient-card {
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, .1);
+    border-left: 4px solid var(--coriander);
+    transition: transform .2s, box-shadow .2s;
+    backdrop-filter: blur(4px);
+    text-align: left;
+}
+
+.ingredient-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .11);
+}
+
+.ing-name {
+    font-size: 1.05rem;
+    color: var(--brown);
+    margin-bottom: .35rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.ing-qty {
+    font-size: .90rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+/* ── COOKING STEPS ── */
+.cooking-step {
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 14px;
+    padding: 1.4rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, .1);
+    text-align: left;
+    border-left: 5px solid transparent;
+    transition: all 0.3s;
+}
+
+.cooking-step.active {
+    border-left: 5px solid var(--saffron);
+    transform: scale(1.02);
+    box-shadow: 0 8px 28px rgba(232, 132, 26, .2);
+}
+
+.step-title {
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin-bottom: .6rem;
+    font-weight: 700;
+}
+
+.step-body-text {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.6;
 }
 
 /* ── TEXT STYLES ── */

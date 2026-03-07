@@ -1,12 +1,12 @@
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "en-IN"; // changed from en-US to better understand Indian accents
-recognition.continuous = true; 
+recognition.continuous = true;
 recognition.interimResults = false;
 
 const BACKEND_URL = window.location.origin;
 
-let stage = "ingredients"; 
-let searchResults = []; 
+let stage = "ingredients";
+let searchResults = [];
 let servings = 1;
 let recipeIndex = 0;
 let currentStepIdx = 0;
@@ -14,7 +14,7 @@ let allSteps = [];
 let detectedIngredients = [];
 
 const voiceText = document.getElementById("voice-text");
-const recipeList = document.getElementById("recipes"); 
+const recipeList = document.getElementById("recipes");
 const feedbackMsg = document.getElementById("feedback-msg");
 
 // Helper to convert words to numbers to help the AI "understand" better
@@ -39,20 +39,34 @@ document.querySelector(".mic-btn").onclick = () => {
 recognition.onresult = async (e) => {
     const resultIdx = e.resultIndex;
     let rawText = e.results[resultIdx][0].transcript.toLowerCase().trim();
-    
+
     // Clean the text immediately so "to" becomes "2" etc.
     let text = wordToNumber(rawText);
     voiceText.innerText = `Heard: "${text}"`;
 
     // --- STAGE 1: INGREDIENTS ---
     if (stage === "ingredients" && text.includes("done")) {
-        const knownIngs = ["potato", "tomato", "onion", "garlic", "chicken", "paneer", "rice", "matar"];
+        const knownIngs = [
+            // Vegetables (all in database)
+            "potato", "tomato", "onion", "garlic", "peas", "carrot", "cabbage",
+            "capsicum", "cauliflower", "spinach", "broccoli", "mushroom", "corn",
+            "pumpkin", "eggplant", "cucumber", "okra", "beans", "bitter gourd",
+            "bottle gourd", "tinda", "fenugreek", "banana",
+            // Proteins
+            "paneer", "chicken", "egg", "tofu",
+            // Legumes & Grains
+            "rice", "dal", "moong dal", "toor dal", "chickpeas", "kidney beans",
+            "matar", "lentil",
+            // Others
+            "ginger", "turmeric", "cumin", "coriander", "tamarind", "coconut"
+        ];
         detectedIngredients = knownIngs.filter(i => text.includes(i));
-        
+
+
         stage = "servings";
         speak("How many servings do you need?");
-    } 
-    
+    }
+
     // --- STAGE 2: ASK SERVINGS ---
     else if (stage === "servings") {
         let detected = extractServings(text);
@@ -60,12 +74,12 @@ recognition.onresult = async (e) => {
             servings = detected;
             const res = await fetch(`${BACKEND_URL}/suggest-recipes`, {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ ingredients: detectedIngredients })
             });
 
             searchResults = await res.json();
-            
+
             if (searchResults.length > 0) {
                 renderRecipes(searchResults);
                 stage = "choose";
@@ -76,7 +90,7 @@ recognition.onresult = async (e) => {
             }
         }
     }
-    
+
     // --- STAGE 3: CHOOSE RECIPE ---
     else if (stage === "choose") {
         let sel = -1;
@@ -85,8 +99,8 @@ recognition.onresult = async (e) => {
         else if (text.includes("3") || text.includes("third")) sel = 2;
 
         if (sel !== -1 && searchResults[sel]) {
-            recipeIndex = searchResults[sel].index; 
-            showIngredients(); 
+            recipeIndex = searchResults[sel].index;
+            showIngredients();
         }
     }
 
@@ -101,13 +115,13 @@ recognition.onresult = async (e) => {
     else if (stage === "cook") {
         if (text.includes("stop") || text.includes("exit")) {
             location.reload();
-        } 
+        }
         else if (text.includes("repeat") || text.includes("again")) {
             speak(`Repeating: ${allSteps[currentStepIdx]}`);
         }
         else if (text.includes("next")) {
             handleStepChange(1);
-        } 
+        }
         else if (text.includes("previous") || text.includes("back")) {
             handleStepChange(-1);
         }
@@ -117,28 +131,31 @@ recognition.onresult = async (e) => {
 async function showIngredients() {
     const res = await fetch(`${BACKEND_URL}/start-cooking`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ recipe_index: recipeIndex, servings: servings })
     });
     const data = await res.json();
-    allSteps = data.steps; 
-    
+    allSteps = data.steps;
+
     feedbackMsg.innerText = `Recipe: ${data.name} (${servings} Servings)`;
-    
+
     let ingHTML = `<div style="text-align: left; padding: 20px; color: white; width: 100%;">
-        <h2 style="color: #79d7ed; margin-bottom: 15px;">Ingredients for ${servings}</h2>
-        <ul style="list-style: none; font-size: 1.2rem; line-height: 2;">`;
-    
+        <h2 style="color: #fff; margin-bottom: 20px; font-size: 1.6rem; text-align: center;">Ingredients for ${servings}</h2>
+        <div class="result-grid">`;
+
     let speechText = `For ${servings} servings, you need: `;
     for (let item in data.ingredients) {
         let qty = data.ingredients[item];
         speechText += `${qty} of ${item}, `;
-        ingHTML += `<li style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 5px 0;">
-            <span style="color: #79d7ed;">✔</span> <strong>${qty}</strong> ${item}
-        </li>`;
+
+        ingHTML += `
+        <div class="ingredient-card">
+            <div class="ing-name">${item}</div>
+            <div class="ing-qty">${qty}</div>
+        </div>`;
     }
-    ingHTML += `</ul><p style="text-align: center; margin-top: 20px; color: #79d7ed; font-weight: bold;">Say "START" to begin!</p></div>`;
-    
+    ingHTML += `</div><p style="text-align: center; margin-top: 25px; color: #fff; font-weight: bold; font-size: 1.2rem;">Say "START" to begin!</p></div>`;
+
     recipeList.innerHTML = ingHTML;
     stage = "confirm_start";
     speak(speechText + " Shall we start?");
@@ -149,15 +166,23 @@ async function startCooking() {
     feedbackMsg.innerText = `Cooking Mode`;
     stage = "cook";
 
-    let stepsHTML = `<div class="steps-container" style="text-align: left; padding: 20px;">`;
+    let stepsHTML = `<div class="steps-container" style="text-align: left; padding: 10px; width: 100%; max-width: 800px; margin: 0 auto;">`;
     allSteps.forEach((step, index) => {
-        let activeStyle = (index === 0) ? "background: rgba(121, 215, 237, 0.2); border: 1px solid #79d7ed;" : "";
+        let activeClass = (index === 0) ? "active" : "";
         stepsHTML += `
-            <div id="step-${index}" class="step-item" style="margin-bottom: 15px; padding: 15px; border-radius: 12px; color: white; transition: 0.3s; ${activeStyle}">
-                <strong style="color: #79d7ed;">Step ${index + 1}:</strong> ${step}
+            <div id="step-${index}" class="cooking-step ${activeClass}">
+                <div class="step-title">Step ${index + 1}</div>
+                <div class="step-body-text">${step}</div>
             </div>`;
     });
-    stepsHTML += `</div>`;
+    stepsHTML += `
+        <div style="text-align: center; margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <div class="btn btn-outline btn-sm">Say 'Previous'</div>
+            <div class="btn btn-muted btn-sm">Say 'Repeat'</div>
+            <div class="btn btn-saffron btn-sm">Say 'Next'</div>
+            <div class="btn btn-outline btn-sm" style="border-color: #C0392B; color: #C0392B;">Say 'Stop'</div>
+        </div>
+    </div>`;
     recipeList.innerHTML = stepsHTML;
 
     speak(`Step 1. ${allSteps[0]}`);
@@ -171,12 +196,11 @@ function handleStepChange(dir) {
     }
 
     const oldStep = document.getElementById(`step-${currentStepIdx}`);
-    if (oldStep) { oldStep.style.background = "transparent"; oldStep.style.border = "none"; }
+    if (oldStep) { oldStep.classList.remove("active"); }
 
     const nextStepEl = document.getElementById(`step-${newIndex}`);
     if (nextStepEl) {
-        nextStepEl.style.background = "rgba(121, 215, 237, 0.2)";
-        nextStepEl.style.border = "1px solid #79d7ed";
+        nextStepEl.classList.add("active");
         nextStepEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -186,15 +210,17 @@ function handleStepChange(dir) {
 
 // Improved end logic: ensure recognition doesn't stop during the conversation
 recognition.onend = () => {
-    recognition.start(); 
+    recognition.start();
 };
 
 function renderRecipes(recipes) {
-    recipeList.innerHTML = recipes.map((r, i) => `
-        <div class="recipe-card" style="border: 2px solid #fff; margin: 10px; padding: 15px; border-radius: 12px; background: rgba(255,255,255,0.1); display: inline-block; width: 80%;">
-            <p style="color: white; font-size: 1.2rem;"><strong>Option ${i+1}:</strong> ${r.name}</p>
+    recipeList.innerHTML = `<div class="dishes-grid">` + recipes.map((r, i) => `
+        <div class="dish-card">
+            <span class="dish-emoji">🍽️</span>
+            <div class="dish-name">${r.name}</div>
+            <div class="dish-hint">Option ${i + 1}</div>
         </div>
-    `).join("");
+    `).join("") + `</div>`;
 }
 
 function extractServings(text) {
@@ -216,23 +242,23 @@ function extractServings(text) {
 }
 
 function speak(text) {
-    window.speechSynthesis.cancel(); 
+    window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    
+
     let voices = window.speechSynthesis.getVoices();
-    let preferredVoice = voices.find(v => v.name.includes("Google") && v.lang.includes("en-IN")) || 
-                         voices.find(v => v.name.includes("Google") && v.lang.includes("en-US")) ||
-                         voices.find(v => v.name.includes("Google") && v.lang.includes("en-GB")) ||
-                         voices.find(v => v.lang.startsWith("en"));
+    let preferredVoice = voices.find(v => v.name.includes("Google") && v.lang.includes("en-IN")) ||
+        voices.find(v => v.name.includes("Google") && v.lang.includes("en-US")) ||
+        voices.find(v => v.name.includes("Google") && v.lang.includes("en-GB")) ||
+        voices.find(v => v.lang.startsWith("en"));
     if (preferredVoice) {
         u.voice = preferredVoice;
     }
-    
+
     u.rate = 0.95;
 
     // We pause recognition while the AI is talking to prevent it from hearing itself
     u.onstart = () => { recognition.abort(); };
     u.onend = () => { recognition.start(); };
-    
+
     window.speechSynthesis.speak(u);
 }

@@ -163,6 +163,33 @@ def next_step():
     return jsonify(get_step(recipe_idx, step_num))
 
 
+@app.route("/start-cooking-by-name", methods=["POST"])
+def start_cooking_by_name():
+    """
+    Look up a recipe by name using LIKE search and return its data.
+    Used by Vision Chef where we have dish names but not IDs.
+    """
+    data = request.json
+    recipe_name = data.get("recipe_name", "").strip()
+    servings = data.get("servings", 2)
+
+    if not recipe_name:
+        return jsonify({"error": "Missing recipe name"}), 400
+
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    # First try exact match, then LIKE
+    row = conn.execute('SELECT id FROM recipes WHERE name = ?', (recipe_name,)).fetchone()
+    if not row:
+        row = conn.execute('SELECT id FROM recipes WHERE name LIKE ?', (f"%{recipe_name}%",)).fetchone()
+    conn.close()
+
+    if not row:
+        return jsonify({"error": f"Recipe '{recipe_name}' not found in database"}), 404
+
+    return jsonify(get_recipe(row['id'], servings))
+
+
 # ─────────────────────────────────────────────
 # 3. VISION DETECTION ROUTES  (Vision Chef)
 # ─────────────────────────────────────────────

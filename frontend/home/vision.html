@@ -161,6 +161,18 @@
       <button class="drawer-close" id="drawerClose">✕</button>
     </div>
     <div class="drawer-body">
+      <!-- Servings selector -->
+      <div class="servings-row" style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+        <label for="visionServings" style="color:var(--text-muted,#999);font-size:.85rem;font-weight:600;">👥 Servings:</label>
+        <select id="visionServings" style="background:var(--card-bg,#1a1a2e);color:var(--text,#fff);border:1.5px solid var(--saffron,#f6a623);border-radius:8px;padding:.35rem .8rem;font-size:.9rem;cursor:pointer;">
+          <option value="1">1 Person</option>
+          <option value="2" selected>2 People</option>
+          <option value="3">3 People</option>
+          <option value="4">4 People</option>
+          <option value="6">6 People</option>
+          <option value="8">8 People</option>
+        </select>
+      </div>
       <div class="info-chips" id="drawerChips"></div>
       <div class="about-text" id="drawerAbout"></div>
       <div class="ing-section">
@@ -174,6 +186,7 @@
       <button class="btn btn-muted btn-sm" id="drawerClose2">Maybe later</button>
     </div>
   </div>
+
 
   <!-- ═══════ RECIPE MODAL ═══════ -->
   <div class="modal-overlay" id="recipeModal">

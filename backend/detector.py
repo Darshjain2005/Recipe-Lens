@@ -830,9 +830,9 @@ def fuse_detections(all_dets: List[Dict]) -> List[Dict]:
         elif n_sources == 2:
             ensemble_conf = min(ensemble_conf * 1.09, 0.96)
 
-        # Penalty: if only color/heuristic source, cap confidence
+        # Penalty: if only color/heuristic source, reduce confidence drastically instead of capping at 0.62
         if set(g["sources"].keys()) == {"color_texture"}:
-            ensemble_conf = min(ensemble_conf, 0.62)
+            ensemble_conf = ensemble_conf * 0.4  # Massively scale down pure-color guesses
 
         # Must exceed minimum threshold
         if ensemble_conf < 0.12:
@@ -855,6 +855,43 @@ def fuse_detections(all_dets: List[Dict]) -> List[Dict]:
 
     fused.sort(key=lambda x: -x["confidence"])
     return fused
+
+def filter_detections(fused_dets: List[Dict]) -> List[Dict]:
+    """
+    Intelligently filter detections to return only the most relevant vegetables.
+    - If there's a single high-confidence object, drop all other low-confidence noise.
+    - If there are multiple high-confidence objects (e.g., cabbage + broccoli), keep them all.
+    """
+    if not fused_dets:
+        return []
+
+    # Already sorted by confidence descending, so [0] is the highest
+    top_det = fused_dets[0]
+    top_conf = top_det["confidence"]
+    
+    filtered = [top_det]
+
+    # Dynamically keep others if they are confident enough AND relatively close to the top detection
+    for det in fused_dets[1:]:
+        conf = det["confidence"]
+        
+        # Absolute threshold (must be reasonably sure)
+        is_confident = conf >= 0.35
+        # Relative threshold (must not be radically weaker than the top detection)
+        # We increase the strictness if the detection only comes from one model
+        is_single_model = len(det["sources"]) == 1
+        
+        if is_single_model and top_conf > 0.8:
+            # If we are almost certain about the top object (e.g. 98% YOLO),
+            # aggressively ignore stray 1-model guesses
+            continue
+
+        is_relative = conf >= (top_conf * 0.65)
+
+        if is_confident and is_relative:
+            filtered.append(det)
+
+    return filtered
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -1010,8 +1047,9 @@ class FoodDetector:
 
         all_dets = yolo_dets + effnet_dets + mobile_dets + resnet_dets + color_dets
 
-        # Step 3: Ensemble fusion
+        # Step 3: Ensemble fusion and Smart Filtering
         fused = fuse_detections(all_dets)
+        fused = filter_detections(fused)
 
         # Step 4: Annotate original image
         annotated_url = annotate_image(image_path, fused)

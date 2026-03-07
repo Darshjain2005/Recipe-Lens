@@ -4,6 +4,27 @@ const BACKEND_URL = window.location.origin;
 // ═══════════════ STATE ═══════════════
 let currentFile = null, webcamStream = null, activeDish = null;
 let recipeSteps = [], currentStep = 0, timerInterval = null, timerRemaining = 0;
+let isMuted = false;
+
+// ═══════════════ TTS ═══════════════
+function speak(text) {
+  if (isMuted || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.rate = 0.92;
+  utter.pitch = 1.0;
+  // Prefer a natural voice
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = voices.find(v => v.lang === 'en-IN') ||
+    voices.find(v => v.lang.startsWith('en') && v.localService) ||
+    voices[0];
+  if (preferred) utter.voice = preferred;
+  window.speechSynthesis.speak(utter);
+}
+
+function stopSpeech() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+}
 
 // ═══════════════ DOM ═══════════════
 const $ = id => document.getElementById(id);
@@ -20,6 +41,10 @@ const prevBtn = $('prevBtn'), nextBtn = $('nextBtn'), repeatBtn = $('repeatBtn')
 const jumpModal = $('jumpModal'), jumpClose = $('jumpClose');
 const webcamModal = $('webcamModal'), webcamBtn = $('webcamBtn'), webcamVideo = $('webcamVideo');
 const captureBtn = $('captureBtn'), closeWebcamBtn = $('closeWebcamBtn');
+const visionServings = $('visionServings');
+
+// Load voices once they're available
+if (window.speechSynthesis) window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 
 // ═══════════════ UPLOAD ═══════════════
 fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]) });
@@ -231,35 +256,62 @@ async function openDishDrawer(name, recipeIndex) {
 
   activeDish = { name: name, info: { steps: [] } }; // Temp state
 
+  const servings = visionServings ? parseInt(visionServings.value) || 2 : 2;
+
   try {
-    const res = await fetch(`${BACKEND_URL}/start-cooking`, {
+    // First try loading by name from the database (Vision Chef)
+    let data = null;
+    const byNameRes = await fetch(`${BACKEND_URL}/start-cooking-by-name`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ recipe_index: recipeIndex, servings: 1 })
+      body: JSON.stringify({ recipe_name: name, servings })
     });
-    if (!res.ok) throw new Error("Failed to load");
-    const data = await res.json();
+    if (byNameRes.ok) {
+      data = await byNameRes.json();
+    } else if (recipeIndex != null) {
+      // Fallback: load by index
+      const idxRes = await fetch(`${BACKEND_URL}/start-cooking`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recipe_index: recipeIndex, servings })
+      });
+      if (idxRes.ok) data = await idxRes.json();
+    }
+
+    if (!data) throw new Error('Recipe not available');
 
     const stepsObj = data.steps.map((s, i) => ({ title: `Step ${i + 1}`, body: s }));
     activeDish = { name: data.name, info: { steps: stepsObj } };
 
-    $('drawerSubtitle').textContent = 'Database Recipe';
-    $('drawerChips').innerHTML = `<span class="chip chip-green">👥 Serves 1</span>`;
+    $('drawerSubtitle').textContent = `${servings} serving${servings > 1 ? 's' : ''}`;
+    $('drawerChips').innerHTML = `<span class="chip chip-green">👥 Serves ${servings}</span>`;
     $('drawerAbout').textContent = `Enjoy this delicious ${data.name} made with fresh ingredients. Click Start Cooking to view step-by-step instructions.`;
 
     let ingsHtml = Object.entries(data.ingredients || {}).map(([ing, qty]) => `<span class="ing-pill">${qty} ${ing}</span>`).join('');
     $('drawerIngredients').innerHTML = ingsHtml || '<span style="color:white">No ingredients listed</span>';
   } catch (e) {
     console.error(e);
-    $('drawerSubtitle').textContent = 'Error loading recipe';
-    $('drawerIngredients').innerHTML = '';
+    $('drawerSubtitle').textContent = 'Recipe details loading from AI suggestions';
+    $('drawerIngredients').innerHTML = '<span style="color:var(--text-muted,#aaa)">This dish\'s full recipe will load when you start cooking.</span>';
+    $('drawerAbout').textContent = `Enjoy ${name}! Click Start Cooking to see the full step-by-step instructions.`;
+    $('drawerChips').innerHTML = `<span class="chip chip-green">👥 Serves ${servings}</span>`;
   }
+}
+
+// Re-open drawer with updated servings when selector changes
+if (visionServings) {
+  visionServings.addEventListener('change', () => {
+    if (activeDish && dishDrawer.classList.contains('open')) {
+      openDishDrawer(activeDish.name, null);
+    }
+  });
 }
 
 function closeDishDrawer() {
   dishDrawer.classList.remove('open');
   drawerOverlay.classList.remove('open');
   document.body.style.overflow = '';
+  stopSpeech();
 }
 
 drawerClose.addEventListener('click', closeDishDrawer);
@@ -311,6 +363,8 @@ function renderStep(idx) {
     $('timerResetBtn').addEventListener('click', () => { clearTimer(); timerRemaining = step.timer; $('timerDisplay').textContent = formatTime(timerRemaining); $('timerStartBtn').textContent = '▶ Start' });
   }
   body.scrollTop = 0;
+  // Auto-speak the step
+  setTimeout(() => speak(`${step.title}. ${step.body}`), 200);
 }
 
 function showCompletion() {
@@ -326,7 +380,7 @@ function showCompletion() {
 function goToStep(idx) { if (idx < 0 || idx > recipeSteps.length) return; nextBtn.style.display = ''; renderStep(idx) }
 prevBtn.addEventListener('click', () => goToStep(currentStep - 1));
 nextBtn.addEventListener('click', () => { if (currentStep >= recipeSteps.length - 1) showCompletion(); else goToStep(currentStep + 1) });
-repeatBtn.addEventListener('click', () => goToStep(currentStep));
+repeatBtn.addEventListener('click', () => { goToStep(currentStep); speak(recipeSteps[currentStep]?.body || ''); });
 jumpBtn.addEventListener('click', () => {
   const list = $('jumpStepList');
   list.innerHTML = recipeSteps.map((s, i) => `<button class="btn btn-sm ${i === currentStep ? 'btn-saffron' : 'btn-outline'}" style="text-align:left;border-radius:10px;justify-content:flex-start" data-i="${i}"><span style="font-weight:700;min-width:22px">${i + 1}.</span>${s.title}</button>`).join('');
@@ -336,7 +390,7 @@ jumpBtn.addEventListener('click', () => {
 jumpClose.addEventListener('click', () => jumpModal.classList.remove('open'));
 jumpModal.addEventListener('click', e => { if (e.target === jumpModal) jumpModal.classList.remove('open') });
 
-function closeRecipeModal() { recipeModal.classList.remove('open'); document.body.style.overflow = ''; clearTimer(); nextBtn.style.display = '' }
+function closeRecipeModal() { recipeModal.classList.remove('open'); document.body.style.overflow = ''; clearTimer(); stopSpeech(); nextBtn.style.display = '' }
 recipeClose.addEventListener('click', closeRecipeModal);
 recipeModal.addEventListener('click', e => { if (e.target === recipeModal) closeRecipeModal() });
 
