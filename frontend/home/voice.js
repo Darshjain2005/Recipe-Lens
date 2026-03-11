@@ -29,7 +29,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const recognition = new SpeechRecognition();
 
 recognition.lang             = "en-IN";  // Best for Indian accents; browser falls back to en-US
-recognition.continuous       = false;    // Single-shot → restart manually; much more reliable
+recognition.continuous       = true;     // Keep session alive — critical for catching short words like "2"
 recognition.interimResults   = true;     // Show live visual preview of what's being heard
 recognition.maxAlternatives  = 3;        // Let us pick the best alternative
 
@@ -323,23 +323,30 @@ function renderRecipes(recipes) {
 }
 
 // ── Recognition lifecycle ──────────────────────────────────
+// With continuous=true, onend only fires when we abort (during TTS) or
+// on a network/permission error. Restart quickly in those cases.
 recognition.onend = () => {
     isListening = false;
-    // Auto-restart unless TTS is speaking or we're in idle state
     if (!isSpeaking && stage !== "idle") {
-        setTimeout(startListening, 250);
+        setTimeout(startListening, 150);
     }
 };
 
 recognition.onerror = (e) => {
     isListening = false;
-    if (e.error === "no-speech") {
-        if (!isSpeaking && stage !== "idle") setTimeout(startListening, 500);
+    if (e.error === "aborted") {
+        // We called abort() deliberately (TTS started) — TTS onend will restart.
         return;
     }
-    if (e.error === "aborted") return;
+    if (e.error === "no-speech") {
+        // Silence timeout — restart quickly so the user doesn't wait
+        if (!isSpeaking && stage !== "idle") setTimeout(startListening, 150);
+        return;
+    }
     console.warn("Voice recognition error:", e.error);
     voiceText.innerText = `⚠️ Mic error (${e.error}). Tap mic to try again.`;
+    // Try to recover after a second
+    if (!isSpeaking && stage !== "idle") setTimeout(startListening, 1000);
 };
 
 // ── Pick best TTS voice ────────────────────────────────────
@@ -367,12 +374,13 @@ function speak(text, onDone) {
     u.onend = () => {
         isSpeaking = false;
         if (onDone) { onDone(); return; }
-        if (stage !== "idle") setTimeout(startListening, 400);
+        // Resume listening quickly after TTS — 150ms is enough for audio to clear
+        if (stage !== "idle") setTimeout(startListening, 150);
     };
     u.onerror = () => {
         isSpeaking = false;
         if (onDone) { onDone(); return; }
-        if (stage !== "idle") setTimeout(startListening, 400);
+        if (stage !== "idle") setTimeout(startListening, 150);
     };
 
     window.speechSynthesis.speak(u);
