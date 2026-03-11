@@ -1,28 +1,53 @@
-/* ── CSS VARIABLES ── */
+/* ══════════════════════════════════════════════════
+   style_voice.css — VegVision UI skin
+   All class names / IDs / animation names unchanged.
+   Only colours, backgrounds, shadows & decorations.
+══════════════════════════════════════════════════ */
+
+/* ── TOKENS ─────────────────────────────────────── */
 :root {
-    --saffron: #E8841A;
-    --saffron-d: #C06A10;
-    --turmeric: #F5C842;
-    --cardamom: #2C5F3F;
-    --cardamom-l: #3D7A54;
-    --coriander: #7DC47A;
-    --cream: #FDF6EC;
-    --cream-d: #F0E4CE;
-    --brown: #6B3E1E;
-    --text: #1C1208;
-    --muted: #7A6248;
-    --white: #FFFFFF;
-    --red: #C0392B;
-    --shadow: 0 8px 40px rgba(104, 62, 30, .13);
+    --ink: #07091e;
+    --ink2: #0c1135;
+    --blue: #1d4ed8;
+    --bright: #3b82f6;
+    --sky: #60a5fa;
+    --cyan: #06b6d4;
+    --teal: #0891b2;
+    --white: #ffffff;
+    --t1: #e2eaff;
+    --t2: #8ba4cc;
+    --t3: #4a6080;
+    --g1: rgba(255, 255, 255, .04);
+    --g2: rgba(255, 255, 255, .09);
+    --emerald: #10b981;
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+
+    /* legacy aliases kept for voice.js dynamic HTML */
+    --saffron: #f59e0b;
+    --saffron-d: #d97706;
+    --turmeric: #fcd34d;
+    --cardamom: #10b981;
+    --cardamom-l: #34d399;
+    --coriander: #6ee7b7;
+    --cream: rgba(11, 17, 52, .7);
+    --cream-d: rgba(29, 78, 216, .18);
+    --brown: var(--t1);
+    --text: var(--t1);
+    --muted: var(--t2);
+    --red: var(--rose);
+    --shadow: 0 8px 40px rgba(0, 0, 0, .35);
     --r: 18px;
 }
 
-/* ── General Reset ── */
-* {
+/* ── RESET ───────────────────────────────────────── */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
 
 body,
@@ -31,20 +56,42 @@ html {
     overflow-x: hidden;
 }
 
-/* ── PAGE WRAPPER ── */
+/* ── PAGE WRAPPER ────────────────────────────────── */
 .voice-page-wrapper {
     min-height: 100vh;
     width: 100%;
-    background: url('images/Voice Chef.png') no-repeat center center;
-    background-size: cover;
+    /* VegVision ambient — no image dependency */
+    background:
+        radial-gradient(ellipse 70% 60% at 8% 0%, rgba(29, 78, 216, .32), transparent 62%),
+        radial-gradient(ellipse 55% 48% at 94% 98%, rgba(6, 182, 212, .22), transparent 56%),
+        radial-gradient(ellipse 40% 38% at 50% 50%, rgba(29, 78, 216, .07), transparent 56%),
+        linear-gradient(168deg, #0e1744 0%, #07091e 50%, #060915 100%);
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 16px;
     overflow-y: auto;
+    position: relative;
 }
 
-/* ── LOGO ── */
+/* dot-grid texture */
+.voice-page-wrapper::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(96, 165, 250, .15) 1px, transparent 1px);
+    background-size: 36px 36px;
+}
+
+.voice-page-wrapper>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── LOGO ────────────────────────────────────────── */
 .header {
     margin-bottom: 18px;
 }
@@ -52,76 +99,101 @@ html {
 .logo-btn img {
     width: 70px;
     height: auto;
-    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 12px rgba(6, 182, 212, .5));
+    transition: transform .3s ease, filter .3s;
 }
 
 .logo-btn:hover img {
     transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(6, 182, 212, .75));
 }
 
-/* ── MIC BUTTON ── */
+/* ── MIC BUTTON ──────────────────────────────────── */
 .mic-section {
     margin-bottom: 20px;
 }
 
 .mic-btn {
-    width: 60px;
-    height: 60px;
-    background: white;
-    border: none;
+    width: 64px;
+    height: 64px;
+    background: rgba(29, 78, 216, .25);
+    border: 1.5px solid rgba(6, 182, 212, .4);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    box-shadow:
+        0 4px 20px rgba(29, 78, 216, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+    transition: all .3s ease;
+    backdrop-filter: blur(10px);
     -webkit-tap-highlight-color: transparent;
 }
 
 .mic-btn:hover,
 .mic-btn:active {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    transform: scale(1.12);
+    background: rgba(6, 182, 212, .25);
+    border-color: var(--cyan);
+    box-shadow: 0 0 28px rgba(6, 182, 212, .5), 0 4px 20px rgba(0, 0, 0, .25);
 }
 
 .mic-icon {
     font-size: 1.5rem;
 }
 
-/* ── INPUT BOX ── */
+/* listening state */
+.mic-btn.listening {
+    background: rgba(244, 63, 94, .25);
+    border-color: rgba(244, 63, 94, .6);
+    box-shadow:
+        0 0 32px rgba(244, 63, 94, .55),
+        0 4px 20px rgba(0, 0, 0, .25);
+    animation: pulse 1.2s infinite;
+}
+
+/* ── INPUT BOX ───────────────────────────────────── */
 .input-display {
     width: min(90%, 900px);
     min-height: 120px;
-    background: white;
+    background: rgba(11, 17, 52, .82);
+    border: 1px solid rgba(29, 78, 216, .22);
     border-radius: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3),
+        inset 0 1px 0 rgba(255, 255, 255, .05);
     margin-bottom: 20px;
     padding: 20px 24px;
     text-align: center;
+    backdrop-filter: blur(12px);
 }
 
+/* ── FEEDBACK MESSAGE ────────────────────────────── */
 .feedback-msg {
-    color: #000;
-    font-weight: bold;
-    font-size: clamp(0.85rem, 3vw, 1.1rem);
+    color: var(--t1);
+    font-weight: 700;
+    font-size: clamp(.85rem, 3vw, 1.05rem);
     margin-bottom: 20px;
     text-align: center;
     padding: 0 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .4);
 }
 
-/* ── DISHES CONTAINER ── */
+/* ── DISHES CONTAINER ────────────────────────────── */
 .dishes-container {
     width: min(95%, 1100px);
     flex-grow: 1;
-    background: rgba(0, 85, 110, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 40px 40px 0 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(11, 17, 52, .82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 28px 28px 0 0;
+    border: 1px solid rgba(29, 78, 216, .2);
+    border-bottom: none;
+    box-shadow: 0 -4px 40px rgba(0, 0, 0, .3),
+        inset 0 1px 0 rgba(255, 255, 255, .05);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -131,7 +203,7 @@ html {
     overflow-y: auto;
 }
 
-/* ── DISHES SECTION ── */
+/* ── DISH GRID & CARDS ───────────────────────────── */
 .dishes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -140,8 +212,8 @@ html {
 }
 
 .dish-card {
-    background: linear-gradient(145deg, var(--cream), var(--cream-d));
-    border: 1.5px solid var(--cream-d);
+    background: rgba(29, 78, 216, .1);
+    border: 1.5px solid rgba(59, 130, 246, .18);
     border-radius: 14px;
     padding: 1.1rem .9rem;
     cursor: pointer;
@@ -150,29 +222,129 @@ html {
     position: relative;
     overflow: hidden;
     text-decoration: none;
-    color: var(--brown);
+    color: var(--t1);
 }
 
 .dish-card:hover {
-    border-color: var(--saffron);
+    border-color: var(--cyan);
     transform: translateY(-3px);
-    box-shadow: 0 6px 22px rgba(232, 132, 26, .18);
+    box-shadow: 0 6px 22px rgba(6, 182, 212, .2);
+    background: rgba(6, 182, 212, .1);
+}
+
+.dish-emoji {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: .5rem;
 }
 
 .dish-name {
-    font-size: 1.1rem;
-    color: var(--brown);
+    font-size: 1.05rem;
+    color: var(--t1);
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: .4rem;
 }
 
 .dish-hint {
-    font-size: 0.9rem;
-    color: var(--muted);
+    font-size: .85rem;
+    color: var(--t3);
     margin-top: .2rem;
 }
 
-/* ── SHARED BUTTONS ── */
+/* ── INGREDIENT CARDS ────────────────────────────── */
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 1.4rem;
+    width: 100%;
+}
+
+.ingredient-card {
+    background: rgba(11, 17, 52, .85);
+    border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, .2);
+    border-left: 4px solid rgba(16, 185, 129, .6);
+    border-top: 1px solid rgba(59, 130, 246, .12);
+    border-right: 1px solid rgba(59, 130, 246, .08);
+    border-bottom: 1px solid rgba(59, 130, 246, .08);
+    transition: transform .2s, box-shadow .2s;
+    backdrop-filter: blur(4px);
+    text-align: left;
+}
+
+.ingredient-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(6, 182, 212, .15);
+    border-left-color: var(--cyan);
+}
+
+.ing-name {
+    font-size: 1.05rem;
+    color: var(--t1);
+    margin-bottom: .35rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.ing-qty {
+    font-size: .9rem;
+    color: var(--t2);
+    font-weight: 500;
+}
+
+/* ── COOKING STEPS ───────────────────────────────── */
+.cooking-step {
+    background: rgba(11, 17, 52, .85);
+    border: 1px solid rgba(59, 130, 246, .15);
+    border-radius: 14px;
+    padding: 1.4rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, .2);
+    text-align: left;
+    border-left: 5px solid transparent;
+    transition: all .3s;
+}
+
+.cooking-step.active {
+    border-left: 5px solid var(--cyan);
+    transform: scale(1.02);
+    background: rgba(6, 182, 212, .07);
+    box-shadow: 0 8px 28px rgba(6, 182, 212, .18),
+        0 0 0 1px rgba(6, 182, 212, .15);
+}
+
+.step-title {
+    font-size: 1.2rem;
+    color: var(--t1);
+    margin-bottom: .6rem;
+    font-weight: 700;
+}
+
+.step-body-text {
+    font-size: 1.05rem;
+    color: var(--t2);
+    line-height: 1.7;
+}
+
+/* ── TEXT STYLES ─────────────────────────────────── */
+.placeholder-text {
+    color: var(--t2);
+    font-weight: 600;
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    text-align: center;
+}
+
+.placeholder-text-dark {
+    color: var(--t2);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    text-align: center;
+    opacity: .85;
+}
+
+/* ── SHARED BUTTONS ──────────────────────────────── */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -183,66 +355,74 @@ html {
     border: none;
     cursor: pointer;
     font-size: .92rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: all .22s;
     text-decoration: none;
     margin: 5px;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .btn:disabled {
-    opacity: .4;
+    opacity: .35;
     cursor: not-allowed;
 }
 
 .btn-saffron {
-    background: var(--saffron);
+    background: linear-gradient(135deg, var(--blue), #1e40af);
     color: #fff;
-    box-shadow: 0 4px 16px rgba(232, 132, 26, .35);
+    border: 1.5px solid rgba(96, 165, 250, .2);
+    box-shadow: 0 4px 16px rgba(29, 78, 216, .4);
 }
 
 .btn-saffron:not(:disabled):hover {
-    background: var(--saffron-d);
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(29, 78, 216, .55);
 }
 
 .btn-outline {
     background: transparent;
-    color: var(--cardamom);
-    border: 2px solid var(--cardamom);
+    color: var(--cyan);
+    border: 1.5px solid rgba(6, 182, 212, .4);
 }
 
 .btn-outline:hover {
-    background: var(--cardamom);
-    color: #fff;
+    background: rgba(6, 182, 212, .15);
+    color: var(--white);
+    border-color: var(--cyan);
 }
 
 .btn-muted {
-    background: var(--cream-d);
-    color: var(--muted);
+    background: rgba(255, 255, 255, .07);
+    color: var(--t2);
+    border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .btn-muted:hover {
-    background: #e0d0b8;
+    background: rgba(255, 255, 255, .13);
+    color: var(--t1);
 }
 
 .btn-turmeric {
-    background: var(--turmeric);
-    color: var(--brown);
-    font-weight: 600;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    color: #07091e;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, .35);
 }
 
 .btn-turmeric:hover {
-    background: #e0b730;
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #fbbf24, var(--amber));
+    transform: translateY(-2px);
 }
 
 .btn-green {
-    background: var(--cardamom);
+    background: linear-gradient(135deg, var(--emerald), #059669);
     color: #fff;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, .35);
 }
 
 .btn-green:not(:disabled):hover {
-    background: #1a3d28;
+    background: linear-gradient(135deg, #34d399, var(--emerald));
 }
 
 .btn-sm {
@@ -250,98 +430,7 @@ html {
     font-size: .8rem;
 }
 
-/* ── INGREDIENT CARDS ── */
-.result-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.1rem;
-    margin-bottom: 1.4rem;
-    width: 100%;
-}
-
-.ingredient-card {
-    background: rgba(255, 255, 255, 0.93);
-    border-radius: 14px;
-    padding: 1.2rem;
-    box-shadow: 0 3px 16px rgba(0, 0, 0, .1);
-    border-left: 4px solid var(--coriander);
-    transition: transform .2s, box-shadow .2s;
-    backdrop-filter: blur(4px);
-    text-align: left;
-}
-
-.ingredient-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, .11);
-}
-
-.ing-name {
-    font-size: 1.05rem;
-    color: var(--brown);
-    margin-bottom: .35rem;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-.ing-qty {
-    font-size: .90rem;
-    color: var(--muted);
-    font-weight: 500;
-}
-
-/* ── COOKING STEPS ── */
-.cooking-step {
-    background: rgba(255, 255, 255, 0.93);
-    border-radius: 14px;
-    padding: 1.4rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 3px 16px rgba(0, 0, 0, .1);
-    text-align: left;
-    border-left: 5px solid transparent;
-    transition: all 0.3s;
-}
-
-.cooking-step.active {
-    border-left: 5px solid var(--saffron);
-    transform: scale(1.02);
-    box-shadow: 0 8px 28px rgba(232, 132, 26, .2);
-}
-
-.step-title {
-    font-size: 1.2rem;
-    color: var(--brown);
-    margin-bottom: .6rem;
-    font-weight: 700;
-}
-
-.step-body-text {
-    font-size: 1.05rem;
-    color: var(--text);
-    line-height: 1.6;
-}
-
-/* ── TEXT STYLES ── */
-.placeholder-text {
-    color: #333;
-    font-weight: 800;
-    font-size: clamp(1rem, 3.5vw, 1.3rem);
-    text-align: center;
-}
-
-.placeholder-text-dark {
-    color: #fff;
-    font-weight: 800;
-    font-size: clamp(1.3rem, 5vw, 2rem);
-    text-align: center;
-}
-
-/* ── MIC ANIMATION ── */
-.mic-btn.listening {
-    background: #ff4d4d;
-    box-shadow: 0 0 30px rgba(255, 77, 77, 0.9);
-    animation: pulse 1.2s infinite;
-}
-
+/* ── MIC ANIMATION ───────────────────────────────── */
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -356,7 +445,7 @@ html {
     }
 }
 
-/* ── MOBILE ── */
+/* ── MOBILE ──────────────────────────────────────── */
 @media screen and (max-width: 600px) {
     .voice-page-wrapper {
         padding: 16px 12px;
@@ -375,7 +464,7 @@ html {
 
     .dishes-container {
         width: 100%;
-        border-radius: 28px 28px 0 0;
+        border-radius: 24px 24px 0 0;
         padding: 20px 16px;
     }
 

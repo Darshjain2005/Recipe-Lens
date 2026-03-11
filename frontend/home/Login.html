@@ -5,195 +5,461 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Lens - Authentication</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body, html { height: 100vh; width: 100vw; overflow: hidden; }
+    /* ── TOKENS ───────────────────────────── */
+    :root {
+        --ink:   #07091e;
+        --ink2:  #0c1135;
+        --blue:  #1d4ed8;
+        --sky:   #60a5fa;
+        --cyan:  #06b6d4;
+        --teal:  #0891b2;
+        --white: #ffffff;
+        --t1:    #e2eaff;
+        --t2:    #8ba4cc;
+        --t3:    #4a6080;
+        --g1:    rgba(255,255,255,.04);
+        --g2:    rgba(255,255,255,.09);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body, html {
+        height: 100vh; width: 100vw; overflow: hidden;
+        font-family: 'DM Sans', sans-serif;
+        background: var(--ink);
+        color: var(--t1);
+    }
 
-        .main-container {
-            height: 100vh; width: 100%;
-            background: url('images/home_bg.png') no-repeat center center;
-            background-size: cover;
-            display: flex; justify-content: center; align-items: center; position: relative;
-        }
+    /* ── FIXED AMBIENT BACKGROUND ─────────── */
+    .bg-wrap {
+        position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .bg-wrap::before {
+        content: '';
+        position: absolute; inset: 0;
+        background:
+            radial-gradient(ellipse 70% 60% at 8%   0%,  rgba(29,78,216,.34), transparent 62%),
+            radial-gradient(ellipse 55% 48% at 94%  98%,  rgba(6,182,212,.24), transparent 56%),
+            radial-gradient(ellipse 40% 40% at 50%  50%,  rgba(29,78,216,.06), transparent 60%),
+            linear-gradient(168deg, #0e1744 0%, #07091e 50%, #060915 100%);
+    }
+    .bg-wrap::after {
+        content: '';
+        position: absolute; inset: 0;
+        background-image: radial-gradient(circle, rgba(96,165,250,.15) 1px, transparent 1px);
+        background-size: 36px 36px;
+    }
+    .orb {
+        position: absolute; border-radius: 50%;
+        filter: blur(80px); pointer-events: none;
+    }
+    .orb1 {
+        width: 520px; height: 520px; top: -130px; left: -110px;
+        background: radial-gradient(circle, rgba(29,78,216,.30), transparent 68%);
+        animation: orbDrift 18s ease-in-out infinite;
+    }
+    .orb2 {
+        width: 420px; height: 420px; bottom: -110px; right: -90px;
+        background: radial-gradient(circle, rgba(6,182,212,.22), transparent 68%);
+        animation: orbDrift 14s ease-in-out infinite reverse;
+        animation-delay: -6s;
+    }
+    .orb3 {
+        width: 280px; height: 280px; top: 45%; left: 15%;
+        background: radial-gradient(circle, rgba(59,130,246,.12), transparent 68%);
+        animation: orbDrift 22s ease-in-out infinite;
+        animation-delay: -10s;
+    }
+    @keyframes orbDrift {
+        0%,100% { transform: translate(0,0) scale(1); }
+        33%      { transform: translate(22px,-26px) scale(1.04); }
+        66%      { transform: translate(-16px,18px) scale(.97); }
+    }
 
-        .top-logo { position: absolute; top: 20px; width: 200px; }
-        .chef-left { position: absolute; top: 10%; left: 25%; width: 220px; }
-        .chef-right { position: absolute; bottom: 5%; right: 25%; width: 300px; }
+    /* hex decorations */
+    .hex { position: absolute; pointer-events: none; opacity: .055; }
+    .hex1 { top: 3%; right: 3%; animation: hexRot 55s linear infinite; }
+    .hex2 { bottom: 3%; left: 2%; animation: hexRot 72s linear infinite reverse; }
+    @keyframes hexRot { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-        .auth-card {
-            width: 380px; background: rgba(0, 85, 110, 0.75);
-            backdrop-filter: blur(12px); border-radius: 25px; padding: 30px;
-            display: flex; flex-direction: column; align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
+    /* ── FULL PAGE FLEX CONTAINER ─────────── */
+    .main-container {
+        position: relative; z-index: 1;
+        height: 100vh; width: 100%;
+        display: flex; justify-content: center; align-items: center;
+    }
 
-        .tab-container {
-            display: flex; background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px; position: relative; margin-bottom: 25px;
-            width: 220px; height: 40px; cursor: pointer;
-        }
+    /* decorative chef images — kept from original */
+    .top-logo {
+        position: absolute; top: 22px; left: 50%;
+        transform: translateX(-50%);
+        width: 180px;
+        filter: drop-shadow(0 0 20px rgba(6,182,212,.45));
+        z-index: 2;
+    }
+    .chef-left {
+        position: absolute; top: 10%; left: 5%;
+        width: 200px; opacity: .55;
+        filter: drop-shadow(0 0 18px rgba(6,182,212,.25));
+        animation: floatA 9s ease-in-out infinite;
+        pointer-events: none;
+    }
+    .chef-right {
+        position: absolute; bottom: 5%; right: 5%;
+        width: 260px; opacity: .55;
+        filter: drop-shadow(0 0 18px rgba(29,78,216,.3));
+        animation: floatB 11s ease-in-out infinite;
+        pointer-events: none;
+    }
+    @keyframes floatA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(12px)} }
 
-        .tab { flex: 1; text-align: center; line-height: 40px; color: #79d7ed; font-weight: bold; z-index: 2; transition: color 0.3s; }
-        .tab.active { color: white; }
+    /* ── AUTH CARD ────────────────────────── */
+    .auth-card {
+        position: relative; z-index: 3;
+        width: 400px;
+        background: rgba(11,17,52,.82);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-radius: 28px;
+        padding: 36px 34px 30px;
+        display: flex; flex-direction: column; align-items: center;
+        border: 1px solid rgba(59,130,246,.22);
+        box-shadow:
+            0 0 0 1px rgba(6,182,212,.06),
+            0 24px 60px rgba(0,0,0,.5),
+            0  8px 20px rgba(0,0,0,.3),
+            inset 0 1px 0 rgba(255,255,255,.06);
+        animation: cardIn .8s cubic-bezier(.22,1,.36,1) .1s both;
+    }
+    .auth-card::before {
+        content: '';
+        position: absolute; inset: 0; border-radius: inherit;
+        background: linear-gradient(135deg, rgba(255,255,255,.04), transparent 60%);
+        pointer-events: none;
+    }
+    @keyframes cardIn {
+        from { opacity: 0; transform: translateY(24px) scale(.97); }
+        to   { opacity: 1; transform: none; }
+    }
 
-        .glider {
-            position: absolute; height: 100%; width: 50%;
-            background: rgba(255, 255, 255, 0.15); border-radius: 20px;
-            transition: transform 0.3s ease-in-out; z-index: 1;
-        }
+    /* card header */
+    .card-header {
+        text-align: center; margin-bottom: 24px; width: 100%;
+    }
+    .card-icon {
+        width: 52px; height: 52px; border-radius: 14px;
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        display: grid; place-items: center; font-size: 1.3rem;
+        margin: 0 auto 1rem;
+        box-shadow: 0 0 24px rgba(6,182,212,.4);
+    }
+    .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.55rem; font-weight: 700;
+        color: var(--white); margin-bottom: .25rem;
+    }
+    .card-sub {
+        font-size: .8rem; color: var(--t3);
+    }
 
-        .form-body { width: 100%; }
-        .input-group { margin-bottom: 15px; text-align: center; position: relative; }
-        .input-group label { display: block; color: #79d7ed; font-size: 0.8rem; margin-bottom: 5px; }
-        
-        /* Input Styling */
-        .input-group input {
-            width: 100%; padding: 10px 40px 10px 10px; border-radius: 8px; border: none;
-            background: rgba(255, 255, 255, 0.2); color: white; text-align: center; outline: none;
-        }
+    /* ── TAB TOGGLE ───────────────────────── */
+    .tab-container {
+        display: flex;
+        background: rgba(0,0,0,.35);
+        border: 1px solid rgba(59,130,246,.15);
+        border-radius: 50px;
+        position: relative;
+        margin-bottom: 28px;
+        width: 230px; height: 42px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    .glider {
+        position: absolute; top: 0; left: 0;
+        height: 100%; width: 50%;
+        background: linear-gradient(135deg, var(--blue), #1e40af);
+        border-radius: 50px;
+        transition: transform .3s cubic-bezier(.22,1,.36,1);
+        z-index: 1;
+        box-shadow: 0 0 16px rgba(29,78,216,.45);
+    }
+    .tab {
+        flex: 1; text-align: center; line-height: 42px;
+        font-size: .84rem; font-weight: 700;
+        color: var(--t3);
+        z-index: 2; transition: color .3s;
+        user-select: none;
+    }
+    .tab.active { color: var(--white); }
 
-        /* Eye Icon Positioning */
-        .toggle-password {
-            position: absolute;
-            right: 15px;
-            bottom: 10px;
-            color: #79d7ed;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
+    /* ── FORM ─────────────────────────────── */
+    .form-body { width: 100%; }
 
-        .confirm-group.hidden { height: 0; margin: 0; opacity: 0; overflow: hidden; pointer-events: none; }
+    .input-group {
+        margin-bottom: 16px;
+        position: relative;
+    }
+    .input-group label {
+        display: block;
+        font-size: .72rem; font-weight: 600;
+        color: var(--t2);
+        letter-spacing: .06em; text-transform: uppercase;
+        margin-bottom: 7px;
+    }
+    .input-group input {
+        width: 100%;
+        padding: 11px 40px 11px 14px;
+        border-radius: 11px;
+        border: 1px solid rgba(59,130,246,.2);
+        background: rgba(7,9,30,.6);
+        color: var(--white);
+        font-family: 'DM Sans', sans-serif;
+        font-size: .92rem;
+        outline: none;
+        transition: border-color .22s, box-shadow .22s;
+    }
+    .input-group input::placeholder { color: var(--t3); }
+    .input-group input:focus {
+        border-color: rgba(6,182,212,.5);
+        box-shadow: 0 0 0 3px rgba(6,182,212,.1);
+        background: rgba(7,9,30,.8);
+    }
 
-        .submit-btn {
-            margin-top: 15px; width: 100%; padding: 12px;
-            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;
-        }
-        .submit-btn:hover { background: rgba(255, 255, 255, 0.2); }
+    .toggle-password {
+        position: absolute;
+        right: 13px; bottom: 12px;
+        color: var(--t3);
+        cursor: pointer; font-size: .85rem;
+        transition: color .2s;
+    }
+    .toggle-password:hover { color: var(--cyan); }
 
-        #error-msg { color: #ff9999; font-size: 0.8rem; margin-top: 10px; text-align: center; min-height: 1.2rem; }
-        .footer-quote { margin-top: 30px; color: white; font-size: 0.75rem; font-style: italic; opacity: 0.8; text-align: center; }
+    /* confirm field collapse */
+    .confirm-group {
+        max-height: 80px;
+        transition: max-height .35s ease, opacity .3s, margin .3s;
+        overflow: hidden;
+        opacity: 1;
+    }
+    .confirm-group.hidden {
+        max-height: 0; opacity: 0;
+        margin: 0; pointer-events: none;
+    }
+
+    /* ── SUBMIT BUTTON ────────────────────── */
+    .submit-btn {
+        margin-top: 20px; width: 100%;
+        padding: 13px;
+        background: linear-gradient(135deg, var(--blue), #1e40af);
+        border: 1.5px solid rgba(96,165,250,.28);
+        color: white;
+        border-radius: 50px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: .98rem; font-weight: 700;
+        cursor: pointer;
+        letter-spacing: .02em;
+        transition: transform .24s cubic-bezier(.175,.885,.32,1.3), box-shadow .24s;
+        box-shadow: 0 6px 24px rgba(29,78,216,.45), inset 0 1px 0 rgba(255,255,255,.14);
+        position: relative; overflow: hidden;
+    }
+    .submit-btn::before {
+        content: '';
+        position: absolute; top: 0; left: -100%; bottom: 0; width: 60%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent);
+        transition: left .5s ease;
+    }
+    .submit-btn:hover::before { left: 140%; }
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 36px rgba(29,78,216,.55), inset 0 1px 0 rgba(255,255,255,.14);
+    }
+    .submit-btn:active { transform: translateY(-1px); }
+
+    /* ── ERROR ────────────────────────────── */
+    #error-msg {
+        color: #fca5a5;
+        font-size: .78rem;
+        margin-top: 10px;
+        text-align: center;
+        min-height: 1.1rem;
+        line-height: 1.5;
+    }
+
+    /* ── FOOTER QUOTE ─────────────────────── */
+    .footer-quote {
+        margin-top: 22px;
+        font-size: .73rem;
+        font-style: italic;
+        color: var(--t3);
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    /* ── MOBILE ───────────────────────────── */
+    @media (max-width: 480px) {
+        .auth-card { width: min(360px, 92vw); padding: 28px 22px 24px; }
+        .chef-left, .chef-right { display: none; }
+        .top-logo { width: 140px; }
+    }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <img src="images/RL logo.png" class="top-logo">
-        <img src="images/Login Img 2.png" class="chef-left">
-        <img src="images/Login Img 1.png" class="chef-right">
+<!-- ── AMBIENT BACKGROUND ───────────────────── -->
+<div class="bg-wrap" aria-hidden="true">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="hex hex1">
+        <svg width="220" height="248" viewBox="0 0 220 248">
+            <polygon points="110,6 208,59 208,189 110,242 12,189 12,59"
+                fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+            <polygon points="110,28 190,74 190,174 110,220 30,174 30,74"
+                fill="none" stroke="#06b6d4" stroke-width=".8"/>
+        </svg>
+    </div>
+    <div class="hex hex2">
+        <svg width="170" height="192" viewBox="0 0 170 192">
+            <polygon points="85,5 161,46 161,146 85,187 9,146 9,46"
+                fill="none" stroke="#3b82f6" stroke-width="1.2"/>
+        </svg>
+    </div>
+</div>
 
-        <div class="auth-card">
-            <div class="tab-container" onclick="toggleAuth()">
-                <div class="glider" id="glider"></div>
-                <div class="tab active" id="sign-up-tab">Sign Up</div>
-                <div class="tab" id="log-in-tab">Log In</div>
-            </div>
+<!-- ── PAGE ─────────────────────────────────── -->
+<div class="main-container">
 
-            <div class="form-body">
-                <div class="input-group">
-                    <label>Gmail ID</label>
-                    <input type="email" id="email" placeholder="email@gmail.com" required>
-                </div>
+    <!-- original decorative elements -->
+    <img src="images/RL logo.png" class="top-logo" alt="Recipe Lens Logo">
+    <img src="images/Login Img 2.png" class="chef-left" alt="">
+    <img src="images/Login Img 1.png" class="chef-right" alt="">
 
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                    <i class="fa-solid fa-eye-slash toggle-password" onclick="toggleVisibility('password', this)"></i>
-                </div>
+    <!-- ── AUTH CARD ──────────────────────── -->
+    <div class="auth-card">
 
-                <div class="input-group confirm-group" id="confirm-field">
-                    <label>Confirm Password</label>
-                    <input type="password" id="confirm-password" placeholder="Repeat password">
-                    <i class="fa-solid fa-eye-slash toggle-password" onclick="toggleVisibility('confirm-password', this)"></i>
-                </div>
-
-                <button class="submit-btn" id="main-button" onclick="handleSubmit()">Enter The Kitchen</button>
-                <p id="error-msg"></p>
-            </div>
-
-            <p class="footer-quote">If you smell what the Chef is Cooking !</p>
+        <div class="card-header">
+            <div class="card-icon">🧑‍🍳</div>
+            <div class="card-title">Welcome to RecipeLens</div>
+            <div class="card-sub">Sign in or create an account to continue</div>
         </div>
+
+        <!-- Sign Up / Log In toggle -->
+        <div class="tab-container" onclick="toggleAuth()">
+            <div class="glider" id="glider"></div>
+            <div class="tab active" id="sign-up-tab">Sign Up</div>
+            <div class="tab"        id="log-in-tab">Log In</div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-body">
+            <div class="input-group">
+                <label>Gmail ID</label>
+                <input type="email" id="email" placeholder="email@gmail.com" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+                <i class="fa-solid fa-eye-slash toggle-password"
+                   onclick="toggleVisibility('password', this)"></i>
+            </div>
+
+            <div class="input-group confirm-group" id="confirm-field">
+                <label>Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Repeat password">
+                <i class="fa-solid fa-eye-slash toggle-password"
+                   onclick="toggleVisibility('confirm-password', this)"></i>
+            </div>
+
+            <button class="submit-btn" id="main-button" onclick="handleSubmit()">
+                Enter The Kitchen
+            </button>
+            <p id="error-msg"></p>
+        </div>
+
+        <p class="footer-quote">If you smell what the Chef is Cooking !</p>
     </div>
 
-    <script>
-        let isSignUp = true; 
-        const BACKEND_URL = window.location.origin;
+</div>
 
-        // Logic to switch between Sign Up and Log In
-        function toggleAuth() {
-            isSignUp = !isSignUp;
-            const glider = document.getElementById('glider');
-            const confirmField = document.getElementById('confirm-field');
-            const signUpTab = document.getElementById('sign-up-tab');
-            const logInTab = document.getElementById('log-in-tab');
-            const mainBtn = document.getElementById('main-button');
+<script>
+    let isSignUp = true;
+    const BACKEND_URL = window.location.origin;
 
-            if (isSignUp) {
-                glider.style.transform = 'translateX(0%)';
-                confirmField.classList.remove('hidden');
-                signUpTab.classList.add('active');
-                logInTab.classList.remove('active');
-                mainBtn.innerText = "Enter The Kitchen";
+    function toggleAuth() {
+        isSignUp = !isSignUp;
+        const glider       = document.getElementById('glider');
+        const confirmField = document.getElementById('confirm-field');
+        const signUpTab    = document.getElementById('sign-up-tab');
+        const logInTab     = document.getElementById('log-in-tab');
+        const mainBtn      = document.getElementById('main-button');
+
+        if (isSignUp) {
+            glider.style.transform = 'translateX(0%)';
+            confirmField.classList.remove('hidden');
+            signUpTab.classList.add('active');
+            logInTab.classList.remove('active');
+            mainBtn.innerText = "Enter The Kitchen";
+        } else {
+            glider.style.transform = 'translateX(100%)';
+            confirmField.classList.add('hidden');
+            signUpTab.classList.remove('active');
+            logInTab.classList.add('active');
+            mainBtn.innerText = "Welcome Back Chef";
+        }
+    }
+
+    function toggleVisibility(id, icon) {
+        const field = document.getElementById(id);
+        if (field.type === "password") {
+            field.type = "text";
+            icon.classList.replace("fa-eye-slash", "fa-eye");
+        } else {
+            field.type = "password";
+            icon.classList.replace("fa-eye", "fa-eye-slash");
+        }
+    }
+
+    async function handleSubmit() {
+        const email           = document.getElementById('email').value;
+        const password        = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        const errorMsg        = document.getElementById('error-msg');
+
+        errorMsg.innerText = "";
+
+        if (!email || !password) {
+            errorMsg.innerText = "Please fill in all fields.";
+            return;
+        }
+
+        if (isSignUp && password !== confirmPassword) {
+            errorMsg.innerText = "Passwords do not match!";
+            return;
+        }
+
+        const endpoint = isSignUp ? "/register" : "/login";
+
+        try {
+            const response = await fetch(`${BACKEND_URL}${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem("isLoggedIn", "true");
+                window.location.href = "home.html";
             } else {
-                glider.style.transform = 'translateX(100%)';
-                confirmField.classList.add('hidden');
-                signUpTab.classList.remove('active');
-                logInTab.classList.add('active');
-                mainBtn.innerText = "Welcome Back Chef";
+                errorMsg.innerText = data.error || "Authentication failed";
             }
+        } catch (err) {
+            errorMsg.innerText = "Server is not responding. Check if Flask is running.";
         }
-
-        // NEW: Toggle Password Visibility
-        function toggleVisibility(id, icon) {
-            const field = document.getElementById(id);
-            if (field.type === "password") {
-                field.type = "text";
-                icon.classList.replace("fa-eye-slash", "fa-eye");
-            } else {
-                field.type = "password";
-                icon.classList.replace("fa-eye", "fa-eye-slash");
-            }
-        }
-
-        async function handleSubmit() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            const errorMsg = document.getElementById('error-msg');
-
-            errorMsg.innerText = "";
-
-            if (!email || !password) {
-                errorMsg.innerText = "Please fill in all fields.";
-                return;
-            }
-
-            if (isSignUp && password !== confirmPassword) {
-                errorMsg.innerText = "Passwords do not match!";
-                return;
-            }
-
-            const endpoint = isSignUp ? "/register" : "/login";
-
-            try {
-                const response = await fetch(`${BACKEND_URL}${endpoint}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    localStorage.setItem("isLoggedIn", "true");
-                    window.location.href = "home.html";
-                } else {
-                    errorMsg.innerText = data.error || "Authentication failed";
-                }
-            } catch (err) {
-                errorMsg.innerText = "Server is not responding. Check if Flask is running.";
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>

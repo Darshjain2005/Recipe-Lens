@@ -5,205 +5,417 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workflow | Recipe Lens</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
     <style>
-        /* --- THEME CSS --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        
-        body, html { 
-            height: 100%; 
-            width: 100%; 
-            background: linear-gradient(to bottom, #00d4ff 0%, #bff4ff 100%); 
-            background-attachment: fixed; 
-            color: #1e2a38; 
-        }
+    /* ── TOKENS ───────────────────────────── */
+    :root {
+        --ink:   #07091e;
+        --ink2:  #0c1135;
+        --blue:  #1d4ed8;
+        --sky:   #60a5fa;
+        --cyan:  #06b6d4;
+        --teal:  #0891b2;
+        --white: #ffffff;
+        --t1:    #e2eaff;
+        --t2:    #8ba4cc;
+        --t3:    #4a6080;
+        --g1:    rgba(255,255,255,.04);
+        --g2:    rgba(255,255,255,.09);
+        --emerald:#10b981;
+        --amber:  #f59e0b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body, html {
+        min-height: 100vh; width: 100%;
+        overflow-x: hidden;
+        background: var(--ink);
+        color: var(--t1);
+        font-family: 'DM Sans', sans-serif;
+    }
 
-        /* --- NAVIGATION --- */
-        .nav-container { 
-            width: 100%; 
-            display: flex; 
-            justify-content: center; 
-            padding-top: 20px; 
-            padding-bottom: 20px; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-        }
-        
-        .top-bar { 
-            width: 90%; 
-            max-width: 500px; 
-            height: 50px; 
-            background: rgba(255, 255, 255, 0.95); 
-            border-radius: 30px; 
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-        }
+    /* ── FIXED BACKGROUND ─────────────────── */
+    .bg-wrap {
+        position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .bg-wrap::before {
+        content: '';
+        position: absolute; inset: 0;
+        background:
+            radial-gradient(ellipse 70% 60% at 8%   0%,  rgba(29,78,216,.32), transparent 62%),
+            radial-gradient(ellipse 55% 48% at 94%  98%,  rgba(6,182,212,.22), transparent 56%),
+            linear-gradient(168deg, #0e1744 0%, #07091e 50%, #060915 100%);
+    }
+    .bg-wrap::after {
+        content: '';
+        position: absolute; inset: 0;
+        background-image: radial-gradient(circle, rgba(96,165,250,.15) 1px, transparent 1px);
+        background-size: 36px 36px;
+    }
+    .orb {
+        position: absolute; border-radius: 50%;
+        filter: blur(80px); pointer-events: none;
+    }
+    .orb1 {
+        width: 500px; height: 500px; top: -120px; left: -100px;
+        background: radial-gradient(circle, rgba(29,78,216,.26), transparent 68%);
+        animation: orbDrift 18s ease-in-out infinite;
+    }
+    .orb2 {
+        width: 400px; height: 400px; bottom: -100px; right: -80px;
+        background: radial-gradient(circle, rgba(6,182,212,.20), transparent 68%);
+        animation: orbDrift 14s ease-in-out infinite reverse;
+        animation-delay: -6s;
+    }
+    @keyframes orbDrift {
+        0%,100% { transform: translate(0,0) scale(1); }
+        33%      { transform: translate(20px,-24px) scale(1.04); }
+        66%      { transform: translate(-14px,18px) scale(.97); }
+    }
+    .hex { position: absolute; pointer-events: none; opacity: .055; }
+    .hex1 { top: 3%; right: 2%; animation: hexRot 55s linear infinite; }
+    .hex2 { bottom: 3%; left: 1%; animation: hexRot 72s linear infinite reverse; }
+    @keyframes hexRot { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-        .navbar { display: flex; gap: 20px; }
-        .navbar a { text-decoration: none; font-weight: 700; font-size: 0.95rem; color: #1e2a38; padding: 6px 14px; border-radius: 20px; transition: all 0.25s ease; }
-        .navbar a:hover, .navbar a.active { background-color: #e8f6ff; color: #0077b6; }
+    /* ── NAVBAR ───────────────────────────── */
+    .nav-container {
+        position: sticky; top: 0; z-index: 500; width: 100%;
+    }
+    .top-bar {
+        width: 100%; height: 62px;
+        background: rgba(7,9,30,.95);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        border-bottom: 1px solid rgba(59,130,246,.2);
+        box-shadow: 0 1px 0 rgba(6,182,212,.1), 0 4px 32px rgba(0,0,0,.4);
+        display: flex; align-items: center;
+        justify-content: space-between;
+        padding: 0 2.2rem;
+    }
+    .nav-brand {
+        display: flex; align-items: center; gap: 10px;
+        text-decoration: none; color: var(--t1);
+    }
+    .nav-icon-box {
+        width: 34px; height: 34px; border-radius: 9px;
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        display: grid; place-items: center; font-size: .95rem;
+        box-shadow: 0 0 16px rgba(6,182,212,.4);
+    }
+    .nav-site-name { font-weight: 700; font-size: .98rem; color: var(--t1); }
+    .nav-site-name b { color: var(--sky); }
+    .navbar { display: flex; align-items: center; gap: 4px; }
+    .navbar a {
+        text-decoration: none; font-size: .84rem; font-weight: 500;
+        color: var(--t2); padding: .4rem 1rem; border-radius: 50px;
+        border: 1px solid transparent; transition: all .22s; white-space: nowrap;
+    }
+    .navbar a:hover { color: var(--white); background: var(--g2); border-color: rgba(59,130,246,.22); }
+    .navbar a.active {
+        color: var(--sky); font-weight: 700;
+        background: rgba(96,165,250,.1);
+        border-color: rgba(96,165,250,.28);
+    }
 
-        /* --- MAIN CONTAINER --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; padding-bottom: 80px; }
-        .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 50px; color: #1e2a38; text-shadow: 0 2px 5px rgba(255,255,255,0.3); }
+    /* ── PAGE WRAPPER ─────────────────────── */
+    .container {
+        position: relative; z-index: 1;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 56px 24px 100px;
+    }
 
-        /* --- STEP ROW LAYOUT (ZIG-ZAG) --- */
-        .step-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 60px;
-            gap: 40px;
-        }
+    /* ── SECTION TITLE ────────────────────── */
+    .section-title {
+        text-align: center;
+        margin-bottom: 64px;
+        animation: fadeUp .8s cubic-bezier(.22,1,.36,1) .1s both;
+    }
+    .section-title h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.15;
+        margin-bottom: .5rem;
+    }
+    .section-title h1 span {
+        background: linear-gradient(110deg, var(--cyan), var(--sky));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .section-title p {
+        font-size: 1rem; color: var(--t2); line-height: 1.7;
+    }
+    .title-line {
+        width: 0; height: 2px; margin: 1rem auto 0; border-radius: 50px;
+        background: linear-gradient(90deg, var(--blue), var(--cyan), transparent);
+        animation: lineExpand .8s ease .8s forwards;
+    }
+    @keyframes lineExpand { from{width:0;opacity:0} to{width:72px;opacity:1} }
 
-        /* Reverse direction for even numbers */
-        .step-row:nth-child(even) {
-            flex-direction: row-reverse;
-        }
+    /* ── STEP ROW — zig-zag ───────────────── */
+    .step-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+        margin-bottom: 72px;
+        animation: fadeUp .75s cubic-bezier(.22,1,.36,1) both;
+    }
+    .step-row:nth-child(1) { animation-delay: .18s; }
+    .step-row:nth-child(2) { animation-delay: .26s; }
+    .step-row:nth-child(3) { animation-delay: .34s; }
+    .step-row:nth-child(4) { animation-delay: .42s; }
 
-        /* --- IMAGE BOX STYLING --- */
-        .step-image-box {
-            flex: 1;
-            position: relative;
-        }
+    /* even rows flip */
+    .step-row:nth-child(even) { flex-direction: row-reverse; }
 
-        .step-image-box img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border: 4px solid rgba(255, 255, 255, 0.6);
-            transition: transform 0.3s ease;
-        }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: none; }
+    }
 
-        .step-image-box img:hover {
-            transform: scale(1.02);
-        }
+    /* connector line between steps */
+    .step-row:not(:last-child)::after {
+        display: none; /* handled by the vertical line below */
+    }
 
-        /* --- TEXT BOX STYLING --- */
-        .step-content-box {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.85); /* Glass look */
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            position: relative;
-        }
+    /* ── IMAGE BOX ────────────────────────── */
+    .step-image-box {
+        flex: 1;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    /* glow border frame */
+    .step-image-box::before {
+        content: '';
+        position: absolute; inset: -1px; border-radius: 21px;
+        background: linear-gradient(135deg, rgba(29,78,216,.5), rgba(6,182,212,.4));
+        z-index: 0;
+        opacity: 0;
+        transition: opacity .3s;
+    }
+    .step-image-box:hover::before { opacity: 1; }
 
-        /* The Number Bubble */
-        .step-number {
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 50px;
-            height: 50px;
-            background: #20ace7; /* Teal */
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(32, 172, 231, 0.4);
-        }
+    .step-image-box img {
+        width: 100%; display: block;
+        border-radius: 20px;
+        border: 1px solid rgba(59,130,246,.22);
+        box-shadow:
+            0 10px 40px rgba(0,0,0,.35),
+            0  2px  8px rgba(0,0,0,.2),
+            inset 0 1px 0 rgba(255,255,255,.06);
+        transition: transform .32s cubic-bezier(.22,1,.36,1);
+        position: relative; z-index: 1;
+    }
+    .step-image-box:hover img { transform: scale(1.025); }
 
-        /* Fix number position for reversed rows */
-        .step-row:nth-child(even) .step-number {
-            left: auto;
-            right: -20px;
-        }
+    /* ── CONTENT BOX ──────────────────────── */
+    .step-content-box {
+        flex: 1;
+        background: rgba(11,17,52,.82);
+        border: 1px solid rgba(29,78,216,.2);
+        padding: 36px 34px 34px;
+        border-radius: 20px;
+        position: relative;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0,0,0,.25);
+        transition: border-color .25s, box-shadow .25s;
+    }
+    .step-content-box::before {
+        content: '';
+        position: absolute; inset: 0; border-radius: inherit;
+        background: linear-gradient(135deg, rgba(255,255,255,.03), transparent 60%);
+        pointer-events: none;
+    }
+    .step-content-box:hover {
+        border-color: rgba(6,182,212,.35);
+        box-shadow: 0 12px 40px rgba(6,182,212,.1), 0 8px 32px rgba(0,0,0,.25);
+    }
 
-        .step-content-box h3 {
-            font-size: 1.6rem;
-            color: #1e2a38;
-            margin-bottom: 10px;
-        }
+    /* step number bubble */
+    .step-number {
+        position: absolute;
+        top: -20px; left: -20px;
+        width: 48px; height: 48px;
+        background: linear-gradient(135deg, var(--blue), var(--cyan));
+        color: #fff;
+        font-size: 1.25rem; font-weight: 800;
+        border-radius: 50%;
+        display: flex; justify-content: center; align-items: center;
+        box-shadow:
+            0 0 0 4px var(--ink),
+            0 0 20px rgba(6,182,212,.45),
+            0 4px 12px rgba(0,0,0,.3);
+        font-family: 'Playfair Display', serif;
+        z-index: 2;
+    }
+    /* flip number for reversed rows */
+    .step-row:nth-child(even) .step-number {
+        left: auto; right: -20px;
+    }
 
-        .step-content-box p {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
-        }
+    /* step phase badge */
+    .step-badge {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: .65rem; font-weight: 700; letter-spacing: .09em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, rgba(29,78,216,.25), rgba(6,182,212,.15));
+        border: 1px solid rgba(6,182,212,.25);
+        color: var(--cyan);
+        padding: .22rem .75rem; border-radius: 50px;
+        margin-bottom: .85rem;
+    }
 
-        /* --- RESPONSIVE MOBILE --- */
-        @media screen and (max-width: 768px) {
-            .step-row, .step-row:nth-child(even) {
-                flex-direction: column; /* Stack vertically on mobile */
-            }
-            
-            .step-number {
-                left: 20px; /* Reset position */
-                right: auto;
-            }
-            
-            .section-title { font-size: 2rem; }
-        }
+    .step-content-box h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.55rem; font-weight: 700;
+        color: var(--white);
+        margin-bottom: .65rem;
+        line-height: 1.2;
+    }
+    .step-content-box p {
+        font-size: .95rem; color: var(--t2); line-height: 1.8;
+    }
+    .step-content-box p strong { color: var(--t1); font-weight: 600; }
+
+    /* step divider connector */
+    .step-connector {
+        display: flex; justify-content: center;
+        margin: -36px 0 36px;
+        position: relative; z-index: 2;
+    }
+    .step-connector::before {
+        content: '';
+        display: block;
+        width: 2px; height: 36px;
+        background: linear-gradient(to bottom, rgba(6,182,212,.4), rgba(29,78,216,.2));
+        border-radius: 50px;
+    }
+
+    /* ── RESPONSIVE ───────────────────────── */
+    @media (max-width: 768px) {
+        .step-row,
+        .step-row:nth-child(even) { flex-direction: column; gap: 24px; }
+        .step-number { left: 16px; right: auto; top: -18px; }
+        .step-row:nth-child(even) .step-number { right: auto; left: 16px; }
+        .container { padding: 36px 16px 80px; }
+        .step-content-box { padding: 32px 22px 26px; }
+        .nav-site-name { display: none; }
+        .top-bar { padding: 0 1.1rem; }
+        .step-connector { display: none; }
+    }
     </style>
 </head>
 <body>
 
-    <div class="nav-container">
-        <div class="top-bar">
-            <nav class="navbar">
-                <a href="home.html">Home</a>
-                <a href="aboutus.html">About Us</a>
-                <a href="workflow.html" class="active">Workflow</a>
-            </nav>
+<!-- ── AMBIENT BACKGROUND ────────────────────── -->
+<div class="bg-wrap" aria-hidden="true">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="hex hex1">
+        <svg width="220" height="248" viewBox="0 0 220 248">
+            <polygon points="110,6 208,59 208,189 110,242 12,189 12,59"
+                fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+            <polygon points="110,28 190,74 190,174 110,220 30,174 30,74"
+                fill="none" stroke="#06b6d4" stroke-width=".8"/>
+        </svg>
+    </div>
+    <div class="hex hex2">
+        <svg width="170" height="192" viewBox="0 0 170 192">
+            <polygon points="85,5 161,46 161,146 85,187 9,146 9,46"
+                fill="none" stroke="#3b82f6" stroke-width="1.2"/>
+        </svg>
+    </div>
+</div>
+
+<!-- ── NAVBAR ─────────────────────────────────── -->
+<div class="nav-container">
+    <div class="top-bar">
+        <a class="nav-brand" href="home.html">
+            <div class="nav-icon-box">🌿</div>
+            <span class="nav-site-name">Recipe<b>Lens</b></span>
+        </a>
+        <nav class="navbar">
+            <a href="home.html">Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="workflow.html" class="active">Workflow</a>
+        </nav>
+    </div>
+</div>
+
+<!-- ── CONTENT ────────────────────────────────── -->
+<div class="container">
+
+    <div class="section-title">
+        <h1>How <span>Recipe Lens</span> Works</h1>
+        <p>Four simple steps from ingredients to a perfectly cooked meal</p>
+        <div class="title-line"></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-row">
+        <div class="step-image-box">
+            <img src="images/1.image scan.png" alt="Scanning Vegetables">
+        </div>
+        <div class="step-content-box">
+            <div class="step-number">1</div>
+            <div class="step-badge"><i class="fas fa-eye"></i> Vision AI</div>
+            <h3>Smart Visual Scan</h3>
+            <p>Simply point your camera at the ingredients on your table. Our AI instantly recognizes vegetables like <strong>tomatoes, onions, and capsicums</strong> in real-time.</p>
         </div>
     </div>
 
-    <div class="container">
-        
-        <h1 class="section-title">How Recipe Lens Works</h1>
+    <div class="step-connector"></div>
 
-        <div class="step-row">
-            <div class="step-image-box">
-                <img src="images/1.image scan.png" alt="Scanning Vegetables">
-            </div>
-            <div class="step-content-box">
-                <div class="step-number">1</div>
-                <h3>Smart Visual Scan</h3>
-                <p>Simply point your camera at the ingredients on your table. Our AI instantly recognizes vegetables like tomatoes, onions, and capsicums in real-time.</p>
-            </div>
+    <!-- Step 2 -->
+    <div class="step-row">
+        <div class="step-image-box">
+            <img src="images/2.voice command.png" alt="Voice Command">
         </div>
-
-        <div class="step-row">
-            <div class="step-image-box">
-                <img src="images/2.voice command.png" alt="Voice Command">
-            </div>
-            <div class="step-content-box">
-                <div class="step-number">2</div>
-                <h3>Hands-Free Voice Input</h3>
-                <p>Busy hands? Just speak! List your ingredients out loud, and the system listens. Say "DONE" to start the recipe search automatically.</p>
-            </div>
+        <div class="step-content-box">
+            <div class="step-number">2</div>
+            <div class="step-badge"><i class="fas fa-microphone"></i> Voice Input</div>
+            <h3>Hands-Free Voice Input</h3>
+            <p>Busy hands? Just speak! List your ingredients out loud, and the system listens. Say <strong>"DONE"</strong> to start the recipe search automatically.</p>
         </div>
-
-        <div class="step-row">
-            <div class="step-image-box">
-                <img src="images/3.Recipe Selection.png" alt="Recipe Selection" onerror="this.src='https://via.placeholder.com/500x300?text=Step+3+Image+Coming+Soon'">
-            </div>
-            <div class="step-content-box">
-                <div class="step-number">3</div>
-                <h3>Recipe Selection</h3>
-                <p>The app suggests 3 perfect Indian dishes based on what you have. Simply say "Option 1" or "Option 2" to confirm your choice without touching the screen.</p>
-            </div>
-        </div>
-
-        <div class="step-row">
-            <div class="step-image-box">
-                <img src="images/4.Interactive Chef Mode.png" alt="Cooking Mode" onerror="this.src='https://via.placeholder.com/500x300?text=Step+4+Image+Coming+Soon'">
-            </div>
-            <div class="step-content-box">
-                <div class="step-number">4</div>
-                <h3>Interactive Chef Mode</h3>
-                <p>Start cooking with audio guidance! The app reads steps one by one. Say "Next" to move forward or "Repeat" if you missed something.</p>
-            </div>
-        </div>
-
     </div>
+
+    <div class="step-connector"></div>
+
+    <!-- Step 3 -->
+    <div class="step-row">
+        <div class="step-image-box">
+            <img src="images/3.Recipe Selection.png" alt="Recipe Selection"
+                onerror="this.src='https://via.placeholder.com/500x300?text=Step+3+Image+Coming+Soon'">
+        </div>
+        <div class="step-content-box">
+            <div class="step-number">3</div>
+            <div class="step-badge"><i class="fas fa-utensils"></i> Smart Matching</div>
+            <h3>Recipe Selection</h3>
+            <p>The app suggests <strong>3 perfect Indian dishes</strong> based on what you have. Simply say <strong>"Option 1"</strong> or <strong>"Option 2"</strong> to confirm your choice without touching the screen.</p>
+        </div>
+    </div>
+
+    <div class="step-connector"></div>
+
+    <!-- Step 4 -->
+    <div class="step-row">
+        <div class="step-image-box">
+            <img src="images/4.Interactive Chef Mode.png" alt="Cooking Mode"
+                onerror="this.src='https://via.placeholder.com/500x300?text=Step+4+Image+Coming+Soon'">
+        </div>
+        <div class="step-content-box">
+            <div class="step-number">4</div>
+            <div class="step-badge"><i class="fas fa-hat-chef"></i> Chef Mode</div>
+            <h3>Interactive Chef Mode</h3>
+            <p>Start cooking with <strong>audio guidance</strong>! The app reads steps one by one. Say <strong>"Next"</strong> to move forward or <strong>"Repeat"</strong> if you missed something.</p>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>

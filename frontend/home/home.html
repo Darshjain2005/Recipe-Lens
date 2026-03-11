@@ -5,45 +5,707 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RecipeLens</title>
-    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <style>
+        /* ══════════════════════════════════════════
+       VEGVISION TOKENS
+    ══════════════════════════════════════════ */
+        :root {
+            --ink: #07091e;
+            --ink2: #0c1135;
+            --blue: #1d4ed8;
+            --sky: #60a5fa;
+            --cyan: #06b6d4;
+            --teal: #0891b2;
+            --white: #ffffff;
+            --t1: #e2eaff;
+            --t2: #8ba4cc;
+            --t3: #4a6080;
+            --g1: rgba(255, 255, 255, .04);
+            --g2: rgba(255, 255, 255, .09);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body,
+        html {
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            background: var(--ink);
+            color: var(--t1);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* ── FIXED AMBIENT BACKGROUND ────────────── */
+        .bg-wrap {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* deep navy base + radial glows */
+        .bg-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 8% 0%, rgba(29, 78, 216, .32), transparent 62%),
+                radial-gradient(ellipse 55% 48% at 94% 98%, rgba(6, 182, 212, .22), transparent 56%),
+                radial-gradient(ellipse 45% 38% at 55% 50%, rgba(29, 78, 216, .07), transparent 55%),
+                linear-gradient(168deg, #0e1744 0%, #07091e 50%, #060915 100%);
+        }
+
+        /* dot grid */
+        .bg-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(96, 165, 250, .16) 1px, transparent 1px);
+            background-size: 36px 36px;
+        }
+
+        /* floating glow orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .orb1 {
+            width: 500px;
+            height: 500px;
+            top: -120px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(29, 78, 216, .28), transparent 68%);
+            animation: orbDrift 18s ease-in-out infinite;
+        }
+
+        .orb2 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            right: -80px;
+            background: radial-gradient(circle, rgba(6, 182, 212, .22), transparent 68%);
+            animation: orbDrift 14s ease-in-out infinite reverse;
+            animation-delay: -6s;
+        }
+
+        .orb3 {
+            width: 300px;
+            height: 300px;
+            top: 38%;
+            left: 52%;
+            background: radial-gradient(circle, rgba(59, 130, 246, .14), transparent 68%);
+            animation: orbDrift 22s ease-in-out infinite;
+            animation-delay: -11s;
+        }
+
+        @keyframes orbDrift {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(24px, -28px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-18px, 20px) scale(.96);
+            }
+        }
+
+        /* hex wireframe decorations */
+        .hex {
+            position: absolute;
+            pointer-events: none;
+            opacity: .065;
+        }
+
+        .hex1 {
+            top: 6%;
+            right: 4%;
+            animation: hexRot 50s linear infinite;
+        }
+
+        .hex2 {
+            bottom: 5%;
+            left: 2%;
+            animation: hexRot 70s linear infinite reverse;
+        }
+
+        @keyframes hexRot {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── NAVBAR ──────────────────────────────── */
+        /* Pulled OUT of top-container so it's truly sticky */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 500;
+            width: 100%;
+            height: 62px;
+            /* solid enough to always be readable */
+            background: rgba(7, 9, 30, 0.95);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border-bottom: 1px solid rgba(59, 130, 246, .2);
+            box-shadow:
+                0 1px 0 rgba(6, 182, 212, .1),
+                0 4px 32px rgba(0, 0, 0, .4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.2rem;
+        }
+
+        /* brand mark */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--t1);
+        }
+
+        .nav-icon-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            display: grid;
+            place-items: center;
+            font-size: .95rem;
+            box-shadow: 0 0 16px rgba(6, 182, 212, .4);
+        }
+
+        .nav-site-name {
+            font-weight: 700;
+            font-size: .98rem;
+            color: var(--t1);
+            letter-spacing: -.01em;
+        }
+
+        .nav-site-name b {
+            color: var(--sky);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-size: .84rem;
+            font-weight: 500;
+            color: var(--t2);
+            padding: .4rem 1rem;
+            border-radius: 50px;
+            border: 1px solid transparent;
+            transition: all .22s;
+            white-space: nowrap;
+        }
+
+        .navbar a:hover {
+            color: var(--white);
+            background: var(--g2);
+            border-color: rgba(59, 130, 246, .22);
+        }
+
+        .navbar a#auth-link {
+            color: var(--cyan);
+            font-weight: 700;
+            background: rgba(6, 182, 212, .1);
+            border-color: rgba(6, 182, 212, .3);
+        }
+
+        .navbar a#auth-link:hover {
+            background: rgba(6, 182, 212, .22);
+            color: var(--white);
+            border-color: rgba(6, 182, 212, .6);
+            box-shadow: 0 0 12px rgba(6, 182, 212, .2);
+        }
+
+        /* ── TOP SECTION — logo centred ─────────── */
+        .top-container {
+            position: relative;
+            z-index: 1;
+            min-height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* glowing halo behind logo */
+        .top-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 640px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(6, 182, 212, .13) 0%, transparent 68%);
+            pointer-events: none;
+            z-index: 0;
+            animation: haloPulse 5s ease-in-out infinite;
+        }
+
+        @keyframes haloPulse {
+
+            0%,
+            100% {
+                opacity: .7;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.08);
+            }
+        }
+
+        /* fade bottom edge */
+        .top-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            z-index: 2;
+            background: linear-gradient(to bottom, transparent, #07091e);
+            pointer-events: none;
+        }
+
+        .logo {
+            max-width: min(460px, 80vw);
+            height: auto;
+            position: relative;
+            z-index: 3;
+            filter:
+                drop-shadow(0 0 36px rgba(6, 182, 212, .55)) drop-shadow(0 0 12px rgba(29, 78, 216, .4)) drop-shadow(0 8px 20px rgba(0, 0, 0, .65));
+            animation: logoIn .9s cubic-bezier(.22, 1, .36, 1) .1s both;
+        }
+
+        @keyframes logoIn {
+            from {
+                opacity: 0;
+                transform: translateY(-22px) scale(.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ── BOTTOM SECTION — slogan + buttons ───── */
+        .bottom-container {
+            position: relative;
+            z-index: 1;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 24px 72px;
+            gap: 48px;
+            overflow: hidden;
+        }
+
+        /* subtle ring decoration */
+        .bottom-container::after {
+            content: '';
+            position: absolute;
+            bottom: -90px;
+            right: -90px;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            border: 1px solid rgba(6, 182, 212, .07);
+            box-shadow:
+                0 0 0 50px rgba(6, 182, 212, .04),
+                0 0 0 100px rgba(29, 78, 216, .03);
+            pointer-events: none;
+        }
+
+        /* ── SLOGAN ──────────────────────────────── */
+        .slogan {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            animation: sloganIn .9s cubic-bezier(.22, 1, .36, 1) .3s both;
+        }
+
+        @keyframes sloganIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .slogan span {
+            font-family: 'Playfair Display', serif;
+            display: block;
+            line-height: 1.12;
+        }
+
+        .see-it {
+            font-size: clamp(1.9rem, 5.5vw, 3.8rem);
+            font-weight: 600;
+            color: var(--t2);
+        }
+
+        .name-it {
+            font-size: clamp(2.1rem, 6vw, 4.2rem);
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .cook-it {
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            font-weight: 800;
+            font-style: italic;
+            background: linear-gradient(110deg, var(--cyan) 0%, var(--sky) 45%, #a5b4fc 90%);
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation:
+                sloganIn .9s cubic-bezier(.22, 1, .36, 1) .3s both,
+                textShimmer 5s linear 1.4s infinite;
+        }
+
+        @keyframes textShimmer {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 220% center;
+            }
+        }
+
+        /* accent underline */
+        .slogan-line {
+            width: 0;
+            height: 2px;
+            margin-top: 1.1rem;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--blue), var(--cyan), rgba(6, 182, 212, 0));
+            animation: lineExpand .8s ease 1.1s forwards;
+        }
+
+        @keyframes lineExpand {
+            from {
+                width: 0;
+                opacity: 0;
+            }
+
+            to {
+                width: 72px;
+                opacity: 1;
+            }
+        }
+
+        /* ── BUTTON WRAPPER ──────────────────────── */
+        .button-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            animation: btnsIn .9s cubic-bezier(.22, 1, .36, 1) .5s both;
+        }
+
+        @keyframes btnsIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .main-btn {
+            width: clamp(215px, 65vw, 262px);
+            height: 58px;
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: .01em;
+            transition:
+                transform .28s cubic-bezier(.175, .885, .32, 1.3),
+                box-shadow .28s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* moving shine on hover */
+        .main-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            bottom: 0;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .14), transparent);
+            transition: left .5s ease;
+            border-radius: inherit;
+        }
+
+        .main-btn:hover::before {
+            left: 140%;
+        }
+
+        /* Vision Chef — royal blue solid */
+        .btn-vision {
+            background: linear-gradient(135deg, #2563eb, #1e3fa8);
+            color: #fff;
+            border: 1.5px solid rgba(96, 165, 250, .28);
+            box-shadow:
+                0 6px 28px rgba(29, 78, 216, .5),
+                0 2px 8px rgba(0, 0, 0, .28),
+                inset 0 1px 0 rgba(255, 255, 255, .15);
+        }
+
+        .btn-vision:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow:
+                0 0 28px rgba(29, 78, 216, .45),
+                0 18px 40px rgba(29, 78, 216, .55),
+                0 4px 12px rgba(0, 0, 0, .3),
+                inset 0 1px 0 rgba(255, 255, 255, .15);
+        }
+
+        .btn-vision:active {
+            transform: translateY(-1px) scale(1);
+        }
+
+        /* Voice Chef — cyan glass */
+        .btn-voice {
+            background: rgba(6, 182, 212, .08);
+            color: var(--cyan);
+            border: 1.5px solid rgba(6, 182, 212, .38);
+            box-shadow:
+                0 6px 28px rgba(6, 182, 212, .12),
+                inset 0 1px 0 rgba(6, 182, 212, .1);
+        }
+
+        .btn-voice:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(6, 182, 212, .16);
+            color: var(--white);
+            border-color: rgba(6, 182, 212, .68);
+            box-shadow:
+                0 0 24px rgba(6, 182, 212, .32),
+                0 18px 40px rgba(6, 182, 212, .26),
+                0 4px 12px rgba(0, 0, 0, .25);
+        }
+
+        .btn-voice:active {
+            transform: translateY(-1px) scale(1);
+        }
+
+        /* icons */
+        .btn-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .circle-icon {
+            width: 24px;
+            height: 24px;
+            border: 2.5px solid rgba(255, 255, 255, .72);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            flex-shrink: 0;
+        }
+
+        .micro-icon {
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(6, 182, 212, .2);
+            border-radius: 50%;
+            border: 1px solid rgba(6, 182, 212, .35);
+            font-size: .82rem;
+        }
+
+        /* labels under buttons */
+        .btn-label {
+            font-size: .71rem;
+            font-weight: 600;
+            color: var(--t3);
+            letter-spacing: .09em;
+            text-transform: uppercase;
+        }
+
+        /* ── MOBILE ──────────────────────────────── */
+        @media (max-width: 540px) {
+            .top-bar {
+                height: 54px;
+                padding: 0 1.1rem;
+            }
+
+            .nav-site-name {
+                display: none;
+            }
+
+            .top-container {
+                min-height: 42vh;
+            }
+
+            .bottom-container {
+                min-height: 58vh;
+                padding: 16px 16px 56px;
+                gap: 36px;
+            }
+
+            .button-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+            }
+
+            .main-btn {
+                height: 54px;
+                width: min(290px, 88vw);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <section class="top-container">
-        <div class="top-bar">
-            <nav class="navbar">
-                <a href="aboutus.html">About us</a>
-                <a href="workflow.html">Workflow</a>
-                <a href="Login.html" id="auth-link" style="color: #79d7ed; font-weight: bold;">Login</a>
-            </nav>
+    <!-- ══ AMBIENT BACKGROUND ══════════════════════ -->
+    <div class="bg-wrap" aria-hidden="true">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+
+        <!-- hex wireframes -->
+        <div class="hex hex1">
+            <svg width="220" height="248" viewBox="0 0 220 248">
+                <polygon points="110,6 208,59 208,189 110,242 12,189 12,59" fill="none" stroke="#60a5fa"
+                    stroke-width="1.2" />
+                <polygon points="110,28 190,74 190,174 110,220 30,174 30,74" fill="none" stroke="#06b6d4"
+                    stroke-width=".8" />
+            </svg>
         </div>
+        <div class="hex hex2">
+            <svg width="170" height="192" viewBox="0 0 170 192">
+                <polygon points="85,5 161,46 161,146 85,187 9,146 9,46" fill="none" stroke="#3b82f6"
+                    stroke-width="1.2" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- ══ NAVBAR — sticky, always visible ════════ -->
+    <div class="top-bar">
+        <a class="nav-brand">
+            <div class="nav-icon-box">🌿</div>
+            <span class="nav-site-name">Recipe<b>Lens</b></span>
+        </a>
+        <nav class="navbar">
+            <a href="aboutus.html">About us</a>
+            <a href="workflow.html">Workflow</a>
+            <a href="Login.html" id="auth-link">Login</a>
+        </nav>
+    </div>
+
+    <!-- ══ TOP SECTION — logo ═════════════════════ -->
+    <section class="top-container">
         <img src="images/logo.png" alt="Recipe Lens Logo" class="logo">
     </section>
 
+    <!-- ══ BOTTOM SECTION — slogan + buttons ══════ -->
     <section class="bottom-container">
+
         <div class="slogan">
             <span class="see-it">See it.</span>
             <span class="name-it">Name it.</span>
             <span class="cook-it">Cook it.</span>
+            <div class="slogan-line"></div>
         </div>
 
         <div class="button-wrapper">
             <div class="btn-group">
-                <a href="#" class="main-btn" onclick="startVisionChef()">
+                <a href="#" class="main-btn btn-vision" onclick="startVisionChef()">
                     <span class="btn-icon circle-icon"></span> Vision Chef
                 </a>
                 <span class="btn-label">What Can I Cook?</span>
             </div>
 
             <div class="btn-group">
-                <a href="#" class="main-btn" onclick="startVoiceChef()">
+                <a href="#" class="main-btn btn-voice" onclick="startVoiceChef()">
                     <span class="btn-icon micro-icon">🎤</span> Voice Chef
                 </a>
                 <span class="btn-label">Listen to Ingredients</span>
             </div>
         </div>
+
     </section>
 
     <script>
