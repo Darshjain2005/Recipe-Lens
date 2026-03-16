@@ -5,8 +5,9 @@ Combines:
   • Vision Chef : multi-model food detection via image upload    (vision.py)
 """
 
-from flask import Flask, request, jsonify, send_from_directory, redirect
-from flask_cors import CORS
+from flask import Flask, request, jsonify, send_from_directory, redirect  # type: ignore[import]
+from flask_cors import CORS  # type: ignore[import]
+from typing import cast, Dict, Any
 import sqlite3
 import os
 import uuid
@@ -14,10 +15,10 @@ import time
 import base64
 
 # Vision Chef — FoodDetector (used by Vision routes)
-from detector import FoodDetector
+from detector import FoodDetector  # type: ignore[import]
 
 # Voice Chef — utility functions
-from utils import find_matching_recipes, get_recipe, get_step
+from utils import find_matching_recipes, get_recipe, get_step  # type: ignore[import]
 
 # ─────────────────────────────────────────────
 # App setup
@@ -63,7 +64,7 @@ def serve_frontend(filename):
     if os.path.isfile(filepath):
         return send_from_directory(FRONTEND_DIR, filename)
     # File not found — let Flask return its normal 404
-    from flask import abort
+    from flask import abort  # type: ignore[import]
     abort(404)
 
 
@@ -217,20 +218,21 @@ def detect():
         print(f"\n📸 Vision Request: {filename}")
         start = time.time()
         results = detector.analyze(filepath)
-        elapsed = round(time.time() - start, 2)
+        elapsed = round(float(time.time() - start), 2)  # type: ignore[call-overload]
         
         # Ensure results is a valid dict and has expected keys
         if not isinstance(results, dict):
             print(f"  ⚠️ Error: detector.analyze returned non-dict: {type(results)}")
             results = {"success": False, "error": "Internal detector error"}
         
-        results['processing_time'] = elapsed
-        results['image_url'] = f'/uploads/{filename}'
+        results_dict = cast(Dict[str, Any], results)
+        results_dict['processing_time'] = elapsed
+        results_dict['image_url'] = f'/uploads/{filename}'
         
-        n_found = results.get('total_found', 0)
+        n_found = results_dict.get('total_found', 0)
         print(f"  ✅ Detection complete in {elapsed}s. Found {n_found} ingredients.")
         
-        return jsonify(results)
+        return jsonify(results_dict)
     except Exception as e:
         print(f"  ❌ Backend Error in /detect: {str(e)}")
         import traceback
@@ -260,19 +262,20 @@ def detect_base64():
         print(f"\n📸 Vision Request (Base64): {filename}")
         start = time.time()
         results = detector.analyze(filepath)
-        elapsed = round(time.time() - start, 2)
+        elapsed = round(float(time.time() - start), 2)  # type: ignore[call-overload]
         
         if not isinstance(results, dict):
             print(f"  ⚠️ Error: detector.analyze returned non-dict: {type(results)}")
             results = {"success": False, "error": "Internal detector error"}
 
-        results['processing_time'] = elapsed
-        results['image_url'] = f'/uploads/{filename}'
+        results_dict = cast(Dict[str, Any], results)
+        results_dict['processing_time'] = elapsed
+        results_dict['image_url'] = f'/uploads/{filename}'
         
-        n_found = results.get('total_found', 0)
+        n_found = results_dict.get('total_found', 0)
         print(f"  ✅ Detection complete in {elapsed}s. Found {n_found} ingredients.")
         
-        return jsonify(results)
+        return jsonify(results_dict)
     except Exception as e:
         print(f"  ❌ Backend Error in /detect_base64: {str(e)}")
         import traceback

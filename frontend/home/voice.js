@@ -224,12 +224,30 @@ async function showIngredients() {
 
     feedbackMsg.innerText = `Recipe: ${data.name} (${servings} Serving${servings > 1 ? "s" : ""})`;
 
-    // ── Render ingredient cards ────────────────────────────
+    const nut = data.nutrition || {};
+    const ingNut = data.ingredient_nutrition || {};
+
+    // ── Render recipe nutrition summary ────────────────────
     let ingHTML = `<div style="text-align:left;padding:20px;color:white;width:100%">
-        <h2 style="color:#fff;margin-bottom:20px;font-size:1.6rem;text-align:center">
+        <h2 style="color:#fff;margin-bottom:12px;font-size:1.6rem;text-align:center">
             Ingredients for ${servings} serving${servings > 1 ? "s" : ""}
-        </h2>
-        <div class="result-grid">`;
+        </h2>`;
+
+    // Recipe-level nutrition bar
+    if (nut.calories || nut.protein || nut.carbs || nut.fat) {
+        ingHTML += `
+        <div class="nutrition-summary">
+            <div class="nutrition-summary-title">📊 Recipe Nutrition (per serving)</div>
+            <div class="nutrition-stats">
+                ${nut.calories ? `<div class="nut-stat"><span class="nut-val">${nut.calories}</span><span class="nut-label">kcal</span></div>` : ''}
+                ${nut.protein ? `<div class="nut-stat"><span class="nut-val">${nut.protein}g</span><span class="nut-label">Protein</span></div>` : ''}
+                ${nut.carbs ? `<div class="nut-stat"><span class="nut-val">${nut.carbs}g</span><span class="nut-label">Carbs</span></div>` : ''}
+                ${nut.fat ? `<div class="nut-stat"><span class="nut-val">${nut.fat}g</span><span class="nut-label">Fat</span></div>` : ''}
+            </div>
+        </div>`;
+    }
+
+    ingHTML += `<div class="result-grid">`;
 
     // Build per-ingredient speech chunks (one utterance per item avoids Chrome 15s cutoff)
     const ingChunks = [];
@@ -238,13 +256,65 @@ async function showIngredients() {
     for (let item in data.ingredients) {
         let qty = data.ingredients[item];
         ingChunks.push(`${qty} of ${item}.`);
+
+        // Per-ingredient nutrition badge
+        const iNut = ingNut[item];
+        let nutBadge = '';
+        if (iNut) {
+            const cal = iNut.calories_per_100g;
+            const vitamins = iNut.key_vitamins || {};
+            const topVitamins = Object.entries(vitamins).slice(0, 3);
+            nutBadge = `<div class="ing-nutrition">`;
+            if (cal != null) {
+                nutBadge += `<span class="nut-cal-badge">🔥 ${cal} kcal/100g</span>`;
+            }
+            if (topVitamins.length > 0) {
+                nutBadge += `<div class="nut-vitamins">`;
+                topVitamins.forEach(([name, amount]) => {
+                    nutBadge += `<span class="nut-vitamin-pill">${name}: ${amount}</span>`;
+                });
+                nutBadge += `</div>`;
+            }
+            nutBadge += `</div>`;
+        }
+
         ingHTML += `
         <div class="ingredient-card">
             <div class="ing-name">${item}</div>
             <div class="ing-qty">${qty}</div>
+            ${nutBadge}
         </div>`;
     }
-    ingHTML += `</div>
+    ingHTML += `</div>`;
+
+    // Nutrition narration chunk
+    if (nut.calories) {
+        let nutSpeech = `This recipe has approximately ${nut.calories} calories per serving`;
+        if (nut.protein) nutSpeech += `, ${nut.protein} grams of protein`;
+        if (nut.carbs) nutSpeech += `, ${nut.carbs} grams of carbs`;
+        if (nut.fat) nutSpeech += `, and ${nut.fat} grams of fat`;
+        nutSpeech += '.';
+
+        // Mention key vitamins from ingredients
+        const vitSources = {};
+        for (let item in ingNut) {
+            const vitamins = ingNut[item].key_vitamins || {};
+            for (let vName in vitamins) {
+                if (!vName.startsWith('Vitamin')) continue;
+                if (!vitSources[vName]) vitSources[vName] = [];
+                vitSources[vName].push(item);
+            }
+        }
+        const topVits = Object.entries(vitSources).slice(0, 3);
+        if (topVits.length > 0) {
+            nutSpeech += ' Key nutrients include ';
+            nutSpeech += topVits.map(([v, items]) => `${v} from ${items.join(' and ')}`).join(', ');
+            nutSpeech += '.';
+        }
+        ingChunks.push(nutSpeech);
+    }
+
+    ingHTML += `
         <p style="text-align:center;margin-top:25px;color:#fff;font-weight:bold;font-size:1.2rem">
             Starting cooking in a moment…
         </p>

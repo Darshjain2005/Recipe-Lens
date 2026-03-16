@@ -2,6 +2,10 @@ import sqlite3
 import json
 import os
 
+# ── Import your new nutrition data ──
+# nutrition_data.py must be in the same directory as database_setup.py
+from nutrition_data import CALORIE_MAP, VITAMIN_MAP  # type: ignore[import]
+
 def setup_database():
     # Paths
     db_path = os.path.join(os.path.dirname(__file__), 'recipes.db')
@@ -26,7 +30,8 @@ def setup_database():
         CREATE TABLE IF NOT EXISTS recipes (
             id INTEGER PRIMARY KEY AUTOINCREMENT, 
             name TEXT NOT NULL, 
-            steps TEXT NOT NULL
+            steps TEXT NOT NULL,
+            nutrition TEXT NOT NULL DEFAULT '{}'
         )
     ''')
     
@@ -41,9 +46,35 @@ def setup_database():
         )
     ''')
 
+    # ── NEW: Nutrition table ──────────────────────────────────────────────────
+    # Stores per-100g calorie + vitamin data for each ingredient.
+    # ingredient_label matches raw_label values from detector.py / NUTRITION_MAP.
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS nutrition (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ingredient_label TEXT UNIQUE NOT NULL,
+            calories_per_100g INTEGER,
+            key_vitamins TEXT NOT NULL DEFAULT '{}'
+        )
+    ''')
+    # ─────────────────────────────────────────────────────────────────────────
+
     # 2. Clear existing data (Only for recipes/ingredients, keep users)
     cursor.execute('DELETE FROM recipes')
     cursor.execute('DELETE FROM ingredients')
+
+    # ── NEW: Repopulate nutrition table on every run ──────────────────────────
+    cursor.execute('DELETE FROM nutrition')
+    all_labels = set(CALORIE_MAP.keys()) | set(VITAMIN_MAP.keys())
+    for label in all_labels:
+        cal = CALORIE_MAP.get(label)
+        vit = VITAMIN_MAP.get(label, {})
+        cursor.execute(
+            'INSERT OR REPLACE INTO nutrition (ingredient_label, calories_per_100g, key_vitamins) VALUES (?, ?, ?)',
+            (label, cal, json.dumps(vit))
+        )
+    print(f"Nutrition table populated with {len(all_labels)} ingredients.")
+    # ─────────────────────────────────────────────────────────────────────────
 
     # 3. Load and Insert JSON Data
     if os.path.exists(json_path):
@@ -58,9 +89,10 @@ def setup_database():
 
             for r in recipes:
                 # Insert Recipe (Steps stored as a JSON string)
+                nutrition_json = json.dumps(r.get('nutrition', {}))
                 cursor.execute(
-                    'INSERT INTO recipes (name, steps) VALUES (?, ?)',
-                    (r['name'], json.dumps(r['steps']))
+                    'INSERT INTO recipes (name, steps, nutrition) VALUES (?, ?, ?)',
+                    (r['name'], json.dumps(r['steps']), nutrition_json)
                 )
                 recipe_id = cursor.lastrowid
 

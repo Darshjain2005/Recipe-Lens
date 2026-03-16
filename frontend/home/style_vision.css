@@ -731,3 +731,69 @@ body, html { height: 100%; overflow: hidden; }
   .dishes-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
   .feedback-msg { font-size: .9rem; text-align: center; }
 }
+
+/* ── DRAWER NUTRITION SECTION ────────────────────── */
+.nutrition-drawer-section {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(59,130,246,.12);
+}
+.nutrition-drawer-section h4 {
+  font-size: 1rem; color: var(--t1);
+  margin-bottom: .9rem; font-weight: 600;
+}
+
+/* Recipe-level nutrition stats row */
+.drawer-nut-stats {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  justify-content: flex-start;
+  background: rgba(16,185,129,.07);
+  border: 1px solid rgba(16,185,129,.2);
+  border-radius: 12px;
+  padding: .9rem 1.2rem;
+  margin-bottom: 1rem;
+}
+.drawer-nut-item {
+  display: flex; flex-direction: column;
+  align-items: center; min-width: 52px;
+}
+.drawer-nut-val {
+  font-size: 1.2rem; font-weight: 700; color: var(--t1);
+}
+.drawer-nut-lbl {
+  font-size: .68rem; color: var(--t3);
+  text-transform: uppercase; letter-spacing: .4px; margin-top: 2px;
+}
+
+/* Per-ingredient nutrition cards */
+.drawer-ing-nutrition {
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.drawer-ing-nut-card {
+  background: rgba(7,9,30,.55);
+  border: 1px solid rgba(59,130,246,.1);
+  border-radius: 10px;
+  padding: .6rem .9rem;
+}
+.drawer-ing-nut-name {
+  font-size: .82rem; font-weight: 600;
+  color: var(--t1); margin-bottom: .35rem;
+  text-transform: capitalize;
+}
+.drawer-ing-nut-details {
+  display: flex; flex-wrap: wrap; gap: .35rem;
+}
+.drawer-nut-cal {
+  font-size: .7rem; font-weight: 600;
+  color: var(--amber);
+  background: rgba(245,158,11,.1);
+  border: 1px solid rgba(245,158,11,.2);
+  border-radius: 20px; padding: 2px 8px;
+}
+.drawer-nut-vit {
+  font-size: .68rem; font-weight: 500;
+  color: var(--cyan);
+  background: rgba(6,182,212,.08);
+  border: 1px solid rgba(6,182,212,.15);
+  border-radius: 12px; padding: 1px 7px;
+}

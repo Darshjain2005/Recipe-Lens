@@ -19,7 +19,14 @@
       "Mix well and cook covered on low heat for 15 minutes, stirring occasionally.",
       "Check if potatoes are soft. If not, cook for another 5 minutes.",
       "Turn off heat and serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 163,
+      "protein": 2,
+      "carbs": 15,
+      "fat": 11
+    }
   },
   {
     "name": "Mixed Vegetable Curry",
@@ -42,7 +49,14 @@
       "Stir well and cook covered on medium heat for 12 minutes, stirring occasionally.",
       "Add 1 teaspoon garam masala and mix.",
       "Cook for another 2 minutes and serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 188,
+      "protein": 6,
+      "carbs": 24,
+      "fat": 9
+    }
   },
   {
     "name": "Paneer Butter Masala",
@@ -65,7 +79,14 @@
       "Blend mixture to make smooth gravy.",
       "Return to pan, add 250g paneer cubes, 50ml cream, 1 tsp salt, 1 tsp garam masala.",
       "Cook on low heat for 5 minutes and serve hot."
-    ]
+    ],
+    "nutrition_score": 45,
+    "nutrition": {
+      "calories": 400,
+      "protein": 15,
+      "carbs": 20,
+      "fat": 30
+    }
   },
   {
     "name": "Chana Masala",
@@ -89,7 +110,14 @@
       "Add 250g soaked chickpeas with water to cover.",
       "Cook on medium heat for 15 minutes, then add 1 tsp garam masala.",
       "Simmer for 2 minutes and serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 240,
+      "protein": 12,
+      "carbs": 38,
+      "fat": 8
+    }
   },
   {
     "name": "Palak Paneer",
@@ -112,7 +140,14 @@
       "Add spinach puree, 200g paneer cubes, 1 tsp salt.",
       "Cook on low heat for 5 minutes.",
       "Add 50ml cream, mix well and serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 200,
+      "protein": 14,
+      "carbs": 8,
+      "fat": 12
+    }
   },
   {
     "name": "Aloo Gobi",
@@ -134,7 +169,14 @@
       "Add 100g chopped tomatoes, 1 tsp turmeric, 1 tsp salt, cook 10 minutes covered.",
       "Add 1 tsp garam masala, mix and cook 2 more minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 160,
+      "protein": 4,
+      "carbs": 22,
+      "fat": 6
+    }
   },
   {
     "name": "Bhindi Masala",
@@ -155,7 +197,14 @@
       "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
       "Add okra, mix well, cook covered 10 minutes on medium heat.",
       "Add 1 tsp garam masala, mix and serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 155,
+      "protein": 3,
+      "carbs": 12,
+      "fat": 9
+    }
   },
   {
     "name": "Matar Paneer",
@@ -176,7 +225,14 @@
       "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
       "Add 200g paneer cubes and 100g peas, stir well.",
       "Cook on low heat for 10 minutes, add 1 tsp garam masala, mix and serve hot."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 265,
+      "protein": 10,
+      "carbs": 15,
+      "fat": 14
+    }
   },
   {
     "name": "Baingan Bharta",
@@ -197,7 +253,14 @@
       "Add 100g chopped onions and 2 crushed garlic cloves, sauté 5 minutes.",
       "Add 100g chopped tomatoes, 1 tsp red chili powder, 1 tsp salt, cook 3 minutes.",
       "Add mashed eggplant, mix well, cook 5 more minutes and serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 115,
+      "protein": 3,
+      "carbs": 10,
+      "fat": 7
+    }
   },
   {
     "name": "Paneer Bhurji",
@@ -218,7 +281,14 @@
       "Add 100g chopped tomatoes, 1 chopped green chili, 1/2 tsp turmeric, and 1 tsp salt, cook 3 minutes.",
       "Add crumbled paneer, mix well, cook for 5 minutes.",
       "Serve hot with roti or rice."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 335,
+      "protein": 14,
+      "carbs": 18,
+      "fat": 24
+    }
   },
   {
     "name": "Sev Tamatar Sabzi",
@@ -236,7 +306,14 @@
       "Add 250g chopped tomatoes, 1 tsp salt, 1/2 tsp turmeric, and 1 tsp coriander powder, cook 5-6 minutes until soft.",
       "Add 50g sev, mix gently, cook for 2 more minutes.",
       "Serve hot with roti or as side dish."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 180,
+      "protein": 4,
+      "carbs": 20,
+      "fat": 9
+    }
   },
   {
     "name": "Jeera Aloo",
@@ -254,7 +331,14 @@
       "Add diced potatoes, 1/2 tsp turmeric, and 1 tsp salt.",
       "Sauté on medium heat for 8-10 minutes until slightly crispy.",
       "Garnish with 2 tbsp chopped coriander leaves and serve."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 175,
+      "protein": 3,
+      "carbs": 22,
+      "fat": 8
+    }
   },
   {
     "name": "Lauki Sabzi",
@@ -274,7 +358,14 @@
       "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 3 minutes.",
       "Add bottle gourd, stir well, cover and cook for 10-12 minutes.",
       "Serve hot with roti or rice."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 95,
+      "protein": 2,
+      "carbs": 10,
+      "fat": 5
+    }
   },
   {
     "name": "Tinda Masala",
@@ -295,7 +386,14 @@
       "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 3-4 minutes.",
       "Add tinda pieces, cover and cook for 12 minutes on low heat.",
       "Add 1 tsp garam masala, mix, cook 2 more minutes, and serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 110,
+      "protein": 2,
+      "carbs": 12,
+      "fat": 6
+    }
   },
   {
     "name": "Karela Sabzi",
@@ -313,7 +411,14 @@
       "Add sliced bitter gourd, 100g chopped onions, 1/2 tsp turmeric, 1 tsp red chili powder, and 1 tsp salt.",
       "Cook on medium heat for 12-15 minutes, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 105,
+      "protein": 2,
+      "carbs": 8,
+      "fat": 7
+    }
   },
   {
     "name": "Aloo Methi",
@@ -332,7 +437,14 @@
       "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
       "Add potatoes, turmeric, salt, red chili powder, sauté 5 minutes.",
       "Add fenugreek leaves, cook 5 more minutes, mix well and serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 175,
+      "protein": 4,
+      "carbs": 20,
+      "fat": 9
+    }
   },
   {
     "name": "Chole (Chickpea Curry)",
@@ -354,7 +466,14 @@
       "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add 250g soaked chickpeas, water to cover, cook 15 minutes.",
       "Add 1 tsp garam masala, simmer 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 275,
+      "protein": 11,
+      "carbs": 38,
+      "fat": 9
+    }
   },
   {
     "name": "Rajma Masala",
@@ -376,7 +495,14 @@
       "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
       "Add 250g soaked kidney beans, water to cover, cook 20 minutes.",
       "Add 1 tsp garam masala, simmer 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 232,
+      "protein": 10,
+      "carbs": 28,
+      "fat": 9
+    }
   },
   {
     "name": "Dal Tadka",
@@ -397,7 +523,14 @@
       "Add 100g chopped onions, sauté 5 minutes.",
       "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Pour dal into pan, mix well, simmer 5 minutes and serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 250,
+      "protein": 10,
+      "carbs": 30,
+      "fat": 10
+    }
   },
   {
     "name": "Bhindi Do Pyaza",
@@ -418,7 +551,14 @@
       "Add okra, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cook covered for 12 minutes, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 160,
+      "protein": 3,
+      "carbs": 14,
+      "fat": 10
+    }
   },
   {
     "name": "Aloo Palak",
@@ -438,7 +578,14 @@
       "Add potatoes, 1/2 tsp turmeric, 1 tsp salt, sauté 5 minutes.",
       "Add spinach, cover and cook 10 minutes on medium heat.",
       "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 170,
+      "protein": 4,
+      "carbs": 20,
+      "fat": 8
+    }
   },
   {
     "name": "Methi Aloo",
@@ -457,7 +604,14 @@
       "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
       "Add potatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, sauté 5 minutes.",
       "Add fenugreek leaves, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 175,
+      "protein": 4,
+      "carbs": 24,
+      "fat": 7
+    }
   },
   {
     "name": "Gajar Matar Sabzi",
@@ -476,7 +630,14 @@
       "Add carrots and 100g peas, sauté 2 minutes.",
       "Add 1/2 tsp turmeric, 1 tsp salt, cover and cook 10 minutes.",
       "Add 1 tsp garam masala, mix and serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 130,
+      "protein": 4,
+      "carbs": 16,
+      "fat": 5
+    }
   },
   {
     "name": "Tamarind Rice",
@@ -496,7 +657,14 @@
       "Add 2 tbsp tamarind paste, 1/4 tsp turmeric, 1 tsp salt, stir 1 minute.",
       "Add 250g cooked rice, mix well and heat 2-3 minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 220,
+      "protein": 4,
+      "carbs": 38,
+      "fat": 6
+    }
   },
   {
     "name": "Aloo Baingan Sabzi",
@@ -517,7 +685,14 @@
       "Add 200g diced potatoes and 200g diced eggplant, cook 2 minutes.",
       "Add 100g tomatoes, 1/2 tsp turmeric, 1 tsp salt, cover and cook 12 minutes.",
       "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 155,
+      "protein": 3,
+      "carbs": 18,
+      "fat": 8
+    }
   },
   {
     "name": "Vegetable Pulao",
@@ -539,7 +714,14 @@
       "Add 200g washed basmati rice, 1/2 tsp turmeric, 1 tsp salt, stir 1 minute.",
       "Add 400ml water, cover and cook 15 minutes until rice is done.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 225,
+      "protein": 5,
+      "carbs": 38,
+      "fat": 5
+    }
   },
   {
     "name": "Kadai Paneer",
@@ -559,7 +741,14 @@
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add 200g paneer cubes and 100g capsicum, cook 7 minutes.",
       "Add 1 tsp garam masala, mix and serve hot."
-    ]
+    ],
+    "nutrition_score": 50,
+    "nutrition": {
+      "calories": 270,
+      "protein": 12,
+      "carbs": 11,
+      "fat": 22
+    }
   },
   {
     "name": "Vegetable Upma",
@@ -581,7 +770,14 @@
       "Add 200g semolina, roast 2 minutes.",
       "Slowly add 500ml water with 1 tsp salt, stir continuously to avoid lumps.",
       "Cook 5-6 minutes on low heat, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 200,
+      "protein": 6,
+      "carbs": 30,
+      "fat": 7
+    }
   },
   {
     "name": "Vegetable Khichdi",
@@ -603,7 +799,14 @@
       "Add rice and dal, 1/2 tsp turmeric, 1 tsp salt, stir 1 minute.",
       "Add 500ml water, cover and cook 15 minutes on medium heat.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 280,
+      "protein": 10,
+      "carbs": 48,
+      "fat": 5
+    }
   },
   {
     "name": "Cabbage Sabzi",
@@ -623,7 +826,14 @@
       "Add cabbage, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cover and cook 10 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 90,
+      "protein": 2,
+      "carbs": 10,
+      "fat": 5
+    }
   },
   {
     "name": "Cauliflower Curry",
@@ -644,7 +854,14 @@
       "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
       "Add cauliflower, cover, cook 12 minutes on medium heat.",
       "Add 1 tsp garam masala, mix well and serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 140,
+      "protein": 4,
+      "carbs": 14,
+      "fat": 7
+    }
   },
   {
     "name": "Tomato Dal",
@@ -666,7 +883,14 @@
       "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add cooked dal, stir well, simmer 5 minutes.",
       "Add 1/2 tsp garam masala, mix, serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 210,
+      "protein": 9,
+      "carbs": 28,
+      "fat": 7
+    }
   },
   {
     "name": "Baingan Aloo",
@@ -688,7 +912,14 @@
       "Add eggplant and potatoes, 1/2 tsp turmeric, 1 tsp salt, stir 2 minutes.",
       "Add 100g chopped tomatoes, cover and cook 12 minutes.",
       "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 155,
+      "protein": 3,
+      "carbs": 18,
+      "fat": 8
+    }
   },
   {
     "name": "Kadhi Pakora",
@@ -708,7 +939,14 @@
       "Pour the batter into the pan, add 1/2 tsp turmeric, 1 tsp salt.",
       "Cook on low heat for 10 minutes, stirring occasionally.",
       "Add 1/2 tsp garam masala, mix, simmer 5 minutes and serve hot."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 294,
+      "protein": 9,
+      "carbs": 35,
+      "fat": 12
+    }
   },
   {
     "name": "Tawa Paneer",
@@ -728,7 +966,14 @@
       "Add paneer and capsicum, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cook 5-6 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 290,
+      "protein": 13,
+      "carbs": 12,
+      "fat": 22
+    }
   },
   {
     "name": "Vegetable Biryani",
@@ -751,7 +996,14 @@
       "Add 200g washed basmati rice, 400ml water, 1 tsp salt, stir.",
       "Cover and cook 15 minutes until rice is done.",
       "Add 1 tsp garam masala, mix gently, serve hot."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 250,
+      "protein": 6,
+      "carbs": 40,
+      "fat": 8
+    }
   },
   {
     "name": "Vegetable Kurma",
@@ -774,7 +1026,14 @@
       "Add carrot, beans, peas, capsicum, sauté 2 minutes.",
       "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
       "Add 50ml cream, mix, cook 3 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 220,
+      "protein": 5,
+      "carbs": 22,
+      "fat": 12
+    }
   },
   {
     "name": "Paneer Tikka Masala",
@@ -795,7 +1054,14 @@
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add paneer cubes, 1 tsp salt, 1 tsp garam masala, 50ml cream, mix.",
       "Cook 5 minutes on low heat, serve hot."
-    ]
+    ],
+    "nutrition_score": 45,
+    "nutrition": {
+      "calories": 380,
+      "protein": 17,
+      "carbs": 20,
+      "fat": 26
+    }
   },
   {
     "name": "Vegetable Korma",
@@ -818,7 +1084,14 @@
       "Add carrot, beans, peas, capsicum, sauté 2 minutes.",
       "Add 100g chopped tomatoes, 1 tsp salt, cook 5 minutes.",
       "Add 50ml cream, 1 tsp garam masala, mix, cook 3 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 230,
+      "protein": 5,
+      "carbs": 24,
+      "fat": 13
+    }
   },
   {
     "name": "Matar Paneer",
@@ -840,7 +1113,14 @@
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add 100g peas, mix, cook 5 minutes.",
       "Add paneer cubes, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 3 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 265,
+      "protein": 10,
+      "carbs": 15,
+      "fat": 14
+    }
   },
   {
     "name": "Palak Paneer",
@@ -863,7 +1143,14 @@
       "Add 100g chopped tomatoes, cook 5 minutes.",
       "Add spinach, cook 5 minutes until wilted.",
       "Add paneer, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 3 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 200,
+      "protein": 14,
+      "carbs": 8,
+      "fat": 12
+    }
   },
   {
     "name": "Veg Manchurian",
@@ -885,7 +1172,14 @@
       "Heat 1 tbsp oil, sauté 50g chopped onions 2 minutes.",
       "Add 1 tbsp soy sauce, 1 tbsp chili sauce, 1 tsp salt, cook 1 minute.",
       "Add fried balls, toss well, cook 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 240,
+      "protein": 5,
+      "carbs": 26,
+      "fat": 12
+    }
   },
   {
     "name": "Aloo Gobi",
@@ -908,7 +1202,14 @@
       "Add potatoes and cauliflower, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add 100g chopped tomatoes, cover and cook 10 minutes.",
       "Add 1 tsp garam masala, mix, cook 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 160,
+      "protein": 4,
+      "carbs": 22,
+      "fat": 6
+    }
   },
   {
     "name": "Navratan Korma",
@@ -931,7 +1232,14 @@
       "Add 100g chopped tomatoes, cook 5 minutes.",
       "Add all vegetables and paneer, 1 tsp salt, cover and cook 10 minutes.",
       "Add 50ml cream, 1 tsp garam masala, mix well, cook 3 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 310,
+      "protein": 8,
+      "carbs": 28,
+      "fat": 18
+    }
   },
   {
     "name": "Veg Pakora",
@@ -949,7 +1257,14 @@
       "Mix 100g besan with 50ml water and 1 tsp salt to make batter.",
       "Dip vegetables in batter and deep fry until golden brown.",
       "Drain excess oil, serve hot with chutney."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 225,
+      "protein": 5,
+      "carbs": 28,
+      "fat": 10
+    }
   },
   {
     "name": "Paneer Butter Masala",
@@ -969,7 +1284,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add paneer cubes, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 45,
+    "nutrition": {
+      "calories": 400,
+      "protein": 15,
+      "carbs": 20,
+      "fat": 30
+    }
   },
   {
     "name": "Chana Masala",
@@ -991,7 +1313,14 @@
       "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add 250g soaked chickpeas, cook 15 minutes.",
       "Add 1 tsp garam masala, mix, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 240,
+      "protein": 12,
+      "carbs": 38,
+      "fat": 8
+    }
   },
   {
     "name": "Vegetable Jalfrezi",
@@ -1013,7 +1342,14 @@
       "Add all vegetables, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cook covered for 10 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 180,
+      "protein": 5,
+      "carbs": 18,
+      "fat": 10
+    }
   },
   {
     "name": "Aloo Mutter",
@@ -1036,7 +1372,14 @@
       "Add potatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add 100g peas and 100g chopped tomatoes, cook 10 minutes until potatoes are soft.",
       "Add 1 tsp garam masala, mix, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 170,
+      "protein": 5,
+      "carbs": 24,
+      "fat": 8
+    }
   },
   {
     "name": "Aloo Tamatar Sabzi",
@@ -1058,7 +1401,14 @@
       "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cook 10 minutes on medium heat until potatoes are soft.",
       "Add 1/2 tsp garam masala, mix, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 163,
+      "protein": 2,
+      "carbs": 15,
+      "fat": 11
+    }
   },
   {
     "name": "Methi Malai Matar",
@@ -1079,7 +1429,14 @@
       "Add peas and fenugreek leaves, cook 7 minutes.",
       "Add 50ml cream, 1 tsp salt, 1 tsp garam masala, mix and cook 2 minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 250,
+      "protein": 7,
+      "carbs": 18,
+      "fat": 16
+    }
   },
   {
     "name": "Paneer Bhurji",
@@ -1099,7 +1456,14 @@
       "Add 100g chopped tomatoes, 50g capsicum, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cook 7 minutes on medium heat, stirring occasionally.",
       "Add paneer, mix well, cook 2 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 335,
+      "protein": 14,
+      "carbs": 18,
+      "fat": 24
+    }
   },
   {
     "name": "Lauki Sabzi",
@@ -1120,7 +1484,14 @@
       "Add diced bottle gourd and 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cover and cook 12 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 95,
+      "protein": 2,
+      "carbs": 10,
+      "fat": 5
+    }
   },
   {
     "name": "Veg Cutlet",
@@ -1139,7 +1510,14 @@
       "Add 50g bread crumbs, 1 tsp salt, 1/2 tsp garam masala, mix well and form cutlets.",
       "Heat oil in a pan, shallow fry cutlets until golden brown on both sides.",
       "Serve hot with chutney."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 180,
+      "protein": 4,
+      "carbs": 22,
+      "fat": 8
+    }
   },
   {
     "name": "Veg Hakka Noodles",
@@ -1160,7 +1538,14 @@
       "Add 50g chopped carrot, capsicum, cabbage, sauté 3 minutes.",
       "Add noodles, 1 tbsp soy sauce, 1 tsp salt, 1 tbsp chili sauce, toss well.",
       "Cook 2 minutes on high flame, serve hot."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 290,
+      "protein": 7,
+      "carbs": 42,
+      "fat": 10
+    }
   },
   {
     "name": "Vegetable Spring Roll",
@@ -1179,7 +1564,14 @@
       "Place filling in spring roll wrappers and roll tightly.",
       "Deep fry in hot oil until golden brown.",
       "Serve hot with chili sauce."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 220,
+      "protein": 4,
+      "carbs": 28,
+      "fat": 10
+    }
   },
   {
     "name": "Aloo Capsicum Sabzi",
@@ -1200,7 +1592,14 @@
       "Add potatoes and capsicum, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cover and cook 12 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 150,
+      "protein": 3,
+      "carbs": 18,
+      "fat": 7
+    }
   },
   {
     "name": "Paneer Do Pyaza",
@@ -1221,7 +1620,14 @@
       "Add 100g chopped tomatoes and 50g capsicum, cook 5 minutes.",
       "Add paneer, 1 tsp salt, 1 tsp garam masala, mix well, cook 3 minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 280,
+      "protein": 12,
+      "carbs": 14,
+      "fat": 20
+    }
   },
   {
     "name": "Vegetable Fried Rice",
@@ -1241,7 +1647,14 @@
       "Add chopped carrot, capsicum, peas, sauté 3 minutes.",
       "Add 200g cooked rice, 1 tbsp soy sauce, 1 tsp salt, 1 tbsp chili sauce.",
       "Toss well, cook 2 minutes on high flame, serve hot."
-    ]
+    ],
+    "nutrition_score": 60,
+    "nutrition": {
+      "calories": 260,
+      "protein": 6,
+      "carbs": 40,
+      "fat": 8
+    }
   },
   {
     "name": "Dum Aloo",
@@ -1263,7 +1676,14 @@
       "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add potatoes, cover, cook 10 minutes on low heat.",
       "Add 1 tsp garam masala, mix, serve hot."
-    ]
+    ],
+    "nutrition_score": 50,
+    "nutrition": {
+      "calories": 250,
+      "protein": 4,
+      "carbs": 28,
+      "fat": 12
+    }
   },
   {
     "name": "Methi Aloo",
@@ -1284,7 +1704,14 @@
       "Add 100g chopped onions, sauté 5 minutes.",
       "Add potatoes, turmeric, salt, red chili powder, cook 10 minutes.",
       "Add fenugreek leaves, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 175,
+      "protein": 4,
+      "carbs": 24,
+      "fat": 7
+    }
   },
   {
     "name": "Vegetable Pulao",
@@ -1306,7 +1733,14 @@
       "Add 200g washed basmati rice, 400ml water, 1 tsp salt.",
       "Cover and cook 15 minutes until rice is done.",
       "Fluff rice and serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 225,
+      "protein": 5,
+      "carbs": 38,
+      "fat": 5
+    }
   },
   {
     "name": "Tinda Masala",
@@ -1327,7 +1761,14 @@
       "Add tinda and 100g chopped tomatoes, turmeric, salt, red chili powder.",
       "Cover and cook 12 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 110,
+      "protein": 2,
+      "carbs": 12,
+      "fat": 6
+    }
   },
   {
     "name": "Karela Sabzi",
@@ -1345,7 +1786,14 @@
       "Add bitter gourd, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cook covered 12 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 105,
+      "protein": 2,
+      "carbs": 8,
+      "fat": 7
+    }
   },
   {
     "name": "Bhindi Masala",
@@ -1366,7 +1814,14 @@
       "Add okra and 100g chopped tomatoes, turmeric, salt, red chili powder.",
       "Cook 10 minutes on medium heat, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 155,
+      "protein": 3,
+      "carbs": 12,
+      "fat": 9
+    }
   },
   {
     "name": "Vegetable Kofta Curry",
@@ -1389,7 +1844,14 @@
       "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
       "Add 150g chopped tomatoes, 1 tsp ginger garlic paste, 1 tsp salt, cook 5 minutes.",
       "Add fried koftas, 50ml cream, 1 tsp garam masala, simmer 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 50,
+    "nutrition": {
+      "calories": 350,
+      "protein": 10,
+      "carbs": 25,
+      "fat": 24
+    }
   },
   {
     "name": "Rajma Masala",
@@ -1411,7 +1873,14 @@
       "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add 250g soaked kidney beans, cook 15 minutes until soft.",
       "Add 1 tsp garam masala, mix, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 232,
+      "protein": 10,
+      "carbs": 28,
+      "fat": 9
+    }
   },
   {
     "name": "Chili Paneer",
@@ -1430,7 +1899,14 @@
       "Add capsicum, sauté 2 minutes.",
       "Add paneer cubes, 1 tbsp soy sauce, 1 tbsp chili sauce, 1 tsp salt.",
       "Cook 3–4 minutes, toss well, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 310,
+      "protein": 14,
+      "carbs": 16,
+      "fat": 22
+    }
   },
   {
     "name": "Vegetable Upma",
@@ -1451,7 +1927,14 @@
       "Add 200g semolina, roast 2 minutes.",
       "Add 400ml water, 1 tsp salt, cook 5 minutes, stirring continuously.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 200,
+      "protein": 6,
+      "carbs": 30,
+      "fat": 7
+    }
   },
   {
     "name": "Gajar Matar Sabzi",
@@ -1472,7 +1955,14 @@
       "Add carrots and 100g peas, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Cover and cook 10 minutes on medium heat.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 130,
+      "protein": 4,
+      "carbs": 16,
+      "fat": 5
+    }
   },
   {
     "name": "Paneer Tikka Masala",
@@ -1493,7 +1983,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add paneer cubes, 100g chopped capsicum, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 45,
+    "nutrition": {
+      "calories": 380,
+      "protein": 17,
+      "carbs": 20,
+      "fat": 26
+    }
   },
   {
     "name": "Stuffed Capsicum",
@@ -1512,7 +2009,14 @@
       "Stuff mixture into capsicum.",
       "Heat 2 tbsp oil, cook stuffed capsicum 10 minutes on medium heat, turning occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 170,
+      "protein": 5,
+      "carbs": 20,
+      "fat": 8
+    }
   },
   {
     "name": "Vegetable Dhokla",
@@ -1531,7 +2035,14 @@
       "Grate 50g carrot and 50g capsicum, fold into batter.",
       "Grease a steaming dish, pour batter, steam 15 minutes.",
       "Cool, cut into pieces, drizzle 2 tbsp oil, serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 150,
+      "protein": 6,
+      "carbs": 24,
+      "fat": 3
+    }
   },
   {
     "name": "Baingan Bharta",
@@ -1550,7 +2061,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 100g chopped tomatoes, cook 5 minutes.",
       "Add mashed eggplant, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 115,
+      "protein": 3,
+      "carbs": 10,
+      "fat": 7
+    }
   },
   {
     "name": "Aloo Baingan Sabzi",
@@ -1572,7 +2090,14 @@
       "Add potatoes, eggplant, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Add 100g chopped tomatoes, cover and cook 12 minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 155,
+      "protein": 3,
+      "carbs": 18,
+      "fat": 8
+    }
   },
   {
     "name": "Vegetable Sambar",
@@ -1594,7 +2119,14 @@
       "Add 50g chopped onions, sauté 3 minutes.",
       "Add 50g carrot, 50g drumstick, 50g chopped tomatoes, turmeric, salt, cook 5 minutes.",
       "Add cooked dal and 1 tbsp tamarind paste, simmer 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 22,
+      "fat": 4
+    }
   },
   {
     "name": "Vegetable Idli",
@@ -1610,7 +2142,14 @@
       "Fold vegetables into 200g idli batter, add 1/2 tsp salt.",
       "Grease idli molds, pour batter, steam 10–12 minutes.",
       "Cool slightly, remove idlis, serve hot with chutney."
-    ]
+    ],
+    "nutrition_score": 75,
+    "nutrition": {
+      "calories": 130,
+      "protein": 4,
+      "carbs": 24,
+      "fat": 2
+    }
   },
   {
     "name": "Vegetable Kofta Curry (Paneer Kofta)",
@@ -1632,7 +2171,14 @@
       "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
       "Add 150g chopped tomatoes, 1 tsp ginger garlic paste, 1 tsp salt, cook 5 minutes.",
       "Add fried koftas, 50ml cream, 1 tsp garam masala, simmer 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 40,
+    "nutrition": {
+      "calories": 380,
+      "protein": 12,
+      "carbs": 22,
+      "fat": 26
+    }
   },
   {
     "name": "Paneer Pasanda",
@@ -1653,7 +2199,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, 50g capsicum, cook 5 minutes.",
       "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 350,
+      "protein": 15,
+      "carbs": 16,
+      "fat": 26
+    }
   },
   {
     "name": "Palak Paneer",
@@ -1674,7 +2227,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 100g chopped tomatoes, cook 5 minutes.",
       "Add 200g paneer cubes and spinach puree, 1 tsp salt, 1 tsp garam masala, 50ml cream, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 200,
+      "protein": 14,
+      "carbs": 8,
+      "fat": 12
+    }
   },
   {
     "name": "Chole Masala",
@@ -1696,7 +2256,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, 1 tsp salt, 1 tsp red chili powder, cook 5 minutes.",
       "Add chickpeas, 1 tsp garam masala, simmer 10 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 240,
+      "protein": 12,
+      "carbs": 38,
+      "fat": 8
+    }
   },
   {
     "name": "Aloo Gobi",
@@ -1718,7 +2285,14 @@
       "Add potatoes, cauliflower, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder.",
       "Add 100g chopped tomatoes, cover and cook 12 minutes, stirring occasionally.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 160,
+      "protein": 4,
+      "carbs": 22,
+      "fat": 6
+    }
   },
   {
     "name": "Vegetable Kurma",
@@ -1740,7 +2314,14 @@
       "Add 100g chopped tomatoes, cook 5 minutes.",
       "Add all vegetables, 100ml coconut milk, 1 tsp salt, 1 tsp garam masala, simmer 10 minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 220,
+      "protein": 5,
+      "carbs": 22,
+      "fat": 12
+    }
   },
   {
     "name": "Paneer Butter Masala",
@@ -1760,7 +2341,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 45,
+    "nutrition": {
+      "calories": 400,
+      "protein": 15,
+      "carbs": 20,
+      "fat": 30
+    }
   },
   {
     "name": "Mixed Vegetable Curry",
@@ -1785,7 +2373,14 @@
       "Add vegetables and 100g chopped tomatoes, turmeric, salt, red chili powder.",
       "Cook 12 minutes on medium heat, stirring occasionally.",
       "Add 1 tsp garam masala, mix well, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 188,
+      "protein": 6,
+      "carbs": 24,
+      "fat": 9
+    }
   },
   {
     "name": "Tawa Paneer",
@@ -1804,7 +2399,14 @@
       "Add onions and capsicum, sauté 3 minutes.",
       "Add paneer cubes, 1 tsp salt, 1 tsp red chili powder, 1/2 tsp garam masala.",
       "Cook 5 minutes, stirring occasionally, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 290,
+      "protein": 13,
+      "carbs": 12,
+      "fat": 22
+    }
   },
   {
     "name": "Paneer Bhurji (Spiced Scrambled Paneer)",
@@ -1824,7 +2426,14 @@
       "Add 100g chopped tomatoes and 50g chopped capsicum, cook 5 minutes.",
       "Add paneer, 1/2 tsp turmeric, 1 tsp salt, 1 tsp red chili powder, cook 2–3 minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 335,
+      "protein": 14,
+      "carbs": 18,
+      "fat": 24
+    }
   },
   {
     "name": "Aloo Methi Masala",
@@ -1844,7 +2453,14 @@
       "Add 100g chopped onions, sauté 5 minutes.",
       "Add potatoes, turmeric, salt, red chili powder, cook 10 minutes.",
       "Add fenugreek leaves, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 180,
+      "protein": 4,
+      "carbs": 22,
+      "fat": 9
+    }
   },
   {
     "name": "Veg Jalfrezi",
@@ -1865,7 +2481,14 @@
       "Add other vegetables, cook 5 minutes.",
       "Add 1 tsp salt, 1 tsp garam masala, 1 tbsp soy sauce, stir well.",
       "Cook 3 more minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 180,
+      "protein": 5,
+      "carbs": 18,
+      "fat": 10
+    }
   },
   {
     "name": "Paneer Lababdar",
@@ -1885,7 +2508,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 340,
+      "protein": 14,
+      "carbs": 18,
+      "fat": 24
+    }
   },
   {
     "name": "Vegetable Handi",
@@ -1908,7 +2538,14 @@
       "Add 100g chopped tomatoes, sauté 5 minutes.",
       "Add vegetables, 50g peas, 1 tsp salt, 1 tsp garam masala, cover and cook 12 minutes.",
       "Serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 195,
+      "protein": 6,
+      "carbs": 22,
+      "fat": 9
+    }
   },
   {
     "name": "Aloo Palak",
@@ -1928,7 +2565,14 @@
       "Add 100g chopped onions, sauté 5 minutes.",
       "Add potatoes, turmeric, salt, red chili powder, cook 10 minutes.",
       "Add spinach, cook 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 65,
+    "nutrition": {
+      "calories": 170,
+      "protein": 4,
+      "carbs": 20,
+      "fat": 8
+    }
   },
   {
     "name": "Vegetable Manchurian",
@@ -1949,7 +2593,14 @@
       "Deep fry balls until golden brown.",
       "In a pan, add soy sauce, chili sauce, salt, sauté 2 minutes.",
       "Add fried balls, toss well, cook 2 more minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 55,
+    "nutrition": {
+      "calories": 240,
+      "protein": 5,
+      "carbs": 26,
+      "fat": 12
+    }
   },
   {
     "name": "Paneer Shahi Korma",
@@ -1970,7 +2621,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add paneer, 50ml cream, 50g cashew paste, 1 tsp salt, 1 tsp garam masala, simmer 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 45,
+    "nutrition": {
+      "calories": 360,
+      "protein": 14,
+      "carbs": 20,
+      "fat": 26
+    }
   },
   {
     "name": "Mushroom Masala",
@@ -1989,7 +2647,14 @@
       "Add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 100g chopped tomatoes, cook 5 minutes.",
       "Add mushrooms, 1 tsp salt, 1 tsp garam masala, cook 7–8 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 70,
+    "nutrition": {
+      "calories": 165,
+      "protein": 6,
+      "carbs": 20,
+      "fat": 9
+    }
   },
   {
     "name": "Paneer Makhani",
@@ -2007,7 +2672,14 @@
       "Heat 2 tbsp butter, add 1 tsp ginger garlic paste, cook 1 minute.",
       "Add 150g chopped tomatoes, cook 5 minutes.",
       "Add paneer, 50ml cream, 1 tsp salt, 1 tsp garam masala, simmer 5 minutes, serve hot."
-    ]
+    ],
+    "nutrition_score": 45,
+    "nutrition": {
+      "calories": 390,
+      "protein": 15,
+      "carbs": 18,
+      "fat": 28
+    }
   },
   {
     "name": "Vegetable Kofta Curry",
@@ -2030,371 +2702,13 @@
       "Heat 2 tbsp oil, add 100g chopped onions, sauté 5 minutes.",
       "Add 150g chopped tomatoes, 1 tsp ginger garlic paste, 1 tsp salt, cook 5 minutes.",
       "Add fried koftas, 50ml cream, 1 tsp garam masala, simmer 5 minutes, serve hot."
-    ]
-  },
-  {
-    "name": "Cabbage Stir Fry",
-    "ingredients": {
-      "cabbage": "300g",
-      "onion": "100g",
-      "green chili": "2",
-      "oil": "2 tbsp",
-      "mustard seeds": "1 tsp",
-      "curry leaves": "6",
-      "salt": "1 tsp",
-      "turmeric": "1/2 tsp"
-    },
-    "steps": [
-      "Finely shred 300g cabbage and set aside.",
-      "Heat 2 tbsp oil in a pan, add 1 tsp mustard seeds and let them splutter.",
-      "Add 6 curry leaves and 2 sliced green chilies, fry 30 seconds.",
-      "Add 100g sliced onions, sauté until soft (4 minutes).",
-      "Add shredded cabbage, 1/2 tsp turmeric, 1 tsp salt, mix well.",
-      "Cover and cook on medium heat for 8 minutes, stirring twice.",
-      "Uncover, stir fry on high heat 2 minutes until slightly crispy and serve hot."
-    ]
-  },
-  {
-    "name": "Cabbage Pakora",
-    "ingredients": {
-      "cabbage": "200g",
-      "besan (gram flour)": "100g",
-      "onion": "50g",
-      "green chili": "1",
-      "salt": "1 tsp",
-      "red chili powder": "1/2 tsp",
-      "oil": "for frying"
-    },
-    "steps": [
-      "Shred 200g cabbage and slice 50g onion finely.",
-      "In a bowl, mix cabbage, onion, 1 chopped green chili, 1 tsp salt, 1/2 tsp red chili powder.",
-      "Add 100g besan (gram flour) and mix well. If needed, add a little water for a thick batter.",
-      "Heat oil in a pan for deep frying.",
-      "Drop spoonfuls of mixture into hot oil and fry until golden and crispy (4-5 minutes).",
-      "Drain on paper towel and serve hot with green chutney."
-    ]
-  },
-  {
-    "name": "Broccoli Stir Fry with Garlic",
-    "ingredients": {
-      "broccoli": "300g",
-      "garlic": "4 cloves",
-      "oil": "2 tbsp",
-      "soy sauce": "1 tbsp",
-      "salt": "1/2 tsp",
-      "black pepper": "1/2 tsp",
-      "sesame seeds": "1 tsp"
-    },
-    "steps": [
-      "Cut 300g broccoli into small florets and wash them well.",
-      "Blanch broccoli in boiling salted water for 2 minutes, drain and keep aside.",
-      "Heat 2 tbsp oil in a wok or pan over high heat.",
-      "Add 4 minced garlic cloves, fry for 30 seconds until aromatic.",
-      "Add blanched broccoli, 1 tbsp soy sauce, 1/2 tsp salt, 1/2 tsp black pepper.",
-      "Toss and stir fry on high heat for 3 minutes.",
-      "Garnish with 1 tsp sesame seeds and serve hot."
-    ]
-  },
-  {
-    "name": "Broccoli Cheese Soup",
-    "ingredients": {
-      "broccoli": "300g",
-      "onion": "100g",
-      "garlic": "2 cloves",
-      "butter": "2 tbsp",
-      "milk": "200ml",
-      "cheese": "50g",
-      "salt": "1 tsp",
-      "black pepper": "1/2 tsp"
-    },
-    "steps": [
-      "Chop 300g broccoli into florets and 100g onion roughly.",
-      "Melt 2 tbsp butter in a pot, add 100g onions and 2 garlic cloves, sauté 4 minutes.",
-      "Add broccoli and 500ml water, bring to boil, cook 10 minutes until soft.",
-      "Let cool slightly, blend to smooth consistency.",
-      "Return to heat, add 200ml milk, 50g grated cheese, 1 tsp salt, 1/2 tsp black pepper.",
-      "Stir until cheese melts, simmer 3 minutes and serve hot."
-    ]
-  },
-  {
-    "name": "Capsicum Rice",
-    "ingredients": {
-      "capsicum": "200g",
-      "cooked rice": "300g",
-      "onion": "100g",
-      "oil": "2 tbsp",
-      "cumin seeds": "1 tsp",
-      "salt": "1 tsp",
-      "turmeric": "1/2 tsp",
-      "garam masala": "1 tsp"
-    },
-    "steps": [
-      "Dice 200g capsicum and chop 100g onion.",
-      "Heat 2 tbsp oil, add 1 tsp cumin seeds, let them splutter.",
-      "Add onions, sauté 4 minutes until golden.",
-      "Add diced capsicum, 1/2 tsp turmeric, 1 tsp salt, stir fry 5 minutes.",
-      "Add 300g cooked rice, 1 tsp garam masala, toss well on high heat 3 minutes.",
-      "Serve hot with raita."
-    ]
-  },
-  {
-    "name": "Stuffed Bell Pepper",
-    "ingredients": {
-      "capsicum": "4 whole",
-      "potato": "200g",
-      "peas": "50g",
-      "onion": "50g",
-      "oil": "2 tbsp",
-      "cumin seeds": "1 tsp",
-      "salt": "1 tsp",
-      "garam masala": "1 tsp"
-    },
-    "steps": [
-      "Boil 200g potatoes, peel and mash. Cook 50g peas.",
-      "Heat 1 tbsp oil, sauté 50g chopped onions 3 minutes.",
-      "Add mashed potato, peas, 1 tsp salt, 1 tsp garam masala, mix well.",
-      "Cut tops off 4 capsicums, remove seeds carefully.",
-      "Fill each capsicum with the potato mixture.",
-      "Heat 1 tbsp oil in a pan, place stuffed capsicums, cover and cook on low heat 15 minutes.",
-      "Turn halfway through. Serve hot."
-    ]
-  },
-  {
-    "name": "Carrot Halwa",
-    "ingredients": {
-      "carrot": "500g",
-      "milk": "500ml",
-      "sugar": "100g",
-      "ghee": "3 tbsp",
-      "cardamom powder": "1/2 tsp",
-      "cashews": "20g",
-      "raisins": "20g"
-    },
-    "steps": [
-      "Grate 500g carrots finely.",
-      "Heat 1 tbsp ghee in a heavy pan, fry cashews and raisins until golden, set aside.",
-      "Add grated carrots to the pan, sauté on medium heat for 5 minutes.",
-      "Add 500ml milk, stir and cook on medium heat until milk is mostly absorbed (25 minutes), stirring frequently.",
-      "Add 100g sugar, 1/2 tsp cardamom powder, mix well.",
-      "Add 2 tbsp ghee, cook 5 more minutes until mixture leaves sides of pan.",
-      "Garnish with fried cashews and raisins and serve warm."
-    ]
-  },
-  {
-    "name": "Carrot Soup",
-    "ingredients": {
-      "carrot": "400g",
-      "onion": "100g",
-      "garlic": "2 cloves",
-      "butter": "1 tbsp",
-      "milk": "100ml",
-      "salt": "1 tsp",
-      "black pepper": "1/2 tsp",
-      "water": "500ml"
-    },
-    "steps": [
-      "Peel and chop 400g carrots, chop 100g onion and 2 garlic cloves.",
-      "Melt 1 tbsp butter in a pot, sauté onions and garlic for 4 minutes.",
-      "Add carrots and 500ml water, bring to boil.",
-      "Cook covered on medium heat 15 minutes until carrots are soft.",
-      "Let cool slightly, blend to smooth soup.",
-      "Return to pot, add 100ml milk, 1 tsp salt, 1/2 tsp black pepper, simmer 3 minutes.",
-      "Serve hot with crusty bread."
-    ]
-  },
-  {
-    "name": "Mushroom Masala",
-    "ingredients": {
-      "mushroom": "300g",
-      "onion": "100g",
-      "tomato": "150g",
-      "oil": "2 tbsp",
-      "ginger garlic paste": "1 tsp",
-      "cumin seeds": "1 tsp",
-      "salt": "1 tsp",
-      "garam masala": "1 tsp",
-      "red chili powder": "1/2 tsp"
-    },
-    "steps": [
-      "Clean and slice 300g mushrooms.",
-      "Heat 2 tbsp oil, add 1 tsp cumin seeds, let them splutter.",
-      "Add 100g chopped onions, sauté until golden (5 minutes).",
-      "Add 1 tsp ginger garlic paste, cook 1 minute.",
-      "Add 150g chopped tomatoes, 1/2 tsp red chili powder, 1 tsp salt, cook 5 minutes.",
-      "Add sliced mushrooms, cover and cook 10 minutes.",
-      "Add 1 tsp garam masala, mix well and serve hot with roti."
-    ]
-  },
-  {
-    "name": "Mushroom Fried Rice",
-    "ingredients": {
-      "mushroom": "200g",
-      "cooked rice": "300g",
-      "onion": "100g",
-      "garlic": "3 cloves",
-      "soy sauce": "2 tbsp",
-      "oil": "2 tbsp",
-      "black pepper": "1/2 tsp",
-      "salt": "1/2 tsp",
-      "spring onion": "30g"
-    },
-    "steps": [
-      "Slice 200g mushrooms, chop 100g onion, mince 3 garlic cloves, slice 30g spring onion.",
-      "Heat 2 tbsp oil in a wok on high heat.",
-      "Add garlic, fry 30 seconds. Add onions, stir fry 2 minutes.",
-      "Add mushrooms, stir fry on high heat 4 minutes until golden.",
-      "Add 300g cooked rice, 2 tbsp soy sauce, 1/2 tsp black pepper, 1/2 tsp salt.",
-      "Toss everything together on high heat for 3 minutes.",
-      "Garnish with spring onion and serve hot."
-    ]
-  },
-  {
-    "name": "Corn Bhel",
-    "ingredients": {
-      "corn": "200g (boiled)",
-      "onion": "50g",
-      "tomato": "50g",
-      "green chili": "1",
-      "coriander": "2 tbsp",
-      "lemon": "1",
-      "chaat masala": "1/2 tsp",
-      "salt": "1/2 tsp"
-    },
-    "steps": [
-      "Boil 200g corn kernels and let them cool.",
-      "Finely chop 50g onion, 50g tomato, 1 green chili, and 2 tbsp coriander.",
-      "In a bowl, mix corn, onion, tomato, green chili.",
-      "Add 1/2 tsp chaat masala, 1/2 tsp salt, juice of 1 lemon.",
-      "Toss well together and garnish with chopped coriander.",
-      "Serve immediately as a snack."
-    ]
-  },
-  {
-    "name": "Corn Curry",
-    "ingredients": {
-      "corn": "300g",
-      "onion": "100g",
-      "tomato": "150g",
-      "oil": "2 tbsp",
-      "cumin seeds": "1 tsp",
-      "ginger garlic paste": "1 tsp",
-      "salt": "1 tsp",
-      "turmeric": "1/2 tsp",
-      "garam masala": "1 tsp"
-    },
-    "steps": [
-      "Boil 300g corn kernels for 5 minutes and set aside.",
-      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
-      "Add 100g chopped onions, sauté until golden (5 minutes).",
-      "Add 1 tsp ginger garlic paste, cook 1 minute.",
-      "Add 150g chopped tomatoes, 1/2 tsp turmeric, 1 tsp salt, cook 5 minutes.",
-      "Add corn kernels, mix well, cover and cook 8 minutes.",
-      "Add 1 tsp garam masala, stir, simmer 2 minutes and serve hot."
-    ]
-  },
-  {
-    "name": "Pumpkin Curry",
-    "ingredients": {
-      "pumpkin": "400g",
-      "onion": "100g",
-      "tomato": "100g",
-      "oil": "2 tbsp",
-      "cumin seeds": "1 tsp",
-      "salt": "1 tsp",
-      "turmeric": "1/2 tsp",
-      "red chili powder": "1 tsp",
-      "garam masala": "1 tsp"
-    },
-    "steps": [
-      "Peel and dice 400g pumpkin into 2cm cubes.",
-      "Heat 2 tbsp oil, add 1 tsp cumin seeds.",
-      "Add 100g chopped onions, sauté 5 minutes until golden.",
-      "Add 100g chopped tomatoes, 1/2 tsp turmeric, 1 tsp red chili powder, 1 tsp salt, cook 4 minutes.",
-      "Add pumpkin cubes, 100ml water, stir well.",
-      "Cover and cook on low-medium heat for 15 minutes until soft.",
-      "Add 1 tsp garam masala, mix, cook 2 more minutes and serve hot."
-    ]
-  },
-  {
-    "name": "Eggplant Fry",
-    "ingredients": {
-      "eggplant": "300g",
-      "oil": "3 tbsp",
-      "salt": "1 tsp",
-      "turmeric": "1/2 tsp",
-      "red chili powder": "1 tsp",
-      "coriander powder": "1 tsp"
-    },
-    "steps": [
-      "Wash and slice 300g eggplant into thin rounds.",
-      "In a bowl, mix 1 tsp salt, 1/2 tsp turmeric, 1 tsp red chili powder, 1 tsp coriander powder.",
-      "Coat eggplant slices with the spice mixture on both sides.",
-      "Let rest for 10 minutes.",
-      "Heat 3 tbsp oil in a flat pan on medium heat.",
-      "Place coated eggplant slices in a single layer, cook 4 minutes per side until golden and crispy.",
-      "Serve hot as a side dish."
-    ]
-  },
-  {
-    "name": "Tomato Rasam",
-    "ingredients": {
-      "tomato": "300g",
-      "toor dal": "50g",
-      "tamarind paste": "1 tbsp",
-      "oil": "1 tbsp",
-      "mustard seeds": "1 tsp",
-      "curry leaves": "6",
-      "garlic": "2 cloves",
-      "salt": "1 tsp",
-      "black pepper": "1 tsp",
-      "coriander": "2 tbsp"
-    },
-    "steps": [
-      "Boil 50g toor dal until soft, mash and set aside.",
-      "Chop 300g tomatoes and blend to puree.",
-      "Heat 1 tbsp oil, add 1 tsp mustard seeds and 6 curry leaves.",
-      "Add 2 crushed garlic cloves, fry 30 seconds.",
-      "Add tomato puree, 1 tbsp tamarind paste, 1 tsp salt, 1 tsp black pepper.",
-      "Add mashed dal and 400ml water, bring to boil.",
-      "Simmer 10 minutes, garnish with 2 tbsp chopped coriander and serve hot."
-    ]
-  },
-  {
-    "name": "Banana Halwa",
-    "ingredients": {
-      "banana": "4 ripe",
-      "ghee": "3 tbsp",
-      "sugar": "50g",
-      "cardamom powder": "1/2 tsp",
-      "cashews": "20g"
-    },
-    "steps": [
-      "Peel and mash 4 ripe bananas into a smooth paste.",
-      "Heat 1 tbsp ghee in a pan, fry 20g cashews until golden, set aside.",
-      "Add mashed banana to the pan, cook on medium heat 5 minutes stirring continuously.",
-      "Add 50g sugar, 1/2 tsp cardamom powder, 2 tbsp ghee, stir well.",
-      "Cook on low heat for 10-12 minutes, stirring constantly until mixture thickens and leaves sides of pan.",
-      "Garnish with fried cashews and serve warm."
-    ]
-  },
-  {
-    "name": "Cucumber Raita",
-    "ingredients": {
-      "cucumber": "200g",
-      "yogurt": "300ml",
-      "salt": "1/2 tsp",
-      "cumin powder": "1/2 tsp",
-      "black pepper": "1/4 tsp",
-      "coriander": "1 tbsp"
-    },
-    "steps": [
-      "Peel and grate or finely dice 200g cucumber.",
-      "Squeeze out excess water from the cucumber using a cloth.",
-      "Whisk 300ml yogurt until smooth.",
-      "Add cucumber, 1/2 tsp salt, 1/2 tsp roasted cumin powder, 1/4 tsp black pepper.",
-      "Mix well and refrigerate for 15 minutes.",
-      "Garnish with 1 tbsp chopped coriander and serve chilled.",
-      "Best served alongside biryani or pulao."
-    ]
+    ],
+    "nutrition_score": 50,
+    "nutrition": {
+      "calories": 350,
+      "protein": 10,
+      "carbs": 25,
+      "fat": 24
+    }
   }
 ]

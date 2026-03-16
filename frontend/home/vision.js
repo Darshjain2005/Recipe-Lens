@@ -289,12 +289,64 @@ async function openDishDrawer(name, recipeIndex) {
 
     let ingsHtml = Object.entries(data.ingredients || {}).map(([ing, qty]) => `<span class="ing-pill">${qty} ${ing}</span>`).join('');
     $('drawerIngredients').innerHTML = ingsHtml || '<span style="color:white">No ingredients listed</span>';
+
+    // ── Render nutrition info ──────────────────────────────
+    const nut = data.nutrition || {};
+    const ingNut = data.ingredient_nutrition || {};
+    const nutSection = $('drawerNutritionSection');
+    const nutSummary = $('drawerNutSummary');
+    const nutIngredients = $('drawerIngNutrition');
+
+    if (nut.calories || Object.keys(ingNut).length > 0) {
+      nutSection.style.display = '';
+
+      // Recipe-level nutrition summary
+      if (nut.calories || nut.protein || nut.carbs || nut.fat) {
+        nutSummary.innerHTML = `
+          <div class="drawer-nut-stats">
+            ${nut.calories ? `<div class="drawer-nut-item"><span class="drawer-nut-val">${nut.calories}</span><span class="drawer-nut-lbl">kcal</span></div>` : ''}
+            ${nut.protein ? `<div class="drawer-nut-item"><span class="drawer-nut-val">${nut.protein}g</span><span class="drawer-nut-lbl">Protein</span></div>` : ''}
+            ${nut.carbs ? `<div class="drawer-nut-item"><span class="drawer-nut-val">${nut.carbs}g</span><span class="drawer-nut-lbl">Carbs</span></div>` : ''}
+            ${nut.fat ? `<div class="drawer-nut-item"><span class="drawer-nut-val">${nut.fat}g</span><span class="drawer-nut-lbl">Fat</span></div>` : ''}
+          </div>`;
+      } else {
+        nutSummary.innerHTML = '';
+      }
+
+      // Per-ingredient nutrition
+      let ingNutHtml = '';
+      for (const [item, info] of Object.entries(ingNut)) {
+        const cal = info.calories_per_100g;
+        const vitamins = info.key_vitamins || {};
+        const topVits = Object.entries(vitamins).slice(0, 3);
+        ingNutHtml += `<div class="drawer-ing-nut-card">
+          <div class="drawer-ing-nut-name">${item}</div>
+          <div class="drawer-ing-nut-details">
+            ${cal != null ? `<span class="drawer-nut-cal">🔥 ${cal} kcal/100g</span>` : ''}
+            ${topVits.map(([v, a]) => `<span class="drawer-nut-vit">${v}: ${a}</span>`).join('')}
+          </div>
+        </div>`;
+      }
+      nutIngredients.innerHTML = ingNutHtml;
+
+      // Voice narration of nutrition
+      let nutSpeech = '';
+      if (nut.calories) {
+        nutSpeech = `This recipe has ${nut.calories} calories`;
+        if (nut.protein) nutSpeech += `, ${nut.protein} grams of protein`;
+        nutSpeech += '.';
+      }
+      if (nutSpeech) setTimeout(() => speak(nutSpeech), 500);
+    } else {
+      nutSection.style.display = 'none';
+    }
   } catch (e) {
     console.error(e);
     $('drawerSubtitle').textContent = 'Recipe details loading from AI suggestions';
     $('drawerIngredients').innerHTML = '<span style="color:var(--text-muted,#aaa)">This dish\'s full recipe will load when you start cooking.</span>';
     $('drawerAbout').textContent = `Enjoy ${name}! Click Start Cooking to see the full step-by-step instructions.`;
     $('drawerChips').innerHTML = `<span class="chip chip-green">👥 Serves ${servings}</span>`;
+    if ($('drawerNutritionSection')) $('drawerNutritionSection').style.display = 'none';
   }
 }
 

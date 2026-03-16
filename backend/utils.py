@@ -3,6 +3,9 @@ import json
 import re
 import os
 
+# Per-ingredient nutrition lookup
+from nutrition_data import CALORIE_MAP, VITAMIN_MAP  # type: ignore[import]
+
 # Path to the database
 DB_PATH = os.path.join(os.path.dirname(__file__), 'recipes.db')
 
@@ -120,11 +123,30 @@ def get_recipe(recipe_id, servings):
     # 2. Scale numbers inside the instruction steps
     raw_steps = json.loads(recipe_row['steps'])
     scaled_steps = [scale_step_text(step, servings) for step in raw_steps]
-    
+
+    # 3. Recipe-level nutrition (from DB)
+    recipe_nutrition = json.loads(recipe_row['nutrition']) if recipe_row['nutrition'] else {}
+
+    # 4. Per-ingredient nutrition lookup
+    ingredient_nutrition = {}
+    for row in ing_rows:
+        item = row['item'].lower().strip()
+        # Try direct lookup, then with underscores replacing spaces
+        label = item.replace(' ', '_')
+        cal = CALORIE_MAP.get(item) or CALORIE_MAP.get(label)
+        vit = VITAMIN_MAP.get(item) or VITAMIN_MAP.get(label, {})
+        if cal is not None or vit:
+            ingredient_nutrition[row['item']] = {
+                "calories_per_100g": cal,
+                "key_vitamins": vit
+            }
+
     return {
         "name": recipe_row['name'],
         "ingredients": scaled_ingredients,
-        "steps": scaled_steps
+        "steps": scaled_steps,
+        "nutrition": recipe_nutrition,
+        "ingredient_nutrition": ingredient_nutrition
     }
 
 def get_step(recipe_id, step_idx):

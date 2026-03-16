@@ -15,8 +15,8 @@
 """
 
 import os
-import cv2
-import numpy as np
+import cv2  # type: ignore[import]
+import numpy as np  # type: ignore[import]
 from pathlib import Path
 from collections import defaultdict
 from typing import List, Dict, Any, Optional, Tuple
@@ -438,7 +438,7 @@ class YOLOv8Detector:
 
     def load(self):
         try:
-            from ultralytics import YOLO
+            from ultralytics import YOLO  # type: ignore[import]
             import os
             base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             # Primary: small model (more accurate than nano)
@@ -499,14 +499,15 @@ class EfficientNetV2Classifier:
     WEIGHT = 1.2
 
     def __init__(self):
-        self.model = None
+        self.model: Any = None
         self.available = False
-        self.preprocess = None
-        self.decode = None
+        self.preprocess: Any = None
+        self.decode: Any = None
+        self.input_size: Tuple[int, int] = (384, 384)
 
     def load(self):
         try:
-            import tensorflow as tf
+            import tensorflow as tf  # type: ignore[import]
             # Try EfficientNetV2S first (better accuracy)
             try:
                 self.model = tf.keras.applications.EfficientNetV2S(
@@ -534,7 +535,7 @@ class EfficientNetV2Classifier:
             return []
         results = []
         try:
-            import tensorflow as tf
+            import tensorflow as tf  # type: ignore[import]
             img = tf.keras.preprocessing.image.load_img(image_path, target_size=self.input_size)
             arr = tf.keras.preprocessing.image.img_to_array(img)
             arr = self.preprocess(arr[None])
@@ -565,12 +566,12 @@ class MobileNetV3Classifier:
     WEIGHT = 1.0
 
     def __init__(self):
-        self.model = None
+        self.model: Any = None
         self.available = False
 
     def load(self):
         try:
-            import tensorflow as tf
+            import tensorflow as tf  # type: ignore[import]
             self.model = tf.keras.applications.MobileNetV3Large(
                 weights="imagenet", include_top=True, include_preprocessing=True
             )
@@ -584,7 +585,7 @@ class MobileNetV3Classifier:
             return []
         results = []
         try:
-            import tensorflow as tf
+            import tensorflow as tf  # type: ignore[import]
             img = tf.keras.preprocessing.image.load_img(image_path, target_size=(224, 224))
             arr = tf.keras.preprocessing.image.img_to_array(img)
             preds = self.model.predict(arr[None], verbose=0)
@@ -612,12 +613,12 @@ class ResNetClassifier:
     WEIGHT = 0.9
 
     def __init__(self):
-        self.model = None
+        self.model: Any = None
         self.available = False
 
     def load(self):
         try:
-            import tensorflow as tf
+            import tensorflow as tf  # type: ignore[import]
             self.model = tf.keras.applications.ResNet50V2(
                 weights="imagenet", include_top=True
             )
@@ -631,7 +632,7 @@ class ResNetClassifier:
             return []
         results = []
         try:
-            import tensorflow as tf
+            import tensorflow as tf  # type: ignore[import]
             img = tf.keras.preprocessing.image.load_img(image_path, target_size=(224, 224))
             arr = tf.keras.preprocessing.image.img_to_array(img)
             arr = tf.keras.applications.resnet_v2.preprocess_input(arr[None])
@@ -725,7 +726,7 @@ class AdvancedColorDetector:
                     best_circ = max(best_circ, circ)
 
             # Confidence: coverage + shape quality + number of blobs
-            shape_bonus = min(best_circ * 0.2, 0.15)
+            shape_bonus = min(float(best_circ) * 0.2, 0.15)
             n_blobs = min(len(valid), 5)
             blob_bonus = n_blobs * 0.02
             base_conf = min(0.45 + coverage * 3.0 + shape_bonus + blob_bonus, 0.88)
@@ -796,9 +797,9 @@ def fuse_detections(all_dets: List[Dict]) -> List[Dict]:
     - Apply single-source penalty for pure heuristics
     """
     # Group by normalised label
-    groups: Dict[str, Dict] = defaultdict(lambda: {
-        "name": "", "sources": {}, "bbox": None, "confs": []
-    })
+    def _make_group() -> Dict[str, Any]:
+        return {"name": "", "sources": {}, "bbox": None, "confs": []}
+    groups: Dict[str, Dict[str, Any]] = defaultdict(_make_group)
 
     for det in all_dets:
         norm = normalise_label(det["raw_label"])
@@ -844,8 +845,8 @@ def fuse_detections(all_dets: List[Dict]) -> List[Dict]:
         fused.append({
             "name": g["name"],
             "raw_label": label,
-            "confidence": round(ensemble_conf, 4),
-            "confidence_pct": f"{round(ensemble_conf * 100, 1)}%",
+            "confidence": round(ensemble_conf, 4),  # type: ignore[call-overload]
+            "confidence_pct": f"{round(ensemble_conf * 100, 1)}%",  # type: ignore[call-overload]
             "sources": list(g["sources"].keys()),
             "model_count": n_sources,
             "bbox": g["bbox"],
@@ -872,7 +873,7 @@ def filter_detections(fused_dets: List[Dict]) -> List[Dict]:
     filtered = [top_det]
 
     # Dynamically keep others if they are confident enough AND relatively close to the top detection
-    for det in fused_dets[1:]:
+    for det in fused_dets[1:]:  # type: ignore
         conf = det["confidence"]
         
         # Absolute threshold (must be reasonably sure)
@@ -934,7 +935,7 @@ def suggest_dishes(detected_labels: List[str]) -> List[str]:
         if f not in seen:
             seen.append(f)
 
-    return seen[:8]  # Top 8 suggestions
+    return seen[:8]  # type: ignore
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -999,7 +1000,7 @@ def annotate_image(image_path: str, detections: List[Dict]) -> str:
         cv2.putText(img, label, (x1+4, y1-5), font, 0.55, (255,255,255), 2)
 
     # Draw text legend for non-bbox items
-    for i, det in enumerate(no_bbox_items[:10]):
+    for i, det in enumerate(no_bbox_items[:10]):  # type: ignore
         color = ANNOTATION_COLORS[(i + len(labeled_items)) % len(ANNOTATION_COLORS)]
         y = 32 + i * 30
         label = f"{det['name']} ({det['confidence_pct']})"
@@ -1059,7 +1060,7 @@ class FoodDetector:
         dishes = suggest_dishes(raw_labels)
 
         # Step 6: Nutrition summary (top 6)
-        nutrition = [d["nutrition"] for d in fused[:6] if d.get("nutrition")]
+        nutrition = [d["nutrition"] for d in fused[:6] if d.get("nutrition")]  # type: ignore
 
         # Cleanup enhanced image
         try:

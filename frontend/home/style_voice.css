@@ -294,6 +294,88 @@ html {
     font-weight: 500;
 }
 
+/* ── NUTRITION SUMMARY ──────────────────────────── */
+.nutrition-summary {
+    background: rgba(16, 185, 129, .08);
+    border: 1px solid rgba(16, 185, 129, .25);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.nutrition-summary-title {
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--emerald);
+    margin-bottom: .7rem;
+    letter-spacing: .3px;
+}
+
+.nutrition-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.nut-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.nut-val {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--t1);
+}
+
+.nut-label {
+    font-size: .7rem;
+    color: var(--t3);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-top: 2px;
+}
+
+/* ── PER-INGREDIENT NUTRITION ───────────────────── */
+.ing-nutrition {
+    margin-top: .6rem;
+    padding-top: .5rem;
+    border-top: 1px solid rgba(255, 255, 255, .06);
+}
+
+.nut-cal-badge {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--amber);
+    background: rgba(245, 158, 11, .1);
+    border: 1px solid rgba(245, 158, 11, .2);
+    border-radius: 20px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+}
+
+.nut-vitamins {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.nut-vitamin-pill {
+    font-size: .65rem;
+    font-weight: 500;
+    color: var(--cyan);
+    background: rgba(6, 182, 212, .08);
+    border: 1px solid rgba(6, 182, 212, .15);
+    border-radius: 12px;
+    padding: 1px 7px;
+}
+
 /* ── COOKING STEPS ───────────────────────────────── */
 .cooking-step {
     background: rgba(11, 17, 52, .85);

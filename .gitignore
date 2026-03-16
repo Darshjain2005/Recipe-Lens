@@ -5,4 +5,10 @@ ml/
 frontend/home/desktop.ini
 /venv
 /Front
-/amitesh
+/backend/uploads
+/backend/results
+/pyrightconfig.json
+.vscode/settings.json
+/backend/recipes.db
+/backend/data
+/backend/__pycache__
