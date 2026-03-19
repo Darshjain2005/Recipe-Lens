@@ -31,6 +31,66 @@
 
 ---
 
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef frontend fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff;
+    classDef backend fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
+    classDef ml fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff;
+    classDef db fill:#f59e0b,stroke:#b45309,stroke-width:2px,color:#fff;
+
+    %% Client Interface
+    subgraph Client [Frontend UI HTML/CSS/JS]
+        VC[Voice Chef Interface<br>Web Speech API]
+        VI[Vision Chef Interface<br>Webcam/Upload]
+    end
+
+    %% Backend Server
+    subgraph Server [Backend Flask API - app.py]
+        API_Detect[/detect & /detect_base64]
+        API_Recipe[/suggest-recipes]
+        API_Auth[/login & /register]
+        API_Cook[/start-cooking]
+    end
+
+    %% Database
+    subgraph Database [SQLite3 Datastore]
+        DB[(recipes.db)]
+        UsersTable[Users Table]
+        RecipesTable[Recipes & Nutrition]
+    end
+
+    %% AI Pipeline
+    subgraph AI_Pipeline [5-Model Vision Pipeline]
+        YOLO[Ultralytics YOLOv8]
+        ENet[EfficientNetV2-S]
+        MNet[MobileNetV3]
+        ResNet[ResNet50V2]
+    end
+
+    %% Connections
+    VC -- Voice Commands --> API_Cook
+    VC -- Queries --> API_Recipe
+    VI -- Base64 / Image Upload --> API_Detect
+    
+    API_Detect -- Image Data --> AI_Pipeline
+    AI_Pipeline -- Detected Ingredients --> API_Detect
+    
+    API_Recipe -- Ingredient Match --> DB
+    API_Cook -- Fetch Steps & Nutrition --> DB
+    API_Auth -- Validate Credentials --> UsersTable
+    
+    %% Apply classes
+    class VC,VI frontend;
+    class Server,API_Detect,API_Recipe,API_Auth,API_Cook backend;
+    class Database,DB,UsersTable,RecipesTable db;
+    class AI_Pipeline,YOLO,ENet,MNet,ResNet ml;
+```
+
+---
+
 ## 📂 Project Structure
 
 ```
