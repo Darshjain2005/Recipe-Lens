@@ -126,14 +126,7 @@ function runDetection(endpoint, body) {
 function renderResults(data) {
   try {
     console.log("Rendering results with data:", data);
-    const ms = data.model_stats || {};
 
-    $('statYolo').textContent = ms.yolo_detections ?? '—';
-    $('statEffnet').textContent = ms.efficientnet_detections ?? '—';
-    $('statMobile').textContent = ms.mobilenet_detections ?? '—';
-    $('statResnet').textContent = ms.resnet_detections ?? '—';
-    $('statColor').textContent = ms.color_detections ?? '—';
-    $('statTotal').textContent = data.total_found ?? 0;
     $('itemCountBadge').textContent = `${data.total_found ?? 0} found`;
     $('timeBadge').textContent = `⏱ ${data.processing_time ?? 0}s`;
 
@@ -334,6 +327,8 @@ async function openDishDrawer(name, recipeIndex) {
       if (nut.calories) {
         nutSpeech = `This recipe has ${nut.calories} calories`;
         if (nut.protein) nutSpeech += `, ${nut.protein} grams of protein`;
+        if (nut.carbs)   nutSpeech += `, ${nut.carbs} grams of carbs`;
+        if (nut.fat)     nutSpeech += `, and ${nut.fat} grams of fat`;
         nutSpeech += '.';
       }
       if (nutSpeech) setTimeout(() => speak(nutSpeech), 500);

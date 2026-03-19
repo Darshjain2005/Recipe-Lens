@@ -287,15 +287,14 @@ async function showIngredients() {
     }
     ingHTML += `</div>`;
 
-    // Nutrition narration chunk
+    // Nutrition narration — split into small chunks to avoid Chrome ~15s TTS cutoff
     if (nut.calories) {
-        let nutSpeech = `This recipe has approximately ${nut.calories} calories per serving`;
-        if (nut.protein) nutSpeech += `, ${nut.protein} grams of protein`;
-        if (nut.carbs) nutSpeech += `, ${nut.carbs} grams of carbs`;
-        if (nut.fat) nutSpeech += `, and ${nut.fat} grams of fat`;
-        nutSpeech += '.';
+        ingChunks.push(`This recipe has approximately ${nut.calories} calories per serving.`);
+        if (nut.protein) ingChunks.push(`It provides ${nut.protein} grams of protein.`);
+        if (nut.carbs)   ingChunks.push(`${nut.carbs} grams of carbs.`);
+        if (nut.fat)     ingChunks.push(`And ${nut.fat} grams of fat.`);
 
-        // Mention key vitamins from ingredients
+        // Mention key vitamins from ingredients (one chunk per vitamin)
         const vitSources = {};
         for (let item in ingNut) {
             const vitamins = ingNut[item].key_vitamins || {};
@@ -307,11 +306,10 @@ async function showIngredients() {
         }
         const topVits = Object.entries(vitSources).slice(0, 3);
         if (topVits.length > 0) {
-            nutSpeech += ' Key nutrients include ';
-            nutSpeech += topVits.map(([v, items]) => `${v} from ${items.join(' and ')}`).join(', ');
-            nutSpeech += '.';
+            topVits.forEach(([v, items]) => {
+                ingChunks.push(`${v} from ${items.join(' and ')}.`);
+            });
         }
-        ingChunks.push(nutSpeech);
     }
 
     ingHTML += `

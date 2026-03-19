@@ -8,7 +8,10 @@ frontend/home/desktop.ini
 /backend/uploads
 /backend/results
 /pyrightconfig.json
-.vscode/settings.json
+.vscode/
 /backend/recipes.db
 /backend/data
 /backend/__pycache__
+/amitesh
+image test.jpg
+results.zip
