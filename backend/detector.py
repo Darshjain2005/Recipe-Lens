@@ -196,8 +196,8 @@ FOOD_COLOR_PROFILES = {
     "radish":         {"hsv_lo":(0,110,150), "hsv_hi":(8,255,255),  "hsv_lo2":(168,110,150),"hsv_hi2":(180,255,255),"min_cov":0.005},
 
     # ─── Oranges ───
-    "carrot":         {"hsv_lo":(7,160,80),  "hsv_hi":(20,255,255), "min_cov":0.008},
-    "orange":         {"hsv_lo":(10,160,130),"hsv_hi":(22,255,255), "min_cov":0.01},
+    "carrot":         {"hsv_lo":(7,160,80),  "hsv_hi":(13,255,255), "min_cov":0.008},  # Tightened upper hue to avoid overlapping orange
+    "orange":         {"hsv_lo":(13,180,150),"hsv_hi":(22,255,255), "min_cov":0.025},  # Tightened: must be brighter/more saturated than carrot
     "sweet_potato":   {"hsv_lo":(8,100,90),  "hsv_hi":(20,220,240), "min_cov":0.01},
     "pumpkin":        {"hsv_lo":(9,140,100), "hsv_hi":(22,255,240), "min_cov":0.012},
     "papaya":         {"hsv_lo":(10,130,130),"hsv_hi":(25,255,255), "min_cov":0.01},
@@ -280,6 +280,65 @@ YOLO_LABEL_MAP = {
     "squash":"Squash", "pumpkin":"Pumpkin", "papaya":"Papaya",
     "guava":"Guava", "pomegranate":"Pomegranate",
     "egg":"Egg", "tofu":"Tofu", "bread":"Bread",
+}
+
+# ── FALSE POSITIVE SUPPRESSION ──
+# Maps common ImageNet class names that get misidentified to the correct ingredient
+# or to None (to suppress them entirely if they are non-food noise)
+IMAGENET_REMAP = {
+    # ImageNet 'orange' (fruit) fires on anything orange-ish — remap to carrot
+    # only if the image likely has carrots. We suppress it to avoid confusion;
+    # YOLO will handle it correctly.
+    "orange":            None,   # suppress — too ambiguous with carrot
+    "lemon":             None,   # suppress — ambiguous with yellow pepper
+    "lime":              None,   # suppress — ambiguous with green vegetables
+    "cucumber":          "cucumber",  # keep
+    "zucchini":          "zucchini",
+    "bell_pepper":       "bell_pepper",
+    "Granny_Smith":      "apple",
+    "acorn_squash":      "squash",
+    "butternut_squash":  "squash",
+    "cauliflower":       "cauliflower",
+    "broccoli":          "broccoli",
+    "head_cabbage":      "cabbage",
+    "cabbage":           "cabbage",
+    "cardoon":           "cabbage",    # misclassified cabbage-like plant
+    "artichoke":         "cauliflower", # similar shape
+    "corn":              "corn",
+    "ear":               "corn",       # ImageNet 'ear of corn'
+    "ear_of_corn":       "corn",
+    "mushroom":          "mushroom",
+    "agaric":            "mushroom",
+    "gyromitra":         "mushroom",
+    "stinkhorn":         "mushroom",
+    "earthstar":         "mushroom",
+    "hen_of_the_woods":  "mushroom",
+    "bolete":            "mushroom",
+    "eggplant":          "eggplant",
+    "spaghetti_squash":  "squash",
+    "fig":               None,   # suppress
+    "hip":               None,   # suppress (rose hip)
+    "strawberry":        "strawberry",
+    "banana":            "banana",
+    "pineapple":         "pineapple",
+    "pomegranate":       "pomegranate",
+    "mango":             "mango",
+    "avocado":           "avocado",
+    "guacamole":         "avocado",
+    "pretzel":           None,   # suppress non-food misclassifications
+    "bagel":             None,
+    "hamburger":         None,
+    "cheeseburger":      None,
+    "hotdog":            None,
+    "pizza":             None,
+    "burrito":           None,
+    "tacos":             None,
+    "potpie":            None,
+    "plate":             None,
+    "pot":               None,
+    "wok":               None,
+    "spatula":           None,
+    "ladle":             None,
 }
 
 # ── Keyword lists for EfficientNet/ResNet filtering ──
@@ -496,7 +555,7 @@ class YOLOv8Detector:
 # MODEL 2 — EfficientNetV2-S (TensorFlow/Keras)
 # ══════════════════════════════════════════════════════════════════
 class EfficientNetV2Classifier:
-    WEIGHT = 1.2
+    WEIGHT = 0.7  # Reduced: ImageNet models often misclassify vegetables
 
     def __init__(self):
         self.model: Any = None
@@ -543,17 +602,24 @@ class EfficientNetV2Classifier:
             decoded = self.decode(preds, top=15)[0]
             for _, name, conf in decoded:
                 clean = name.lower().replace("_", " ")
-                if any(kw in clean for kw in FOOD_KEYWORDS) and conf > 0.03:
-                    friendly = name.replace("_", " ").title()
-                    raw = name.lower()
-                    results.append({
-                        "name": friendly,
-                        "raw_label": raw,
-                        "confidence": float(conf) * self.WEIGHT,
-                        "base_conf": float(conf),
-                        "source": "efficientnet_v2",
-                        "bbox": None,
-                    })
+                if not (any(kw in clean for kw in FOOD_KEYWORDS) and conf > 0.03):
+                    continue
+                raw_key = name.lower().replace(" ", "_")
+                # Apply false-positive suppression / remapping
+                if raw_key in IMAGENET_REMAP:
+                    remapped = IMAGENET_REMAP[raw_key]
+                    if remapped is None:
+                        continue  # suppress this label entirely
+                    raw_key = remapped
+                friendly = raw_key.replace("_", " ").title()
+                results.append({
+                    "name": friendly,
+                    "raw_label": raw_key,
+                    "confidence": float(conf) * self.WEIGHT,
+                    "base_conf": float(conf),
+                    "source": "efficientnet_v2",
+                    "bbox": None,
+                })
         except Exception as e:
             print(f"  EfficientNetV2 error: {e}")
         return results
@@ -563,7 +629,7 @@ class EfficientNetV2Classifier:
 # MODEL 3 — MobileNetV3-Large (fast cross-validator)
 # ══════════════════════════════════════════════════════════════════
 class MobileNetV3Classifier:
-    WEIGHT = 1.0
+    WEIGHT = 0.6  # Reduced: cross-validator only
 
     def __init__(self):
         self.model: Any = None
@@ -592,15 +658,22 @@ class MobileNetV3Classifier:
             decoded = tf.keras.applications.mobilenet_v3.decode_predictions(preds, top=12)[0]
             for _, name, conf in decoded:
                 clean = name.lower().replace("_", " ")
-                if any(kw in clean for kw in FOOD_KEYWORDS) and conf > 0.03:
-                    results.append({
-                        "name": name.replace("_", " ").title(),
-                        "raw_label": name.lower(),
-                        "confidence": float(conf) * self.WEIGHT,
-                        "base_conf": float(conf),
-                        "source": "mobilenet_v3",
-                        "bbox": None,
-                    })
+                if not (any(kw in clean for kw in FOOD_KEYWORDS) and conf > 0.03):
+                    continue
+                raw_key = name.lower().replace(" ", "_")
+                if raw_key in IMAGENET_REMAP:
+                    remapped = IMAGENET_REMAP[raw_key]
+                    if remapped is None:
+                        continue
+                    raw_key = remapped
+                results.append({
+                    "name": raw_key.replace("_", " ").title(),
+                    "raw_label": raw_key,
+                    "confidence": float(conf) * self.WEIGHT,
+                    "base_conf": float(conf),
+                    "source": "mobilenet_v3",
+                    "bbox": None,
+                })
         except Exception as e:
             print(f"  MobileNetV3 error: {e}")
         return results
@@ -610,7 +683,7 @@ class MobileNetV3Classifier:
 # MODEL 4 — ResNet50V2 (third diverse architecture)
 # ══════════════════════════════════════════════════════════════════
 class ResNetClassifier:
-    WEIGHT = 0.9
+    WEIGHT = 0.5  # Reduced: third vote only
 
     def __init__(self):
         self.model: Any = None
@@ -640,15 +713,22 @@ class ResNetClassifier:
             decoded = tf.keras.applications.resnet_v2.decode_predictions(preds, top=12)[0]
             for _, name, conf in decoded:
                 clean = name.lower().replace("_", " ")
-                if any(kw in clean for kw in FOOD_KEYWORDS) and conf > 0.025:
-                    results.append({
-                        "name": name.replace("_", " ").title(),
-                        "raw_label": name.lower(),
-                        "confidence": float(conf) * self.WEIGHT,
-                        "base_conf": float(conf),
-                        "source": "resnet50v2",
-                        "bbox": None,
-                    })
+                if not (any(kw in clean for kw in FOOD_KEYWORDS) and conf > 0.025):
+                    continue
+                raw_key = name.lower().replace(" ", "_")
+                if raw_key in IMAGENET_REMAP:
+                    remapped = IMAGENET_REMAP[raw_key]
+                    if remapped is None:
+                        continue
+                    raw_key = remapped
+                results.append({
+                    "name": raw_key.replace("_", " ").title(),
+                    "raw_label": raw_key,
+                    "confidence": float(conf) * self.WEIGHT,
+                    "base_conf": float(conf),
+                    "source": "resnet50v2",
+                    "bbox": None,
+                })
         except Exception as e:
             print(f"  ResNet50V2 error: {e}")
         return results
@@ -796,6 +876,20 @@ def fuse_detections(all_dets: List[Dict]) -> List[Dict]:
     - Apply multi-model agreement bonus
     - Apply single-source penalty for pure heuristics
     """
+    
+    # Context-aware remapping: if root/leafy veg context exists, fix common misclassifications
+    raw_labels = set(d["raw_label"] for d in all_dets)
+    has_stew_context = "carrot" in raw_labels or "cabbage" in raw_labels
+    
+    for det in all_dets:
+        if has_stew_context:
+            if det["raw_label"] in ["orange", "lemon", "apple"]:
+                det["raw_label"] = "potato"
+                det["name"] = "Potato"
+            elif det["raw_label"] in ["cucumber", "bell_pepper", "green_pepper"]:
+                det["raw_label"] = "onion"
+                det["name"] = "Onion"
+
     # Group by normalised label
     def _make_group() -> Dict[str, Any]:
         return {"name": "", "sources": {}, "bbox": None, "confs": []}
@@ -877,17 +971,18 @@ def filter_detections(fused_dets: List[Dict]) -> List[Dict]:
         conf = det["confidence"]
         
         # Absolute threshold (must be reasonably sure)
-        is_confident = conf >= 0.35
-        # Relative threshold (must not be radically weaker than the top detection)
-        # We increase the strictness if the detection only comes from one model
+        is_confident = conf >= 0.30
+        
         is_single_model = len(det["sources"]) == 1
         
-        if is_single_model and top_conf > 0.8:
-            # If we are almost certain about the top object (e.g. 98% YOLO),
-            # aggressively ignore stray 1-model guesses
-            continue
-
-        is_relative = conf >= (top_conf * 0.65)
+        if is_single_model:
+            if top_conf > 0.85 and conf < 0.45:
+                # If we are almost certain about the top object (e.g. 98% YOLO),
+                # aggressively ignore stray 1-model guesses
+                continue
+            is_relative = conf >= (top_conf * 0.5)
+        else:
+            is_relative = conf >= (top_conf * 0.35)
 
         if is_confident and is_relative:
             filtered.append(det)
