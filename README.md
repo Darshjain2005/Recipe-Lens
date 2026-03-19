@@ -42,32 +42,32 @@ graph TD
     classDef db fill:#f59e0b,stroke:#b45309,stroke-width:2px,color:#fff;
 
     %% Client Interface
-    subgraph Client [Frontend UI HTML/CSS/JS]
-        VC[Voice Chef Interface<br>Web Speech API]
-        VI[Vision Chef Interface<br>Webcam/Upload]
+    subgraph Client ["Frontend UI HTML/CSS/JS"]
+        VC["Voice Chef Interface<br>Web Speech API"]
+        VI["Vision Chef Interface<br>Webcam/Upload"]
     end
 
     %% Backend Server
-    subgraph Server [Backend Flask API - app.py]
-        API_Detect[/detect & /detect_base64]
-        API_Recipe[/suggest-recipes]
-        API_Auth[/login & /register]
-        API_Cook[/start-cooking]
+    subgraph Server ["Backend Flask API - app.py"]
+        API_Detect["/detect & /detect_base64"]
+        API_Recipe["/suggest-recipes"]
+        API_Auth["/login & /register"]
+        API_Cook["/start-cooking"]
     end
 
     %% Database
-    subgraph Database [SQLite3 Datastore]
-        DB[(recipes.db)]
-        UsersTable[Users Table]
-        RecipesTable[Recipes & Nutrition]
+    subgraph Database ["SQLite3 Datastore"]
+        DB[("recipes.db")]
+        UsersTable["Users Table"]
+        RecipesTable["Recipes & Nutrition"]
     end
 
     %% AI Pipeline
-    subgraph AI_Pipeline [5-Model Vision Pipeline]
-        YOLO[Ultralytics YOLOv8]
-        ENet[EfficientNetV2-S]
-        MNet[MobileNetV3]
-        ResNet[ResNet50V2]
+    subgraph AI_Pipeline ["5-Model Vision Pipeline"]
+        YOLO["Ultralytics YOLOv8"]
+        ENet["EfficientNetV2-S"]
+        MNet["MobileNetV3"]
+        ResNet["ResNet50V2"]
     end
 
     %% Connections
